@@ -105,11 +105,12 @@ public class AgentModel extends BaseAgentModel {
 	private boolean runAction (Collection<Agent> agents) {
 		boolean finish = true;
 		//do that for each robot
-		for (Agent a : agents) {
+		for (Agent agent : agents) {
+			ISimulatorAgent a = (ISimulatorAgent) agent;
 			//only if robot is on
-			if (!((ISimulatorAgent)a).getRobot().isShutDown()) {
+			if (!a.getRobot().isShutDown()) {
 				a.wander();
-				if (!((ISimulatorAgent)a).isFinish())
+				if (!a.isFinish())
 					finish = false;
 			}
 		}

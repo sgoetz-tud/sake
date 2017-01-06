@@ -518,7 +518,7 @@ public class StandbyComposite extends Composite {
 		GridData gdLabelComposite2 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel2 = new Label(outputTypeComposite, SWT.TOP);
 		splashLabel2.setLayoutData(gdLabelComposite2);
-		splashLabel2.setText("Use an output format to save the local \nagent models stepwise in a logging folder.\n");
+		splashLabel2.setText("Use an output format to save the local \nagent models stepwise in a logging folder.\nThis functions reduce the simulation speed!\n");
 
 		Button pngCheck = new Button(outputTypeComposite, SWT.CHECK);
 		Button xmlCheck = new Button(outputTypeComposite, SWT.CHECK);

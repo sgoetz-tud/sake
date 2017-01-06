@@ -166,30 +166,37 @@ public class AgentCore extends Agent {
 	}
 	
 	private void runGoals () {
-		boolean test = false;
+		boolean postCheck = false;
+		boolean allGoalsFinishCheck = true;
 		for (Goal goal : goals) {
 			goal.run();
 			if (goal.postCondition())
-				test = true;			
+				postCheck = true;	
+			//proof if now all goals optional or finish
+			if (!goal.isOptional() && !goal.postCondition())
+				allGoalsFinishCheck = false;
 		}		
-		if (test) {
+		if (postCheck) {	
+			
 			List<Goal> copy = new ArrayList<Goal>(goals);
 			for (Goal goal : copy) {
 				if (goal.postCondition()) {
 					goals.remove(goal);
 				}
 			}
-			//if all goals finished then switch off hardware components
-			if (goals.isEmpty())
+			
+			System.out.println("Goals Delete: " + copy.size() + goals.size() + allGoalsFinishCheck + postCheck);
+			
+			if (allGoalsFinishCheck)
 			{
+				//no important goal any more you can shut down all
 				System.out.println("Alle HardwareComponenten ausgeschaltet von " + this.getName());
 				for (HardwareComponent hc : hardwarecomponents) {
 					if (hc.isActive())
 						hc.switchOff();
 				}
-				shutDown = true;
-			}
-			
+				this.shutDown = true;
+			}			
 		}
 	}
 	

@@ -31,7 +31,7 @@ public abstract class SubGoal extends Goal {
 	
 	@Override
 	public boolean isOptional () {
-		return optional;
+		return this.optional;
 	}
 	
 	@Override
