@@ -6,7 +6,10 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.HooveLoadGoal;
 import de.tud.swt.cleaningrobots.goals.optional.WlanLoadIfAgentWantMergeGoal;
 
 /**
- * Add the goals for search a new random destination.
+ * Add the goals for search a new random destination for hoove agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class HooverRandomFollowerRole extends FollowerRole {
 

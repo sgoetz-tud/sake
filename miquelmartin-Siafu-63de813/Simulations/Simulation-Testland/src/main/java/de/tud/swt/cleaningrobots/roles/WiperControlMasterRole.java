@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.MasterWipeMasterGoal;
 
 /**
  * Add goal for the complete management from the master for wipe agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class WiperControlMasterRole extends MasterRole {
 

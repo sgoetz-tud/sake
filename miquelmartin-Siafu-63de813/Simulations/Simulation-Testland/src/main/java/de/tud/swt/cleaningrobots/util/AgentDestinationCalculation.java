@@ -4,6 +4,7 @@ import de.tud.swt.cleaningrobots.model.Position;
 
 /**
  * Saves information about new and old destinations of a robot.
+ * Used in one calculation behaviour.
  * 
  * @author Christopher Werner
  *

@@ -16,7 +16,7 @@ import de.tud.swt.cleaningrobots.roles.FollowerRole;
 import de.tud.swt.cleaningrobots.util.FieldMergeInformation;
 
 /**
- * Behavior that activate the wiper if the robot is at the destination and wipe the place.
+ * Behavior that activate the wiper if the agent is at the destination and wipe the place.
  * Send the data directly to the master.
  * 
  * @author Christopher Werner

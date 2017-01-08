@@ -3,7 +3,7 @@ package de.tud.swt.cleaningrobots.goals;
 import de.tud.swt.cleaningrobots.AgentRole;
 
 /**
- * Is a specific sub goal which is optional and abstract and must be implemented.
+ * Is a specific sub goal which is optional and must be implemented.
  * 
  * @author Christopher Werner
  *

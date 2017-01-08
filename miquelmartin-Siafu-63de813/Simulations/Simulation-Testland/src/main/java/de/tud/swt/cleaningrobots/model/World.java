@@ -138,6 +138,10 @@ public class World {
 		}
 	}
 
+	/**
+	 * Add a list of fields to the map.
+	 * @param fields
+	 */
 	public void addFields(Iterable<Field> fields) {
 		for (Field field : fields) {
 			this.addField(field);

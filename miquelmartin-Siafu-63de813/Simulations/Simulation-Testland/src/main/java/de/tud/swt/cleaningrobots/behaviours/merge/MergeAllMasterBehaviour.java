@@ -21,8 +21,8 @@ import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 /**
  * Old Behavior.
  * Behavior which realize the data exchange and integration
- * between all master and his followers.
- * With the EMF model.
+ * between all masters and there followers.
+ * With or without the EMF model.
  * 
  * @author Christopher Werner
  *

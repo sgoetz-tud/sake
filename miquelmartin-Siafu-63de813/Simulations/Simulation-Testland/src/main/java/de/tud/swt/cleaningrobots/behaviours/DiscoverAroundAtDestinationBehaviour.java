@@ -10,7 +10,7 @@ import de.tud.swt.cleaningrobots.model.Field;
 import de.tud.swt.cleaningrobots.model.State;
 
 /**
- * Behavior that activate the laser scanner if the robot is at the destination and scan the place.
+ * Behavior that activate the laser scanner if the agent is at the destination and scan the place.
  * 
  * @author Christopher Werner
  *

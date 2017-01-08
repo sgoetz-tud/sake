@@ -8,7 +8,7 @@ import de.tud.swt.cleaningrobots.goals.NonOptionalGoal;
 
 /**
  * Non optional goal to discover the world without any merge functions. 
- * Discovers as long as no more unknown field exists and then drive back to Loadstation
+ * Discovers as long as no more unknown field exists and then drive back to load station.
  * 
  * @author Christopher Werner
  *

@@ -36,12 +36,11 @@ import de.tud.swt.cleaningrobots.factory.MasterExploreFactory;
 import de.tud.swt.cleaningrobots.measure.ExportFiles;
 
 /**
- * This Agent Model defines the behavior of users in this test simulation.
- * Essentially, most users will wander around in a zombie like state, except for
- * Pietro and Teresa, who will stay put, and the postman, who will spend a
- * simulation life time running between the two ends of the map.
+ * The AgentModel class create all agents for the incoming configuration.
+ * And do the wander steps always for one iteration for all agents.
+ * Use the normal World from Siafu which uses the GUI.
  * 
- * @author Miquel Martin
+ * @author Christopher Werner
  * 
  */
 public class AgentModel extends BaseAgentModel {
@@ -61,10 +60,7 @@ public class AgentModel extends BaseAgentModel {
 	}
 
 	/**
-	 * Create a bunch of agents that will wander around aimlessly. Tweak them
-	 * for testing purposes as needed. Two agents, Pietro and Teresa, are
-	 * singled out and left under the control of the user. A third agent,
-	 * Postman, is set to run errands between the two places int he map.
+	 * Create a agents as configured that will wander around aimlessly.
 	 * 
 	 * @return the created agents
 	 */
@@ -108,7 +104,7 @@ public class AgentModel extends BaseAgentModel {
 		for (Agent agent : agents) {
 			ISimulatorAgent a = (ISimulatorAgent) agent;
 			//only if robot is on
-			if (!a.getRobot().isShutDown()) {
+			if (!a.getAgentCore().isShutDown()) {
 				a.wander();
 				if (!a.isFinish())
 					finish = false;
@@ -118,9 +114,8 @@ public class AgentModel extends BaseAgentModel {
 	}
 	
 	/**
-	 * Make all the normal agents wander around, and the postman, run errands
-	 * from one place to another. His speed depends on the time, slowing down at
-	 * night.
+	 * Make all the agents wander around one step.
+	 * If Simulations is finish save the measurement values in a JSON file.
 	 * 
 	 * @param agents
 	 *            the list of agents
@@ -135,12 +130,12 @@ public class AgentModel extends BaseAgentModel {
 			
 			//do evaluation output
 			for (Agent a : agents) {
-				((ISimulatorAgent)a).getRobot().addLastMeasurement();				
+				((ISimulatorAgent)a).getAgentCore().addLastMeasurement();				
 			}
 			
 			//make data output for all measurements
 			for (Agent a : agents) {
-				AgentCore rc = ((ISimulatorAgent)a).getRobot();
+				AgentCore rc = ((ISimulatorAgent)a).getAgentCore();
 				
 				//save JSON document in .txt
 				rc.getMeasurement().benchmarkTime = (endTime - startTime);
@@ -149,31 +144,23 @@ public class AgentModel extends BaseAgentModel {
 				ExportFiles ef = new ExportFiles();
 				String path = "M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
 						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt";
-				ef.addLineToFile(measu, path);
-				/*FileWorker fw = new FileWorker("M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt");				
-				fw.addLineToFile(measu);*/					
+				ef.addLineToFile(measu, path);					
 			}
 			ExportFiles ef = new ExportFiles();
 			String path = "M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
 					"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt";
 			ef.addConfigurationToFile(configuration, path);
 			
-			/*FileWorker fw = new FileWorker("M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-					"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt");
-			int tester = 0;
-			for (ExchangeMeasurement em : configuration.exchange) {
-				tester++;
-				em.setNumber(tester);
-				String result = em.toJson();
-				fw.addLineToFile(result);
-			}*/
+			//Example console output
 			System.out.println("Programm Finish!");
 			System.out.println("Iterations: " + configuration.iteration);
 			this.runFinish = true;
 		}
 	}
 
+	/**
+	 * Initialize all agents one time.
+	 */
 	@Override
 	public void initializeAgents(Collection<Agent> agents) {
 		
@@ -181,8 +168,8 @@ public class AgentModel extends BaseAgentModel {
 		for (Agent agent: agents)
 		{
 			ISimulatorAgent a = (ISimulatorAgent)agent;
-			a.getRobot().createAndInitializeRoleGoals();
-			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
+			a.getAgentCore().createAndInitializeRoleGoals();
+			System.out.println("Name: " + a.getAgentCore().getName() + " Roles: " + a.getAgentCore().getRoles() + " States: " + a.getAgentCore().getSupportedStates());
 		}
 	}
 }

@@ -13,7 +13,6 @@ import de.tud.swt.cleaningrobots.model.State;
  */
 public abstract class Goal {
 
-	//Robot
 	private AgentCore agent;
 	protected boolean optional;
 	
@@ -28,6 +27,10 @@ public abstract class Goal {
 		this.robot = role.getRobotCore();
 	}*/
 	
+	/**
+	 * Get the agent core only for the role code.
+	 * @return
+	 */
 	protected AgentCore getAgentCore() {
 		return agent;
 	}
@@ -56,7 +59,7 @@ public abstract class Goal {
 	public abstract boolean postCondition ();
 	
 	/**
-	 * Return if the robot has the correct hardware to finish the goal.
+	 * Return if the agent has the correct hardware to finish the goal.
 	 * @return
 	 */
 	public abstract boolean isHardwareCorrect ();
@@ -67,5 +70,8 @@ public abstract class Goal {
 	 */
 	public abstract Collection<State> getSupportedStates();
 	
+	/**
+	 * Initialize the goal and all its behaviours.
+	 */
 	public abstract void initialize ();
 }

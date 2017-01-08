@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.DumpPngModelBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Could always run and always be finished and save the images for reconstruction
+ * Could always run and always be finished and save the PNG images of the local model.
  * 
  * @author Christopher Werner
  *

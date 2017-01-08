@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The Accu information and management of the robot.
+ * The engine information and management of the agent.
  * 
  * @author Christopher Werner
  *
@@ -34,6 +34,10 @@ public class Accu {
 		actualWh = actual;
 	}
 	
+	/**
+	 * Load the accumulator with the value.
+	 * @param loadKWh
+	 */
 	public void load (double loadKWh)
 	{
 		actualWh += loadKWh;
@@ -43,11 +47,19 @@ public class Accu {
 		}
 	}
 
+	/**
+	 * Return if the accumulator is full.
+	 * @return
+	 */
 	public boolean isFull ()
 	{
 		return actualWh == maxWh;
 	}
 	
+	/**
+	 * Shrink the capacity.
+	 * @param useKWh
+	 */
 	public void use (double useKWh)
 	{
 		actualWh -= useKWh;
@@ -75,6 +87,11 @@ public class Accu {
 		return actualWh - minWh;
 	}
 	
+	/**
+	 * Get the iterations it could do before empty.
+	 * @param Energie
+	 * @return
+	 */
 	public double getMaxFieldGoes (double Energie)
 	{
 		return (maxWh - minWh) / Energie;

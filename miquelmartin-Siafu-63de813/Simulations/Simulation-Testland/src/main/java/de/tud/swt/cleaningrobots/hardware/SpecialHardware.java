@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * Could be every component create out of an XML file.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class SpecialHardware extends HardwareComponent {
 	
 	private Map<String, Object> extraValues;

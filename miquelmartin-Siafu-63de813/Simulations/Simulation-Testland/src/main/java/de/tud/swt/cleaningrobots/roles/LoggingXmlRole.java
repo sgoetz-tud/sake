@@ -5,7 +5,10 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.optional.XmlDumpGoal;
 
 /**
- * Add the goal for a XML output of the current map.
+ * Add the goal for a XML output of the current local model.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class LoggingXmlRole extends AgentRole {
 

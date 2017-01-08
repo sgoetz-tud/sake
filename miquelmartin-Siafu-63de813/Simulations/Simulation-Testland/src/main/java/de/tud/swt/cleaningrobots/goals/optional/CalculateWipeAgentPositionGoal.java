@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.MasterDestinationWipeBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional goal which calculate new wipe destinations for followers which divide the robots in the world. 
+ * Optional goal which calculate new wipe destinations for followers which divide the agents in the world. 
  * 
  * @author Christopher Werner
  *

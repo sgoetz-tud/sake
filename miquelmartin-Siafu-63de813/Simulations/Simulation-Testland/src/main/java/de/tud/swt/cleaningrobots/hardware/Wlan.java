@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The WLAN component of a robot.
+ * The WLAN component of a agent.
  * 
  * @author Christopher Werner
  *

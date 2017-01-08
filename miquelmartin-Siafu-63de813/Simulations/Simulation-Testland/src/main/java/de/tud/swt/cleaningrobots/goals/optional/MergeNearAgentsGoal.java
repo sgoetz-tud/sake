@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.merge.MergeAllNearBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional goal which make the merge between robots with the EMF model. 
+ * Optional goal which make the merge between agents. 
  * 
  * @author Christopher Werner
  *

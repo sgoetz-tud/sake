@@ -9,7 +9,7 @@ import de.tud.swt.cleaningrobots.hardware.ComponentTypes;
 import de.tud.swt.cleaningrobots.hardware.LoadStation;
 
 /**
- * Load the near robots if they set loading.
+ * Load the near agents if they set loading.
  * 
  * @author Christopher Werner
  *

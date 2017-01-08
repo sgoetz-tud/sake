@@ -1,5 +1,11 @@
 package de.tud.swt.cleaningrobots.exceptions;
 
+/**
+ * Agent has no component with this name.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class AgentHasNoSuchComponent extends RuntimeException {
 	
 	/**

@@ -9,6 +9,7 @@ import de.tud.evaluation.ExchangeMeasurement;
 
 /**
  * Create CSV documents from every test case with the important information.
+ * For later work with the JSON output.
  * 
  * @author Christopher Werner
  *
@@ -473,7 +474,7 @@ public class CSVCreation {
 						+ mapValue + "_V" + configValue + "_CE" + anzExploreRobots + "_CH0_CW0_B" 
 						+ newFieldValue + "_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -486,7 +487,7 @@ public class CSVCreation {
 					FileWorker rob = new FileWorker(path + "M" + mapValue + "_V" + configValue + "\\M" 
 							+ mapValue + "_V" + configValue + "_CE" + anzExploreRobots + "_CH0_CW0_B" 
 							+ newFieldValue + "_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -735,7 +736,7 @@ public class CSVCreation {
 					+ mapValue + "_V" + configValue + "_CE10_CH" + anzHooveRobots + "_CW0_B" 
 					+ newFieldValue + "_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -748,7 +749,7 @@ public class CSVCreation {
 					FileWorker rob = new FileWorker(path + "M" + mapValue + "_V" + configValue + "\\M" 
 							+ mapValue + "_V" + configValue + "_CE10_CH" + anzHooveRobots + "_CW0_B" 
 							+ newFieldValue + "_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -997,7 +998,7 @@ public class CSVCreation {
 					+ mapValue + "_V" + configValue + "_CE10_CH10_CW" + anzWipeRobots + "_B" 
 					+ newFieldValue + "_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -1010,7 +1011,7 @@ public class CSVCreation {
 					FileWorker rob = new FileWorker(path + "M" + mapValue + "_V" + configValue + "\\M" 
 							+ mapValue + "_V" + configValue + "_CE10_CH10_CW" + anzWipeRobots + "_B" 
 							+ newFieldValue + "_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -1451,7 +1452,7 @@ public class CSVCreation {
 				//robbi one information
 				FileWorker rob1 = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE" + anzExploreRobots + "_CH0_CW0_B0_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -1462,7 +1463,7 @@ public class CSVCreation {
 				
 				for (int i = 2; i <= numberRobots + 1; i++) {
 					FileWorker rob = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE" + anzExploreRobots + "_CH0_CW0_B0_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -1643,7 +1644,7 @@ public class CSVCreation {
 				//robbi one information
 				FileWorker rob1 = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE10_CH" + anzHooveRobots + "_CW0_B0_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -1654,7 +1655,7 @@ public class CSVCreation {
 				
 				for (int i = 2; i <= numberRobots + 1; i++) {
 					FileWorker rob = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE10_CH" + anzHooveRobots + "_CW0_B0_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -1834,7 +1835,7 @@ public class CSVCreation {
 				//robbi one information
 				FileWorker rob1 = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE10_CH10_CW" + anzWipeRobots + "_B0_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -1845,7 +1846,7 @@ public class CSVCreation {
 				
 				for (int i = 2; i <= numberRobots + 1; i++) {
 					FileWorker rob = new FileWorker(path + "D" + exchangeValue + "\\M0_V2_CE10_CH10_CW" + anzWipeRobots + "_B0_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;
@@ -2338,7 +2339,7 @@ public class CSVCreation {
 						+ mapValue + "_V" + configValue + "_CE" + anzExploreRobots + "_CH0_CW0_B" 
 						+ newFieldValue + "_D" + runs + "_Robbi_1.txt");				
 				String firstLine = rob1.readFile().get(0);//.readNextLine();
-				RobotMeasurement robM = new RobotMeasurement("");
+				AgentMeasurement robM = new AgentMeasurement("");
 				robM = robM.fromJson(firstLine);
 				
 				long benchmarkTime = robM.benchmarkTime;
@@ -2351,7 +2352,7 @@ public class CSVCreation {
 					FileWorker rob = new FileWorker(path + "M" + mapValue + "\\M" 
 							+ mapValue + "_V" + configValue + "_CE" + anzExploreRobots + "_CH0_CW0_B" 
 							+ newFieldValue + "_D" + runs + "_Robbi_" + i + ".txt");
-					RobotMeasurement rM = new RobotMeasurement("");
+					AgentMeasurement rM = new AgentMeasurement("");
 					rM = rM.fromJson(rob.readNextLine());
 					completeTime += rM.completeTime;
 					completeEnergie += rM.completeEnergie;

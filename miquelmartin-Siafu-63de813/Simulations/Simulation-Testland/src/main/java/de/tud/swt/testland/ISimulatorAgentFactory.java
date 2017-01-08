@@ -1,10 +1,15 @@
 package de.tud.swt.testland;
 
-
+/**
+ * Interface for different agent creation.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public interface ISimulatorAgentFactory {
 
 	/**
-	 * Create a loadstation without computational hardware agent.
+	 * Create a load station without computational hardware agent.
 	 * 
 	 * @param world
 	 *            the world to create it in
@@ -13,7 +18,7 @@ public interface ISimulatorAgentFactory {
 	public ISimulatorAgent createLoadStation();
 	
 	/**
-	 * Create a loadstation agent.
+	 * Create a active load station agent.
 	 * 
 	 * @param world
 	 *            the world to create it in

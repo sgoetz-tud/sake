@@ -4,7 +4,10 @@ import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.goals.nonoptional.MasterWipeAgentGoal;
 
 /**
- * Add the goals where is a complete communication with the master.
+ * Add the goals for wipe agents where is a complete communication with the master.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class WiperControlledFollowerRole extends FollowerRole {
 

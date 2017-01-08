@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.LoadIfAgentWantBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional goal which load robots around if they want. 
+ * Optional goal which load agents around if they want. 
  * 
  * @author Christopher Werner
  *

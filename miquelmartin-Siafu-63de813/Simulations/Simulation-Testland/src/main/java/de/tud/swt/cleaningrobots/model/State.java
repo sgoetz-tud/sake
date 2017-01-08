@@ -16,6 +16,10 @@ public class State {
 		this.name = name;
 	}
 	
+	/**
+	 * Name of the state.
+	 * @return
+	 */
 	public String getName() {
 		return name;		
 	}

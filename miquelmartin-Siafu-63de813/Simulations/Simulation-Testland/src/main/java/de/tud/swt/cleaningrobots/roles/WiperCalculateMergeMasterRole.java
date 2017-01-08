@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.optional.CalculateWipeAgentPositionGoal;
 
 /**
  * Add the goal to calculate new wipe destinations for all followers.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class WiperCalculateMergeMasterRole extends MergeMasterRole {
 

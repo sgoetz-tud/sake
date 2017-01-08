@@ -4,6 +4,14 @@ import java.util.List;
 
 import de.tud.swt.cleaningrobots.model.Position;
 
+/**
+ * Save the information for a new path to go and 
+ * the destination of the path. For new data from
+ * the master.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class PathWayMergeInformation {
 
 	private List<Position> path;

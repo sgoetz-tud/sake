@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.DumpModelBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Could always run and always be finished and save the images for reconstruction
+ * Could always run and always be finished and save the local model in all forms.
  * 
  * @author Christopher Werner
  *

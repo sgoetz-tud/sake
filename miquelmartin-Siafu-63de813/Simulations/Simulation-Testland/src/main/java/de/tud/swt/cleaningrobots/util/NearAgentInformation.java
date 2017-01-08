@@ -2,6 +2,7 @@ package de.tud.swt.cleaningrobots.util;
 
 /**
  * Implements a counter for near robots.
+ * To know when there was the last meeting.
  * 
  * @author Christopher Werner
  *

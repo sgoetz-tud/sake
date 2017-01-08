@@ -5,7 +5,11 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.optional.WithoutMasterExploreOptionalGoal;
 
 /**
- * Add the goals where no master is needed.
+ * Add the goals where no master is needed and which never 
+ * shut down for explore agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class FirstExplorerRole extends AgentRole {
 

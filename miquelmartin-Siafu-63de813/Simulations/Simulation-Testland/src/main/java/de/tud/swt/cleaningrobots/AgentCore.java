@@ -13,7 +13,7 @@ import de.tud.swt.cleaningrobots.goals.Goal;
 import de.tud.swt.cleaningrobots.hardware.Accu;
 import de.tud.swt.cleaningrobots.hardware.ComponentTypes;
 import de.tud.swt.cleaningrobots.hardware.HardwareComponent;
-import de.tud.swt.cleaningrobots.measure.RobotMeasurement;
+import de.tud.swt.cleaningrobots.measure.AgentMeasurement;
 import de.tud.swt.cleaningrobots.model.Position;
 import de.tud.swt.cleaningrobots.model.State;
 import de.tud.swt.cleaningrobots.model.World;
@@ -22,7 +22,7 @@ import de.tud.swt.cleaningrobots.roles.MasterRole;
 import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 
 /**
- * The core class of the robot which has all hardware components roles and the world he knows about.
+ * The core class of the agent which has all hardware components roles and the world he knows about.
  * 
  * @author Christopher Werner
  *
@@ -30,7 +30,7 @@ import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 public class AgentCore extends Agent {
 	
 	private Configuration configuration;
-	private RobotMeasurement measure;
+	private AgentMeasurement measure;
 
 	private String name;
 	private World world;
@@ -64,7 +64,7 @@ public class AgentCore extends Agent {
 		this.configuration = configuration;
 		this.name = name;
 		this.world = new World(this);
-		this.measure = new RobotMeasurement(name);
+		this.measure = new AgentMeasurement(name);
 		
 		//if accu==null the you do not drive to Loadstation
 		this.accu = accu;
@@ -88,6 +88,10 @@ public class AgentCore extends Agent {
 		return this.configuration;
 	}
 	
+	/**
+	 * Does the agent load now or not.
+	 * @return
+	 */
 	public boolean isLoading ()
 	{
 		return this.loading;
@@ -98,6 +102,11 @@ public class AgentCore extends Agent {
 		this.loading = loading;
 	}
 	
+	/**
+	 * Initialization function of all roles.
+	 * Run at startup. 
+	 * @return
+	 */
 	public boolean createAndInitializeRoleGoals ()
 	{
 		boolean result = true;
@@ -119,13 +128,17 @@ public class AgentCore extends Agent {
 	}
 	
 	/**
-	 * Is the robot on or off.
+	 * Is the agent on or off.
 	 * @return
 	 */
 	public boolean isShutDown () {
 		return this.shutDown;
 	}
 	
+	/**
+	 * Is the agent although a load station.
+	 * @return
+	 */
 	public boolean isLoadStation () {
 		return this.loadStation;
 	}
@@ -134,12 +147,12 @@ public class AgentCore extends Agent {
 		return this.destinationContainer;
 	}
 	
-	public RobotMeasurement getMeasurement () {
+	public AgentMeasurement getMeasurement () {
 		return this.measure;
 	}
 	
 	/**
-	 * Makes the action of each robot in every iteration.
+	 * Makes the action of each agent in every iteration.
 	 */
 	public boolean action() {
 				
@@ -199,7 +212,7 @@ public class AgentCore extends Agent {
 	}
 	
 	/**
-	 * Get the minimal energy need of the robot.
+	 * Get the minimal energy need of the agent.
 	 * @return
 	 */
 	public double getMinEnergie() {
@@ -207,7 +220,7 @@ public class AgentCore extends Agent {
 	}
 	
 	/**
-	 * Get the maximal energy need of the robot.
+	 * Get the maximal energy need of the agent.
 	 * @return
 	 */
 	public double getMaxEnergie() {
@@ -215,7 +228,7 @@ public class AgentCore extends Agent {
 	}
 	
 	/**
-	 * Get the actual energy need of the robot.
+	 * Get the actual energy need of the agent.
 	 * @return
 	 */
 	public double getActualEnergie() {
@@ -353,7 +366,6 @@ public class AgentCore extends Agent {
 		return this.knowledge;
 	}
 	
-	//functions of abstract class robot
 	@Override
 	public boolean hasRole(AgentRole role) {
 		return roles.contains(role);
@@ -383,11 +395,11 @@ public class AgentCore extends Agent {
 		ExchangeMeasurement em = new ExchangeMeasurement(name, "FinalModel", 0);
 		em.addMeasurement(world.getHoleMeasurement());
 		//name not use because he is in
-		//accu
+		//accumulator
 		em.addAccuDoubleNumber(3);
 		//energy
 		em.addAccuDoubleNumber(3);
-		//knownstates
+		//known states
 		em.addStatesStringNumber(supportedStates.size());
 		for (State s : this.supportedStates) {
 			em.addStatesStringByteNumber(s.getName().getBytes().length);

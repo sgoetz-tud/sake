@@ -15,8 +15,8 @@ import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 import de.tud.swt.cleaningrobots.util.NearAgentInformation;
 
 /**
- * Behavior which realize the data exchange and integration between two robots.
- * Do not merge data if the robot is loading at the time.
+ * Behavior which realize the data exchange and integration between two agents.
+ * Do not merge data if the agent is loading at the time.
  * On creation decide between with or without the EMF model.
  * 
  * @author Christopher Werner

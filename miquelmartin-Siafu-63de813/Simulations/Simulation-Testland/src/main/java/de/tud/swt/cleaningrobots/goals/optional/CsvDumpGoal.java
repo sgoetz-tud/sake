@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.DumpCsvModelBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Could always run and always be finished and save the images for reconstruction
+ * Could always run and always be finished and save a CSV file of the local model.
  * 
  * @author Christopher Werner
  *

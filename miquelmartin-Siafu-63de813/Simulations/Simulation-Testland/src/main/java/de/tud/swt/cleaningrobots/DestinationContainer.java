@@ -5,7 +5,7 @@ import java.util.List;
 import de.tud.swt.cleaningrobots.model.Position;
 
 /**
- * Handle all destinations and positions of important areas of the robot.
+ * Handle all destinations and positions of important areas of the agent.
  * 
  * @author Christopher Werner
  *
@@ -97,7 +97,7 @@ public class DestinationContainer {
 	}
 
 	/***
-	 * Sets the destination of the robot
+	 * Sets the destination of the agent.
 	 * 
 	 * @param destination
 	 *            If null, the destination will be reset and it is assumed, that

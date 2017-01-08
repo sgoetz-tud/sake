@@ -1,22 +1,3 @@
-/*
- * Copyright NEC Europe Ltd. 2006-2007
- * 
- * This file is part of the context simulator called Siafu.
- * 
- * Siafu is free software; you can redistribute it and/or modify it under the
- * terms of the GNU General Public License as published by the Free Software
- * Foundation; either version 2 of the License, or (at your option) any later
- * version.
- * 
- * Siafu is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
 package de.tud.swt.testland;
 
 import java.util.ArrayList;
@@ -36,12 +17,10 @@ import de.tud.swt.cleaningrobots.factory.MasterExploreFactory;
 import de.tud.swt.cleaningrobots.measure.ExportFiles;
 
 /**
- * This Agent Model defines the behavior of users in this test simulation.
- * Essentially, most users will wander around in a zombie like state, except for
- * Pietro and Teresa, who will stay put, and the postman, who will spend a
- * simulation life time running between the two ends of the map.
+ * The AgentModelMulti class create all agents for the incoming configuration.
+ * And do the wander steps always for one iteration for all agents.
  * 
- * @author Miquel Martin
+ * @author Christopher Werner
  * 
  */
 public class AgentModelMulti extends BaseAgentModelMulti {
@@ -61,10 +40,7 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 	}
 
 	/**
-	 * Create a bunch of agents that will wander around aimlessly. Tweak them
-	 * for testing purposes as needed. Two agents, Pietro and Teresa, are
-	 * singled out and left under the control of the user. A third agent,
-	 * Postman, is set to run errands between the two places int he map.
+	 * Create a agents as configured that will wander around aimlessly.
 	 * 
 	 * @return the created agents
 	 */
@@ -108,7 +84,7 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 		for (MultiAgent agent : agents) {
 			ISimulatorAgent a = (ISimulatorAgent) agent;
 			//only if robot is on
-			if (!a.getRobot().isShutDown()) {
+			if (!a.getAgentCore().isShutDown()) {
 				a.wander();
 				if (!a.isFinish())
 					finish = false;
@@ -118,9 +94,8 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 	}
 	
 	/**
-	 * Make all the normal agents wander around, and the postman, run errands
-	 * from one place to another. His speed depends on the time, slowing down at
-	 * night.
+	 * Make all the agents wander around one step.
+	 * If Simulations is finish save the measurement values in a JSON file.
 	 * 
 	 * @param agents
 	 *            the list of agents
@@ -135,12 +110,12 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 			long endTime = System.nanoTime();
 			
 			for (MultiAgent a : agents) {
-				((ISimulatorAgent)a).getRobot().addLastMeasurement();				
+				((ISimulatorAgent)a).getAgentCore().addLastMeasurement();				
 			}
 			
 			//make data output for all measurements
 			for (MultiAgent a : agents) {
-				AgentCore rc = ((ISimulatorAgent)a).getRobot();
+				AgentCore rc = ((ISimulatorAgent)a).getAgentCore();
 				
 				//save JSON document in .txt
 				rc.getMeasurement().benchmarkTime = (endTime - startTime);
@@ -149,10 +124,7 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 				ExportFiles ef = new ExportFiles();
 				String path = "M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
 						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt";
-				ef.addLineToFile(measu, path);
-				/*FileWorker fw = new FileWorker("M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt");				
-				fw.addLineToFile(measu);*/					
+				ef.addLineToFile(measu, path);				
 				
 			}
 			ExportFiles ef = new ExportFiles();
@@ -161,21 +133,16 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 			ef.addConfigurationToFile(configuration, path);
 			
 			
-			/*FileWorker fw = new FileWorker("M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-					"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt");
-			int tester = 0;
-			for (ExchangeMeasurement em : configuration.exchange) {
-				tester++;
-				em.setNumber(tester);
-				String result = em.toJson();
-				fw.addLineToFile(result);
-			}*/
+			//Example console output
 			System.out.println("Programm Finish!");
 			System.out.println("Iterations: " + configuration.iteration);
 			this.runFinish = true;
 		}
 	}
 
+	/**
+	 * Initialize all agents one time.
+	 */
 	@Override
 	public void initializeAgents(Collection<MultiAgent> agents) {
 		
@@ -183,8 +150,8 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 		for (MultiAgent agent: agents)
 		{
 			ISimulatorAgent a = (ISimulatorAgent)agent;
-			a.getRobot().createAndInitializeRoleGoals();
-			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
+			a.getAgentCore().createAndInitializeRoleGoals();
+			System.out.println("Name: " + a.getAgentCore().getName() + " Roles: " + a.getAgentCore().getRoles() + " States: " + a.getAgentCore().getSupportedStates());
 		}
 	}
 }

@@ -5,7 +5,10 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.optional.LoadIfAgentWantGoal;
 
 /**
- * Add the goal to load robots.
+ * Add the goal to load agents if they wand.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class LoadstationRole extends AgentRole {
 

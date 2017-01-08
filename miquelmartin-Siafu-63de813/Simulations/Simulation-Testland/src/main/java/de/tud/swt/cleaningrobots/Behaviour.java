@@ -46,9 +46,9 @@ public abstract class Behaviour {
 	protected abstract void addHardwareComponents ();
 	
 	/**
-	 * Does the actions implemented by the behaviour
+	 * Does the actions implemented by the behavior
 	 * @return <b>true</b> if the action is terminating the action sequence 
-	 * or <b>false</b> if the action of the next behaviour can be performed   
+	 * or <b>false</b> if the action of the next behavior can be performed   
 	 * @throws Exception
 	 */
 	public abstract boolean action() throws Exception;
@@ -56,7 +56,7 @@ public abstract class Behaviour {
 	public abstract void initialiseBehaviour ();
 		
 	/**
-	 * Gives back true if the robot has the needed Hardware.
+	 * Gives back true if the agent has the needed Hardware.
 	 * @return
 	 */
 	public boolean isHardwarecorrect() {

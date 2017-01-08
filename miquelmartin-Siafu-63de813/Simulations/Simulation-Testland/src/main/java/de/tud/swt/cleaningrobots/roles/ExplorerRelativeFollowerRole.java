@@ -6,7 +6,10 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.ExploreLoadGoal;
 import de.tud.swt.cleaningrobots.goals.optional.WlanLoadIfAgentWantMergeGoal;
 
 /**
- * Add the goals for search a new relative destination.
+ * Add the goals for search a new relative destination for explore agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class ExplorerRelativeFollowerRole extends FollowerRole {
 

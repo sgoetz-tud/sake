@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.LoadWlanActivateBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional goal which start the WLAN on the robot, when he is loading. 
+ * Optional goal which start the WLAN on the agent, when he is loading. 
  * 
  * @author Christopher Werner
  *

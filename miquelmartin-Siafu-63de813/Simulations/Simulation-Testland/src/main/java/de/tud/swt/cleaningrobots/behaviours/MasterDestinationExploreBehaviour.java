@@ -14,7 +14,8 @@ import de.tud.swt.cleaningrobots.roles.MasterRole;
 import de.tud.swt.cleaningrobots.util.AgentDestinationCalculation;
 
 /**
- * Behavior that calculate new destinations for the explorer and has contact if the followers are loading.
+ * Behavior that calculate new destinations for the explorer 
+ * and has contact if the followers are loading.
  * 
  * @author Christopher Werner
  *

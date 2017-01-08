@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The load station component of a robot.
+ * The load station component of a agent.
  * 
  * @author Christopher Werner
  *

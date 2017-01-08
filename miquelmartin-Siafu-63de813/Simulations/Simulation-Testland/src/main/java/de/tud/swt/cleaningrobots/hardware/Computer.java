@@ -1,14 +1,14 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The Computer component of a robot.
+ * The Computer component of a agent.
  * 
  * @author Christopher Werner
  *
  */
-public class Rechner extends HardwareComponent {
+public class Computer extends HardwareComponent {
 
-	public Rechner ()
+	public Computer ()
 	{
 		super("RECHNER");
 		//0,5Wh

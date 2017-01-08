@@ -13,6 +13,13 @@ import org.jdom2.input.SAXBuilder;
 import de.tud.swt.cleaningrobots.hardware.HardwareComponent;
 import de.tud.swt.cleaningrobots.hardware.SpecialHardware;
 
+/**
+ * Example Reading XML files class for creation of new hardware components.
+ * The hardware components could be created in the XML. 
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class ReadXMLInput {
 	
 	public Map<String, SpecialHardware> readHardwareComponents ()
@@ -23,14 +30,14 @@ public class ReadXMLInput {
         Map<String, SpecialHardware> componentMap = new HashMap<String, SpecialHardware>();
 
         try {
-            // Das Dokument erstellen
+            // create the document
             SAXBuilder builder = new SAXBuilder();
             doc = builder.build(f);
 
             // Element HardwareComponents
             Element element = doc.getRootElement();
 
-            // Eine Liste aller direkten Kindelemente eines Elementes erstellen
+            // create a list of all children elements of this element
             List<Element> xmlAllComponents = element.getChildren();
 
             for (Element e : xmlAllComponents)
@@ -113,9 +120,4 @@ public class ReadXMLInput {
         }
         return componentMap;
 	}
-
-	/*public static void main(String[] args) {
-		ReadXMLInput r = new ReadXMLInput();
-		r.readHardwareComponents();
-	}*/
 }

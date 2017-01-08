@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.MasterHooveMasterGoal;
 
 /**
  * Add goal for the complete management from the master for hoove agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class HooverControlMasterRole extends MasterRole {
 

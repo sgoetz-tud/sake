@@ -29,13 +29,13 @@ public class ImportExportConfiguration {
 		return "Iteration: " + iteration + " KnownStates: " + knownStates;
 	}
 	
-	public ImportExportConfiguration getStateConfiguration () {
+	/*public ImportExportConfiguration getStateConfiguration () {
 		ImportExportConfiguration iec = new ImportExportConfiguration();
 		iec.knowledge = true;
 		iec.knownstates = true;
 		iec.world = true;
 		iec.knownStates.addAll(knownStates);
 		return iec;
-	}
+	}*/
 
 }

@@ -12,7 +12,7 @@ import de.tud.swt.cleaningrobots.model.Position;
 import de.tud.swt.cleaningrobots.model.State;
 
 /**
- * Behavior that activate the hoover if the robot is at the destination and hoove the place.
+ * Behavior that activate the hoover if the agent is at the destination and hoove the place.
  * 
  * @author Christopher Werner
  *

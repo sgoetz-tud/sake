@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The laser scanner component of a robot.
+ * The laser scanner component of a agent.
  * 
  * @author Christopher Werner
  *

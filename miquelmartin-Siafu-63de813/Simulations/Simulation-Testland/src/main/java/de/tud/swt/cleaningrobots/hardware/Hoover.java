@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The Hoover component of a robot.
+ * The Hoover component of a agent.
  * 
  * @author Christopher Werner
  *

@@ -16,8 +16,8 @@ import de.tud.swt.cleaningrobots.roles.FollowerRole;
 import de.tud.swt.cleaningrobots.util.FieldMergeInformation;
 
 /**
- * Behavior that activate the hoover if the robot is at the destination and hoove the place.
- * Send the data directly to the master.
+ * Behavior that activate the hoover if the agent is at the destination
+ * and hoove the place. Send the data directly to the master.
  * 
  * @author Christopher Werner
  *

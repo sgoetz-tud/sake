@@ -6,6 +6,12 @@ import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.testland.ISimulatorAgentFactory;
 import de.tud.swt.testland.ISimulatorAgent;
 
+/**
+ * Abstract Factory class to create the different strategies.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public abstract class IAgentFactory {
 	
 	protected Configuration configuration;

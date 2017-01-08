@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.optional.CalculateExploreAgentPositionGoa
 
 /**
  * Add the goal to calculate new discover destinations for all followers.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class ExplorerCalculateMergeMasterRole extends MergeMasterRole {
 

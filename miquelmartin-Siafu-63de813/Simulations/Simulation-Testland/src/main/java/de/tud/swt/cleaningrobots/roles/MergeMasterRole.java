@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.optional.MergeMasterGoal;
 
 /**
  * Add the goal do merge data between master and follower.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class MergeMasterRole extends MasterRole {
 

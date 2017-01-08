@@ -5,7 +5,10 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.optional.PngDumpGoal;
 
 /**
- * Add the goal for an PNG output of the current map.
+ * Add the goal for an PNG output of the current local model.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class LoggingPictureRole extends AgentRole {
 

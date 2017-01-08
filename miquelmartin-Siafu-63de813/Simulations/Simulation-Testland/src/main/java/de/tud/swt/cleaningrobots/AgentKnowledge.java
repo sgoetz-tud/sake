@@ -12,7 +12,7 @@ import de.tud.swt.cleaningrobots.model.RoleModel;
 import de.tud.swt.cleaningrobots.model.State;
 
 /**
- * Robot knowledge which has information about other robots. 
+ * Agent knowledge which has information about other agents. 
  * 
  * @author Christopher Werner
  *

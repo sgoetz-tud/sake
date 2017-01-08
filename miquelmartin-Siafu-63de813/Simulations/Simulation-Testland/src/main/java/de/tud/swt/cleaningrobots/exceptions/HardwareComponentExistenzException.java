@@ -1,5 +1,11 @@
 package de.tud.swt.cleaningrobots.exceptions;
 
+/**
+ * The hardware component is not defined in the XML file.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class HardwareComponentExistenzException extends Exception {
 	
 	/**

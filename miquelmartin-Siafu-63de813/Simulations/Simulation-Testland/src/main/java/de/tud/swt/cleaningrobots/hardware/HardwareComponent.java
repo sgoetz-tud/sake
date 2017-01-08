@@ -71,10 +71,16 @@ public abstract class HardwareComponent {
 		this.state = state;
 	}
 	
+	/**
+	 * Turn it on.
+	 */
 	public void switchOn() {
 		state.switchOn(this);
 	}
 	
+	/**
+	 * Turn it of.
+	 */
 	public void switchOff() {
 		state.switchOff(this);
 	}

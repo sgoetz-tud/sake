@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.hardware.ComponentTypes;
 
 /**
- * Activate the WLAN component of the robot.
+ * Activate the WLAN component of the agent.
  * 
  * @author Christopher Werner
  *

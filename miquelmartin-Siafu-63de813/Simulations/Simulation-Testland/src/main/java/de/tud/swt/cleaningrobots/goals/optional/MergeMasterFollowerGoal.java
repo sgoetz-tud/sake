@@ -6,7 +6,7 @@ import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
  * Old Goal.
- * Optional goal which make the merge between a master and his followers with the EMF model. 
+ * Optional goal which make the merge between a master and his followers.
  * 
  * @author Christopher Werner
  *

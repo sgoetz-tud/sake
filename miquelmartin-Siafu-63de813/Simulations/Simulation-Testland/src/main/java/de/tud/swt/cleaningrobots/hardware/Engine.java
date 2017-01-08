@@ -1,14 +1,14 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The Motor component of a robot.
+ * The actuator component of a agent.
  * 
  * @author Christopher Werner
  *
  */
-public class Motor extends HardwareComponent {
+public class Engine extends HardwareComponent {
 
-	public Motor ()
+	public Engine ()
 	{
 		super("MOTOR");
 		//0

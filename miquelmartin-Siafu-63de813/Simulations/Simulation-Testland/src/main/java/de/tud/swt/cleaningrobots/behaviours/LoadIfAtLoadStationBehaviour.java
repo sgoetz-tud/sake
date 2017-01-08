@@ -4,7 +4,7 @@ import de.tud.swt.cleaningrobots.Behaviour;
 import de.tud.swt.cleaningrobots.AgentRole;
 
 /**
- * Set loading if the robot arrived at load station.
+ * Set loading if the agent arrived at load station.
  * 
  * @author Christopher Werner
  *

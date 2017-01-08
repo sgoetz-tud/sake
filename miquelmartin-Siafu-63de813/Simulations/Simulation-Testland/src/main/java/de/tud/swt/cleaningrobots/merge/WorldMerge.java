@@ -19,7 +19,8 @@ import de.tud.swt.cleaningrobots.roles.MasterRole;
 import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 
 /**
- * Import and Export the Model without using the EMF Model. It only need the RobotCore of each Robot and its ImportExportConfiguration.
+ * Import and Export the Model without using the EMF Model. It only need
+ * the AgentCore of each Agent and its ImportExportConfiguration.
  * 
  * @author Christopher Werner
  *
@@ -31,7 +32,8 @@ public class WorldMerge extends Merge {
 	}
 	
 	/**
-	 * Import and Export the Model without using the EMF Model. It only need the RobotCore of each Robot and its ImportExportConfiguration.
+	 * Import and Export the Model without using the EMF Model. It only 
+	 * need the AgentCore of each Agent and its ImportExportConfiguration.
 	 * @param from (AgentCore where the data comes from)
 	 * @param to (AgentCore where the data goes to)
 	 * @param object (Data or information about what should be send)

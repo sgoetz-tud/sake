@@ -5,7 +5,10 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.nonoptional.WithoutMasterWipeGoal;
 
 /**
- * Add the goals where no master is needed.
+ * Add the goals for wipe agents where no master is needed.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class WiperRole extends AgentRole {
 

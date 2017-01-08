@@ -21,7 +21,7 @@ import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 /**
  * Behavior which realize the data exchange and integration
  * between a master and his followers.
- * Without the EMF model.
+ * Without or with the EMF model.
  * 
  * @author Christopher Werner
  *

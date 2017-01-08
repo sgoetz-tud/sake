@@ -8,12 +8,12 @@ import com.google.gson.annotations.SerializedName;
 import de.tud.evaluation.EvaluationConstants;
 
 /**
- * Measurement information about an robot for one complete test case.
+ * Measurement information about an agent for one complete test case.
  * 
  * @author Christopher Werner
  *
  */
-public class RobotMeasurement {
+public class AgentMeasurement {
 	
 	@SerializedName("MemoryConsumption")
 	public int memory;	
@@ -34,7 +34,7 @@ public class RobotMeasurement {
 	@SerializedName("NanoSecondsPerIteration")
 	public List<Double> timeProTick;
 	
-	public RobotMeasurement (String name) {
+	public AgentMeasurement (String name) {
 		this.name = name;
 		energieProTick = new LinkedList<Double>();
 		timeProTick = new LinkedList<Double>();
@@ -44,8 +44,8 @@ public class RobotMeasurement {
 		this.name = name;
 	}
 	
-	public RobotMeasurement fromJson(String json) {
-        return EvaluationConstants.gson.fromJson(json, RobotMeasurement.class);
+	public AgentMeasurement fromJson(String json) {
+        return EvaluationConstants.gson.fromJson(json, AgentMeasurement.class);
     }
 
 	public String toJson() {

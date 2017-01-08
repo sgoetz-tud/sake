@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.merge.MergeOneMasterBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional goal which make the merge between a master and his followers without using the EMF model. 
+ * Optional goal which make the merge between a master and his followers. 
  * 
  * @author Christopher Werner
  *

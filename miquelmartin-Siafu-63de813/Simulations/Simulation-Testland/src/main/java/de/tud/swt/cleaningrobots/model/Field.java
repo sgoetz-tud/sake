@@ -28,27 +28,53 @@ public class Field {
 		this.states = new HashMap<State, Integer>();		
 	}
 	
+	/**
+	 * Get the Position of the Field.
+	 * @return
+	 */
 	public Position getPos() {
 		return this.pos;
 	}
 	
+	/**
+	 * Get the iteration step when the Field was changed.
+	 * @return
+	 */
 	public int getChangeIteration () {
 		return this.changedIteration;
 	}
 
+	/**
+	 * Add a state to the state list.
+	 * @param state
+	 * @param iteration
+	 */
 	public void addState(State state, int iteration) {
 		this.changedIteration = iteration;
 		states.put(state, this.changedIteration);
 	}
 	
+	/**
+	 * Say if the you could walk on this field.
+	 * @return
+	 */
 	public boolean isPassable() {
 		return isPassable;
 	}
 	
+	/**
+	 * Containing an underlying State.
+	 * @param state
+	 * @return
+	 */
 	public boolean containsState(State state) {
 		return this.states.keySet().contains(state);
 	}	
 
+	/**
+	 * Get the State list.
+	 * @return
+	 */
 	public Set<State> getStates() {
 		return this.states.keySet();
 	}

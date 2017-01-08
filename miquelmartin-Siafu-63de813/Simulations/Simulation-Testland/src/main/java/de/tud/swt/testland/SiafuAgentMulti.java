@@ -12,8 +12,8 @@ import de.tud.swt.cleaningrobots.hardware.Accu;
 import de.tud.swt.cleaningrobots.model.Position;
 
 /**
- * Without user interface in Siafu.
- * The Robotagent can work with the objects in Siafu and represents the Position in the map.
+ * Without user interface report in Siafu.
+ * The SiafuAgentMulti can work with the objects in Siafu knows about walls and near agents.
  * 
  * @author Christopher Werner
  *
@@ -35,14 +35,20 @@ public class SiafuAgentMulti extends MultiAgent implements ISimulatorAdapter, IS
 	}
 	
 	/**
-	 * Return if it is finished.
-	 * @return
+	 * Return if the agent is finished.
+	 * 
+	 * @return finish state
 	 */
 	public boolean isFinish () {
 		return this.finish;
 	}
 
-	public AgentCore getRobot() {
+	/**
+	 * Return the underlying AgentCore of this SiafuAgent.
+	 * 
+	 * @return underlying agent core
+	 */
+	public AgentCore getAgentCore() {
 		return this.cleaningRobot;
 	}
 	
@@ -77,7 +83,7 @@ public class SiafuAgentMulti extends MultiAgent implements ISimulatorAdapter, IS
 			//If there are near Robots
 			if (Math.abs(this.getCol() - nearAgent.getCol()) <= visionRadius 
 					&& Math.abs(this.getRow() - nearAgent.getRow()) <= visionRadius){
-				result.add(((SiafuAgentMulti)nearAgent).getRobot());
+				result.add(((SiafuAgentMulti)nearAgent).getAgentCore());
 			}
 		}
 		return result;
@@ -89,7 +95,7 @@ public class SiafuAgentMulti extends MultiAgent implements ISimulatorAdapter, IS
 				
 		for (MultiAgent nearAgent : this.siafuWorld.getPeople())
 		{
-			result.add(((SiafuAgentMulti)nearAgent).getRobot());
+			result.add(((SiafuAgentMulti)nearAgent).getAgentCore());
 		}
 		return result;
 	}

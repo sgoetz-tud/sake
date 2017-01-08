@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots.hardware;
 
 /**
- * The Wiper component of a robot.
+ * The Wiper component of a agent.
  * 
  * @author Christopher Werner
  *

@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.nonoptional.WithoutMasterHooveGoal;
 
 /**
- * Add the goals where no master is needed.
+ * Add the goals where no master is needed for hoove agents.
  */
 public class HooverRole extends AgentRole {
 

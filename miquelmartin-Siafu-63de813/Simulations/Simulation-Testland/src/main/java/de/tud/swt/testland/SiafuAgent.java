@@ -12,8 +12,9 @@ import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.hardware.Accu;
 
 /**
- * With user interface in Siafu.
- * The Robotagent can work with the objects in Siafu and represents the Position in the map.
+ * With user interface report in Siafu.
+ * The SiafuAgent can work with the objects in Siafu and represents the Position in the map for the GUI
+ * and knows about walls and near agents.
  * 
  * @author Christopher Werner
  *
@@ -37,14 +38,20 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 	}
 	
 	/**
-	 * Return if it is finished.
-	 * @return
+	 * Return if the agent is finished.
+	 * 
+	 * @return finish state
 	 */
 	public boolean isFinish () {
 		return this.finish;
 	}
 
-	public AgentCore getRobot() {
+	/**
+	 * Return the underlying AgentCore of this SiafuAgent.
+	 * 
+	 * @return underlying agent core
+	 */
+	public AgentCore getAgentCore() {
 		return this.cleaningRobot;
 	}
 
@@ -69,7 +76,7 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 			if (nearAgent instanceof SiafuAgent){
 				if (Math.abs(this.getPos().getCol() - nearAgent.getPos().getCol()) <= visionRadius 
 						&& Math.abs(this.getPos().getRow() - nearAgent.getPos().getRow()) <= visionRadius){
-					result.add(((SiafuAgent) nearAgent).getRobot());
+					result.add(((SiafuAgent) nearAgent).getAgentCore());
 				}
 			}
 		}
@@ -83,7 +90,7 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 		for (Agent nearAgent : this.siafuWorld.getPeople())
 		{
 			if (nearAgent instanceof SiafuAgent){
-				result.add(((SiafuAgent) nearAgent).getRobot());
+				result.add(((SiafuAgent) nearAgent).getAgentCore());
 			}
 		}
 		return result;

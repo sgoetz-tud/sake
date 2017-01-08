@@ -14,6 +14,13 @@ import de.tud.swt.cleaningrobots.model.Field;
 import de.tud.swt.cleaningrobots.model.State;
 import de.tud.swt.cleaningrobots.model.World;
 
+/**
+ * Behavior that creates a PNG output file of the actual local 
+ * world model of the agent.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class DumpPngModelBehaviour extends Behaviour {
 	
 	private final int CONST_FILENAME_NUMBERPREFIX = 1000000000;

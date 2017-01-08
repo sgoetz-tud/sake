@@ -4,7 +4,7 @@ import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.AgentRole;
 
 /**
- * The follower role has a master he knows.
+ * The follower role has a master he knows about.
  * 
  * @author Christopher Werner
  *

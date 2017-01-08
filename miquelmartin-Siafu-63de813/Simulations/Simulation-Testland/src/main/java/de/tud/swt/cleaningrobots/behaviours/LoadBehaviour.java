@@ -10,7 +10,7 @@ import de.tud.swt.cleaningrobots.hardware.LoadStation;
 
 /**
  * Old behavior.
- * Load the near robots if there Accu is to low and stop if it is full.
+ * Load the near agents if there accumulator is to low and stop if it is full.
  * 
  * @author Christopher Werner
  *

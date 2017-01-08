@@ -1,5 +1,11 @@
 package de.tud.swt.cleaningrobots.exceptions;
 
+/**
+ * Send a run time error with die incoming message.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class RuntimeErrorMessage extends RuntimeException {
 
 	/**

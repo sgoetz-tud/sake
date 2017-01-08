@@ -29,7 +29,8 @@ import de.tud.swt.cleaningrobots.util.EMFUtils;
 import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 
 /**
- * Behavior that creates a png and xml output of the actual world of the robot and use the EMF Model.
+ * Behavior that creates a PNG and a XML output file of the actual local 
+ * world model of the agent and use the EMF Model.
  * 
  * @author Christopher Werner
  *

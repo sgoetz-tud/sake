@@ -11,7 +11,7 @@ import de.tud.swt.cleaningrobots.model.Position;
 import de.tud.swt.cleaningrobots.model.State;
 
 /**
- * Behavior that activate the wiper if the robot is at the destination and wipe the place.
+ * Behavior that activate the wiper if the agent is at the destination and wipe the place.
  * 
  * @author Christopher Werner
  *

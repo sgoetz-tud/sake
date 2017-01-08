@@ -6,7 +6,7 @@ import de.tud.swt.cleaningrobots.model.Position;
 import de.tud.swt.cleaningrobots.model.State;
 
 /**
- * Search next unknown position and drive throw, if the Accu is to low drive to load station
+ * Search next unknown position and drive throw, if the accumulator is to low drive to load station
  * and if there is no more unknown position drive back to load station again
  *  
  * @author ChrissiMobil

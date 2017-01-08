@@ -4,6 +4,12 @@ import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.goals.optional.WlanOnGoal;
 
+/**
+ * The roles always turn the WLAN on if it is off.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class CommunicationInterfaceRole extends AgentRole {
 
 	public CommunicationInterfaceRole(AgentCore robotCore) {

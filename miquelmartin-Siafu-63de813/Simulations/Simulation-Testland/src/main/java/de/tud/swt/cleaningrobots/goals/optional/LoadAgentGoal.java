@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.behaviours.LoadBehaviour;
 import de.tud.swt.cleaningrobots.goals.OptionalGoal;
 
 /**
- * Optional Goal which load all robots around it
+ * Optional Goal which load all agents around it
  * 
  * @author Christopher Werner
  *

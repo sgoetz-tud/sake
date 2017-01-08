@@ -6,7 +6,10 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.WipeLoadGoal;
 import de.tud.swt.cleaningrobots.goals.optional.WlanLoadIfAgentWantMergeGoal;
 
 /**
- * Add the goals for search a new random destination.
+ * Add the goals for search a new random destination for wipe agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class WiperRandomFollowerRole extends FollowerRole {
 

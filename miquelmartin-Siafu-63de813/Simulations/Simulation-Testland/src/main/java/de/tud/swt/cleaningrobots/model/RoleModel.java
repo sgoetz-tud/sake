@@ -14,11 +14,11 @@ public class RoleModel {
 		this.roleName = roleName;
 	}
 	
+	/**
+	 * Get the name of the role.
+	 * @return
+	 */
 	public String getRoleName () {
 		return roleName;
 	}
-	
-	/*public void setRoleName (String roleName) {
-		this.roleName = roleName;
-	}*/
 }

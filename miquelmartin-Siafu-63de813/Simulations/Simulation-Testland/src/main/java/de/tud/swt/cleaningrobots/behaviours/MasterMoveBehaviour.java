@@ -5,7 +5,7 @@ import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.hardware.ComponentTypes;
 
 /**
- * Behavior that realize the move of an robot to a destination only with the master information. 
+ * Behavior that realize the move of an agent to a destination only with the master information. 
  * Every time it drives one step to the new destination. 
  * 
  * @author Christopher Werner

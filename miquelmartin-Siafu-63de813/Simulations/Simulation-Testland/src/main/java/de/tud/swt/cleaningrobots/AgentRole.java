@@ -6,7 +6,7 @@ import java.util.List;
 import de.tud.swt.cleaningrobots.goals.Goal;
 
 /**
- * Abstract robot role for role-based pattern.
+ * Abstract agent role for role-based pattern.
  * 
  * @author Christopher Werner
  *

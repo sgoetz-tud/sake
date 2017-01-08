@@ -1,7 +1,7 @@
 package de.tud.swt.cleaningrobots;
 
 /**
- * Abstract robot class with the information of new knowledge.
+ * Abstract agent class with the information of new knowledge.
  * 
  * @author Christopher Werner
  *

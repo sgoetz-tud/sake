@@ -18,6 +18,10 @@ public class MasterRoleModel extends RoleModel{
 		followers = new ArrayList<String>();
 	}
 	
+	/**
+	 * Get the names of the Followers.
+	 * @return
+	 */
 	public List<String> getFollowers () {
 		return followers;
 	}

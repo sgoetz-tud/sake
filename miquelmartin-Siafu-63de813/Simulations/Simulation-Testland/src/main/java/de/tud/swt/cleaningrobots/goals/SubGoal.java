@@ -60,6 +60,7 @@ public abstract class SubGoal extends Goal {
 		return supportedStates;
 	}
 
+	@Override
 	public void initialize() {
 		//Initialize all Subbehaviours
 		for (Behaviour b : behaviours) {

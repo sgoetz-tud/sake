@@ -6,7 +6,10 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.HooveLoadGoal;
 import de.tud.swt.cleaningrobots.goals.optional.WlanLoadIfAgentWantMergeGoal;
 
 /**
- * Add the goals for search a new relative destination.
+ * Add the goals for search a new relative destination for hoove agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class HooverRelativeFollowerRole extends FollowerRole {
 

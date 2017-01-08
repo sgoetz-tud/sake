@@ -14,10 +14,18 @@ public class FollowerRoleModel extends RoleModel{
 		super(roleName);
 	}
 	
+	/**
+	 * Get the name of the Master.
+	 * @return
+	 */
 	public String getMaster () {
 		return master;
 	}
 
+	/**
+	 * Set the name of the Master.
+	 * @param master
+	 */
 	public void setMaster (String master) {
 		this.master = master;
 	}

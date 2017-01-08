@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.nonoptional.MasterExploreMasterGoal;
 
 /**
  * Add goal for the complete management from the master for explore agents.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class ExplorerControlMasterRole extends MasterRole {
 

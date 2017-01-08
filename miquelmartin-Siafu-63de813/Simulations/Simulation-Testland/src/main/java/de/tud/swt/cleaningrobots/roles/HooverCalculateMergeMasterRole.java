@@ -5,6 +5,9 @@ import de.tud.swt.cleaningrobots.goals.optional.CalculateHooveAgentPositionGoal;
 
 /**
  * Add the goal to calculate new hoove destinations for all followers.
+ * 
+ * @author Christopher Werner
+ * 
  */
 public class HooverCalculateMergeMasterRole extends MergeMasterRole {
 

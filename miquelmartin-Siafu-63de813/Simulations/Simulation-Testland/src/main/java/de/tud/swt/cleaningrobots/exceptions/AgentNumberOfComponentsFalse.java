@@ -1,5 +1,11 @@
 package de.tud.swt.cleaningrobots.exceptions;
 
+/**
+ * Agent has not so much component of this name.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class AgentNumberOfComponentsFalse extends RuntimeException{
 	
 	/**

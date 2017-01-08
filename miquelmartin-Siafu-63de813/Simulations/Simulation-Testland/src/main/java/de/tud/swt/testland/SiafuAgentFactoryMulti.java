@@ -5,15 +5,15 @@ import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.hardware.Hoover;
 import de.tud.swt.cleaningrobots.hardware.LoadStation;
 import de.tud.swt.cleaningrobots.hardware.LookAroundSensor;
-import de.tud.swt.cleaningrobots.hardware.Motor;
-import de.tud.swt.cleaningrobots.hardware.Rechner;
+import de.tud.swt.cleaningrobots.hardware.Engine;
+import de.tud.swt.cleaningrobots.hardware.Computer;
 import de.tud.swt.cleaningrobots.hardware.Wiper;
 import de.tud.swt.cleaningrobots.hardware.Wlan;
 import de.tud.swt.cleaningrobots.model.Position;
 
 /**
- * Without user interface in Siafu.
- * Create the different robot type and create the different test case only abstract class.
+ * Without user interface report in Siafu.
+ * Create the different agent types for the simulation.
  * 
  * @author Christopher Werner
  *
@@ -46,7 +46,7 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 	}
 	
 	/**
-	 * Create a loadstation agent.
+	 * Create a load station agent.
 	 * 
 	 * @param world
 	 *            the world to create it in
@@ -57,15 +57,15 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 		SiafuAgentMulti agent = new SiafuAgentMulti("Robbi_" + counter, position, world, configuration);
 		
 		//add hardware components
-		agent.getRobot().addHardwareComponent(new Rechner());
-		agent.getRobot().addHardwareComponent(new LoadStation());
-		agent.getRobot().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new LoadStation());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
 		
 		return agent;
 	}
 	
 	/**
-	 * Create a Loadstation without PC.
+	 * Create a load station without computer.
 	 * 
 	 * @param world
 	 *            the world to create it in
@@ -76,7 +76,7 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 		SiafuAgentMulti agent = new SiafuAgentMulti("Robbi_" + counter, position, world, configuration);
 		
 		//add hardware components
-		agent.getRobot().addHardwareComponent(new LoadStation());
+		agent.getAgentCore().addHardwareComponent(new LoadStation());
 		
 		return agent;
 	}
@@ -93,10 +93,10 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 		SiafuAgentMulti agent = new SiafuAgentMulti("Robbi_" + counter, position, world, configuration);
 		
 		//add hardware components
-		agent.getRobot().addHardwareComponent(new Rechner());
-		agent.getRobot().addHardwareComponent(new Wlan());
-		agent.getRobot().addHardwareComponent(new Motor());
-		agent.getRobot().addHardwareComponent(new LookAroundSensor());	
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new LookAroundSensor());	
 		
 		return agent;
 	}	
@@ -113,10 +113,10 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 		SiafuAgentMulti agent = new SiafuAgentMulti("Robbi_" + counter, position, world, configuration);
 		
 		//add hardware components
-		agent.getRobot().addHardwareComponent(new Rechner());
-		agent.getRobot().addHardwareComponent(new Wlan());
-		agent.getRobot().addHardwareComponent(new Motor());
-		agent.getRobot().addHardwareComponent(new Wiper());
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new Wiper());
 		
 		return agent;
 	}
@@ -133,21 +133,12 @@ public class SiafuAgentFactoryMulti implements ISimulatorAgentFactory {
 		SiafuAgentMulti agent = new SiafuAgentMulti("Robbi_" + counter, position, world, configuration);
 		
 		//add hardware components
-		agent.getRobot().addHardwareComponent(new Rechner());
-		agent.getRobot().addHardwareComponent(new Wlan());
-		agent.getRobot().addHardwareComponent(new Motor());
-		agent.getRobot().addHardwareComponent(new Hoover());
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new Hoover());
 		
 		return agent;
 	}
-		
-	/**
-	 * Create a number of random agents.
-	 * 
-	 * @param world
-	 *            the world where the agents will dwell
-	 * @return an ArrayList with the created agents
-	 */
-	//public abstract ArrayList<MultiAgent> createRobots(MultiWorld world);
 
 }

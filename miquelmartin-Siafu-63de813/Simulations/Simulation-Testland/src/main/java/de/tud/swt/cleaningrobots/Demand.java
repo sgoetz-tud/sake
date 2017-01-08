@@ -33,7 +33,7 @@ public class Demand {
 	}
 	
 	/**
-	 * Add the Number Component Types.
+	 * Add the Number of Component Types.
 	 * @param comp (Component Type which is needed.)
 	 * @param value (Number of Components from this type.)
 	 */
@@ -84,6 +84,10 @@ public class Demand {
 		}
 	}
 	
+	/**
+	 * Add a hardware component with this name.
+	 * @param name
+	 */
 	public void addHardwareComponentWithName (String name)
 	{
 		for (HardwareComponent hc : robot.getHardwarecomponents()) {
@@ -115,6 +119,11 @@ public class Demand {
 		throw new AgentHasNoSuchComponent(name);
 	}
 	
+	/**
+	 * Get a hardware component with this name.
+	 * @param name
+	 * @return
+	 */
 	public HardwareComponent getHardwareComponentFromName (String name)
 	{
 		for (HardwareComponent hc : this.hcList) {
@@ -126,6 +135,11 @@ public class Demand {
 		return null;
 	}
 	
+	/**
+	 * Get hardware component form the component type.
+	 * @param comp
+	 * @return
+	 */
 	public HardwareComponent getHardwareComponent (ComponentTypes comp)
 	{
 		for (HardwareComponent hc : this.hcList) {
@@ -137,6 +151,9 @@ public class Demand {
 		return null;
 	}
 	
+	/**
+	 * Switch all components on.
+	 */
 	public void switchAllOn ()
 	{
 		for (HardwareComponent hc : this.hcList)
@@ -145,6 +162,9 @@ public class Demand {
 		}
 	}
 	
+	/**
+	 * Switch all components off.
+	 */
 	public void switchAllOff ()
 	{
 		for (HardwareComponent hc : this.hcList)
@@ -153,6 +173,10 @@ public class Demand {
 		}
 	}
 
+	/**
+	 * Agent has all neede components.
+	 * @return
+	 */
 	public boolean isCorrect() {
 		return this.correct;
 	}

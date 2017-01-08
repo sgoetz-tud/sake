@@ -6,14 +6,14 @@ import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.hardware.Hoover;
 import de.tud.swt.cleaningrobots.hardware.LoadStation;
 import de.tud.swt.cleaningrobots.hardware.LookAroundSensor;
-import de.tud.swt.cleaningrobots.hardware.Motor;
-import de.tud.swt.cleaningrobots.hardware.Rechner;
+import de.tud.swt.cleaningrobots.hardware.Engine;
+import de.tud.swt.cleaningrobots.hardware.Computer;
 import de.tud.swt.cleaningrobots.hardware.Wiper;
 import de.tud.swt.cleaningrobots.hardware.Wlan;
 
 /**
- * With user interface in Siafu.
- * Create the different robot type and create the different test case only abstract class.
+ * With user interface report in Siafu.
+ * Create the different agent types for the simulation.
  * 
  * @author Christopher Werner
  *
@@ -31,7 +31,7 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	}
 	
 	/**
-	 * Create only a loadstation without rechner.
+	 * Create only a load station without any computer.
 	 * 
 	 * @param world
 	 *            the world to create it in
@@ -46,7 +46,7 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					world, configuration);
 
 			//add hardware components
-			agent.getRobot().addHardwareComponent(new LoadStation());
+			agent.getAgentCore().addHardwareComponent(new LoadStation());
 			
 			return agent;
 		} catch (PlaceNotFoundException e) {
@@ -56,7 +56,7 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	}
 	
 	/**
-	 * Create a loadstation agent.
+	 * Create a load station agent.
 	 * 
 	 * @param world
 	 *            the world to create it in
@@ -71,9 +71,9 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					world, configuration);
 			
 			//add hardware components
-			agent.getRobot().addHardwareComponent(new Rechner());
-			agent.getRobot().addHardwareComponent(new LoadStation());
-			agent.getRobot().addHardwareComponent(new Wlan());
+			agent.getAgentCore().addHardwareComponent(new Computer());
+			agent.getAgentCore().addHardwareComponent(new LoadStation());
+			agent.getAgentCore().addHardwareComponent(new Wlan());
 			
 			return agent;
 		} catch (PlaceNotFoundException e) {
@@ -98,10 +98,10 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					world, configuration);
 
 			//add hardware components
-			agent.getRobot().addHardwareComponent(new Rechner());
-			agent.getRobot().addHardwareComponent(new Wlan());
-			agent.getRobot().addHardwareComponent(new Motor());
-			agent.getRobot().addHardwareComponent(new LookAroundSensor());	
+			agent.getAgentCore().addHardwareComponent(new Computer());
+			agent.getAgentCore().addHardwareComponent(new Wlan());
+			agent.getAgentCore().addHardwareComponent(new Engine());
+			agent.getAgentCore().addHardwareComponent(new LookAroundSensor());	
 			
 			return agent;
 		} catch (PlaceNotFoundException e) {
@@ -126,10 +126,10 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					world, configuration);
 			
 			//add hardware components
-			agent.getRobot().addHardwareComponent(new Rechner());
-			agent.getRobot().addHardwareComponent(new Wlan());
-			agent.getRobot().addHardwareComponent(new Motor());
-			agent.getRobot().addHardwareComponent(new Wiper());
+			agent.getAgentCore().addHardwareComponent(new Computer());
+			agent.getAgentCore().addHardwareComponent(new Wlan());
+			agent.getAgentCore().addHardwareComponent(new Engine());
+			agent.getAgentCore().addHardwareComponent(new Wiper());
 			
 			return agent;
 		} catch (PlaceNotFoundException e) {
@@ -154,10 +154,10 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					world, configuration);
 
 			//add hardware components
-			agent.getRobot().addHardwareComponent(new Rechner());
-			agent.getRobot().addHardwareComponent(new Wlan());
-			agent.getRobot().addHardwareComponent(new Motor());
-			agent.getRobot().addHardwareComponent(new Hoover());
+			agent.getAgentCore().addHardwareComponent(new Computer());
+			agent.getAgentCore().addHardwareComponent(new Wlan());
+			agent.getAgentCore().addHardwareComponent(new Engine());
+			agent.getAgentCore().addHardwareComponent(new Hoover());
 			
 			return agent;
 		} catch (PlaceNotFoundException e) {
@@ -165,14 +165,5 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 					"You didn't define the right type of places", e);
 		}
 	}
-		
-	/**
-	 * Create a number of random agents.
-	 * 
-	 * @param world
-	 *            the world where the agents will dwell
-	 * @return an ArrayList with the created agents
-	 */
-	//public abstract ArrayList<Agent> createRobots(World world);
 
 }

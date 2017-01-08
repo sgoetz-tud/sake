@@ -18,8 +18,7 @@ import de.tud.swt.testland.ISimulatorAgentFactory;
 import de.tud.swt.testland.ISimulatorAgent;
 
 /**
- * Without user interface from Siafu. 
- * Create the robots with the specific goals for the test case where the master has followers 
+ * Create the agents with the specific roles for the test case where the master has followers 
  * and merge data between them.
  * 
  * @author Christopher Werner
@@ -49,7 +48,7 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 		population.add(lsa);
 		
 		if (configuration.getWc().number_explore_agents > 0) {
-			MasterRole mre = new MergeMasterRole(lsa.getRobot());
+			MasterRole mre = new MergeMasterRole(lsa.getAgentCore());
 			mre.addRole(mre);		
 			
 			//explore agents
@@ -57,13 +56,13 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 				ISimulatorAgent era = factory.createExploreAgent();
 				population.add(era);		
 				
-				FollowerRole fre = new ExplorerRandomFollowerRole(era.getRobot(), mre);
+				FollowerRole fre = new ExplorerRandomFollowerRole(era.getAgentCore(), mre);
 				fre.addRole(fre);
 				mre.getFollowers().add(fre);
 			}
 		
 			if (configuration.getWc().number_hoove_agents > 0) {
-				MasterRole mrh = new MergeMasterRole(lsa.getRobot());
+				MasterRole mrh = new MergeMasterRole(lsa.getAgentCore());
 				mrh.addRole(mrh);
 
 				//hoove agents
@@ -71,14 +70,14 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 					ISimulatorAgent hra = factory.createHooveAgent();
 					population.add(hra);
 					
-					FollowerRole frh = new HooverRandomFollowerRole(hra.getRobot(), mrh);
+					FollowerRole frh = new HooverRandomFollowerRole(hra.getAgentCore(), mrh);
 					frh.addRole(frh);
 					mrh.getFollowers().add(frh);
 				}
 				mrh.getFollowers().add(mre);
 							
 				if (configuration.getWc().number_wipe_agents > 0) {
-					MasterRole mrw = new MergeMasterRole(lsa.getRobot());
+					MasterRole mrw = new MergeMasterRole(lsa.getAgentCore());
 					mrw.addRole(mrw);
 					
 					//wipe agents
@@ -86,14 +85,14 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 						ISimulatorAgent wra = factory.createWipeAgent();
 						population.add(wra);
 						
-						FollowerRole frw = new WiperRandomFollowerRole(wra.getRobot(), mrw);
+						FollowerRole frw = new WiperRandomFollowerRole(wra.getAgentCore(), mrw);
 						frw.addRole(frw);
 						mrw.getFollowers().add(frw);
 					}
 					mrw.getFollowers().add(mrh);
 				}				
 			}			
-			AgentRole rr = new LoadstationRole(lsa.getRobot());
+			AgentRole rr = new LoadstationRole(lsa.getAgentCore());
 			rr.addRole(rr);
 		}
 		
@@ -102,7 +101,7 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 		{
 			for (ISimulatorAgent a: population)
 			{
-				LoggingCsvRole csvRole = new LoggingCsvRole(a.getRobot());
+				LoggingCsvRole csvRole = new LoggingCsvRole(a.getAgentCore());
 				csvRole.addRole(csvRole);
 			}
 		}
@@ -110,7 +109,7 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 		{
 			for (ISimulatorAgent a: population)
 			{
-				LoggingPictureRole pngRole = new LoggingPictureRole(a.getRobot());
+				LoggingPictureRole pngRole = new LoggingPictureRole(a.getAgentCore());
 				pngRole.addRole(pngRole);
 			}
 		}
@@ -118,7 +117,7 @@ public class ExploreMergeMasterFactory extends IAgentFactory {
 		{
 			for (ISimulatorAgent a: population)
 			{
-				LoggingXmlRole xmlRole = new LoggingXmlRole(a.getRobot());
+				LoggingXmlRole xmlRole = new LoggingXmlRole(a.getAgentCore());
 				xmlRole.addRole(xmlRole);
 			}
 		}
