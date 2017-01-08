@@ -17,7 +17,7 @@ public class MultiWorld implements IWorld {
 	
 	private WorkingConfiguration configuration;
 	
-	private BaseAgentModelMulti modell;
+	private BaseAgentModelMulti model;
 	
 	/**
 	 * Instantiate the world in which the simulation will run.
@@ -43,26 +43,22 @@ public class MultiWorld implements IWorld {
 	 */
 	private void createPeople() {
 		try {
-			modell = (BaseAgentModelMulti) simData.getMultiAgentModelClass()
+			model = (BaseAgentModelMulti) simData.getMultiAgentModelClass()
 					.getConstructor(new Class[] { this.getClass() , configuration.getClass() })
 					.newInstance(new Object[] { this , configuration });
 		} catch (Exception e) {
 			throw new RuntimeException("Can't instantiate the agent model", e);
 		}
 
-		people = modell.createAgents();
+		people = model.createAgents();
 	}
 	
 	public List<MultiAgent> getPeople() {
 		return people;
 	}
 	
-	public void wander() {
-		modell.doIteration(people);
-	}
-	
 	public BaseAgentModelMulti getAgentModel() {
-		return modell;
+		return model;
 	}
 	
 	/**

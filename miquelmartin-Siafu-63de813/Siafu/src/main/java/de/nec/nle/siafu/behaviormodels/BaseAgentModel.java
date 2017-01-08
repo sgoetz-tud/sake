@@ -71,6 +71,14 @@ public abstract class BaseAgentModel {
 	 * @return an ArrayList with the Agents to be simulated
 	 */
 	public abstract ArrayList<Agent> createAgents();
+	
+	/**
+	 * Is always called ones before a simulation start doing iterations.
+	 * 
+	 * @param agents a Collection containing the agents in the simulation,
+	 *            ready for your manipulation.
+	 */
+	public abstract void initializeAgents(final Collection<Agent> agents);
 
 	/**
 	 * This callback method is called at each iteration of the simulation. By

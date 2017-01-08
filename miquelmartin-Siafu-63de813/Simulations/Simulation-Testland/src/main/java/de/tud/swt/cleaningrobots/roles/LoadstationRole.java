@@ -2,7 +2,7 @@ package de.tud.swt.cleaningrobots.roles;
 
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.AgentRole;
-import de.tud.swt.cleaningrobots.goals.optional.LoadIfRobotWantGoal;
+import de.tud.swt.cleaningrobots.goals.optional.LoadIfAgentWantGoal;
 
 /**
  * Add the goal to load robots.
@@ -16,7 +16,7 @@ public class LoadstationRole extends AgentRole {
 	@Override
 	public boolean createGoals() {
 		
-		LoadIfRobotWantGoal lirwg = new LoadIfRobotWantGoal(this);		
+		LoadIfAgentWantGoal lirwg = new LoadIfAgentWantGoal(this);		
 		if (lirwg.isHardwareCorrect())
 		{
 			this.addGoals(lirwg);

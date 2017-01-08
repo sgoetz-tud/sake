@@ -215,6 +215,9 @@ public class Simulation implements Runnable {
 		this.contextModel = world.getContextModel();
 		this.outputPrinter = createOutputPrinter(siafuConfig.getString("output.type"));
 
+		//first one initialization run
+		this.agentModel.initializeAgents(world.getPeople());
+		
 		Controller.getProgress().reportSimulationStarted();
 		simulationRunning = true;
 		while (!isEnded() && !agentModel.isRunFinish()) {

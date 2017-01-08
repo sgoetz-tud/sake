@@ -52,8 +52,12 @@ public class MultiSimulation implements Runnable {
 	 */
 	public void run() {
 		BaseAgentModelMulti agentModel = world.getAgentModel();
+		
+		//first one initialization run
+		agentModel.initializeAgents(world.getPeople());
+		
 		while (!agentModel.isRunFinish() && !this.endSimulation) {
-			world.wander();
+			agentModel.doIteration(world.getPeople());
 		}
 		simulationRunning = false;
 	}

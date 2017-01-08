@@ -16,7 +16,8 @@ import de.tud.swt.cleaningrobots.util.NearAgentInformation;
 
 /**
  * Behavior which realize the data exchange and integration between two robots.
- * Without any roles and without the EMF model.
+ * Do not merge data if the robot is loading at the time.
+ * On creation decide between with or without the EMF model.
  * 
  * @author Christopher Werner
  *
@@ -101,7 +102,7 @@ public class MergeAllNearBehaviour extends Behaviour {
 		//create robot information map
 		List<AgentCore> nearRobots = this.agentCore.getICommunicationAdapter().getAllRobots();
 		nearRobots.remove(this.agentCore);
-		
+				
 		for (AgentCore core : nearRobots) {
 			robotInformation.add(new NearAgentInformation(core.getName()));
 		}		

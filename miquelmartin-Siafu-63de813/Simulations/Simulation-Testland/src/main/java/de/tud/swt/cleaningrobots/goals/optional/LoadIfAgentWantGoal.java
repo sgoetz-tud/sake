@@ -10,9 +10,9 @@ import de.tud.swt.cleaningrobots.goals.OptionalGoal;
  * @author Christopher Werner
  *
  */
-public class LoadIfRobotWantGoal extends OptionalGoal {
+public class LoadIfAgentWantGoal extends OptionalGoal {
 
-	public LoadIfRobotWantGoal(AgentRole role) {
+	public LoadIfAgentWantGoal(AgentRole role) {
 		super(role);
 				
 		LoadIfAgentWantBehaviour l = new LoadIfAgentWantBehaviour(role);

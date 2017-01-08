@@ -185,8 +185,6 @@ public class AgentCore extends Agent {
 				}
 			}
 			
-			System.out.println("Goals Delete: " + copy.size() + goals.size() + allGoalsFinishCheck + postCheck);
-			
 			if (allGoalsFinishCheck)
 			{
 				//no important goal any more you can shut down all

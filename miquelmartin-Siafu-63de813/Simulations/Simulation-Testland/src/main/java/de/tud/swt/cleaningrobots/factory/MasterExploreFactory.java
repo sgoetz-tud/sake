@@ -124,11 +124,11 @@ public class MasterExploreFactory extends IAgentFactory {
 			}
 		}
 				
-		for (ISimulatorAgent a: population)
+		/*for (ISimulatorAgent a: population)
 		{
 			a.getRobot().createAndInitializeRoleGoals();
 			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
-		}
+		}*/
 		return population;
 	}
 }

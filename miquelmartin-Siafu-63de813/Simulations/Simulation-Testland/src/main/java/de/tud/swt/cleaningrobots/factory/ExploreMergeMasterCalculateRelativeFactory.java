@@ -126,11 +126,11 @@ public class ExploreMergeMasterCalculateRelativeFactory extends IAgentFactory {
 		}
 		
 		//example output for master follower relation
-		for (ISimulatorAgent a: population)
+		/*for (ISimulatorAgent a: population)
 		{
 			a.getRobot().createAndInitializeRoleGoals();
 			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
-		}
+		}*/
 		
 		return population;
 	}

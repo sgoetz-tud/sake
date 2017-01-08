@@ -173,4 +173,16 @@ public class AgentModel extends BaseAgentModel {
 			this.runFinish = true;
 		}
 	}
+
+	@Override
+	public void initializeAgents(Collection<Agent> agents) {
+		
+		//example output for master follower relation
+		for (Agent agent: agents)
+		{
+			ISimulatorAgent a = (ISimulatorAgent)agent;
+			a.getRobot().createAndInitializeRoleGoals();
+			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
+		}
+	}
 }

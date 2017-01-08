@@ -50,7 +50,7 @@ public class WithoutMasterHooveGoal extends NonOptionalGoal {
 		}
 		
 		MergeAllNearBehaviour mar = new MergeAllNearBehaviour(role, false);
-		System.out.println("Correct MergeRonny: " + mar.isHardwarecorrect());
+		System.out.println("Correct Near Merge: " + mar.isHardwarecorrect());
 		if (mar.isHardwarecorrect()) {
 			behaviours.add(mar);
 		} else {

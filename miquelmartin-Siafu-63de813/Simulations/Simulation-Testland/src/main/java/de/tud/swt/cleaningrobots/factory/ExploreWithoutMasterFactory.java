@@ -6,6 +6,7 @@ import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.roles.CommunicationInterfaceRole;
 import de.tud.swt.cleaningrobots.roles.ExplorerRole;
+import de.tud.swt.cleaningrobots.roles.FirstExplorerRole;
 import de.tud.swt.cleaningrobots.roles.HooverRole;
 import de.tud.swt.cleaningrobots.roles.LoadstationRole;
 import de.tud.swt.cleaningrobots.roles.LoggingCsvRole;
@@ -64,8 +65,18 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 				ISimulatorAgent era = factory.createExploreAgent();
 				population.add(era);
 				
-				AgentRole exr = new ExplorerRole(era.getRobot());
-				exr.addRole(exr);
+				AgentRole exr;
+				
+				if (i == 0 && configuration.getWc().number_hoove_agents > 0)
+				{
+					exr = new FirstExplorerRole(era.getRobot());
+					exr.addRole(exr);
+				}
+				else
+				{
+					exr = new ExplorerRole(era.getRobot());
+					exr.addRole(exr);
+				}
 				
 				if (proof) {
 					AgentRole exw = new CommunicationInterfaceRole(era.getRobot());
@@ -137,11 +148,11 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 		}
 		
 		//example output for master follower relation
-		for (ISimulatorAgent a: population)
+		/*for (ISimulatorAgent a: population)
 		{
 			a.getRobot().createAndInitializeRoleGoals();
 			System.out.println("Name: " + a.getRobot().getName() + " Roles: " + a.getRobot().getRoles() + " States: " + a.getRobot().getSupportedStates());
-		}
+		}*/
 		
 		return population;
 	}
