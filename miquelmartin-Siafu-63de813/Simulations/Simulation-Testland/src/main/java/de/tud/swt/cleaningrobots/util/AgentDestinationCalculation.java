@@ -1,3 +1,6 @@
+/**
+ * Helper classes for different functionality algorithms.
+ */
 package de.tud.swt.cleaningrobots.util;
 
 import de.tud.swt.cleaningrobots.model.Position;

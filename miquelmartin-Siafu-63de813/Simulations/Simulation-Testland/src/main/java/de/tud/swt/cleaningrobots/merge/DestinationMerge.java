@@ -1,3 +1,6 @@
+/**
+ * Merge functionality for the merge behaviors.
+ */
 package de.tud.swt.cleaningrobots.merge;
 
 import de.tud.swt.cleaningrobots.Configuration;

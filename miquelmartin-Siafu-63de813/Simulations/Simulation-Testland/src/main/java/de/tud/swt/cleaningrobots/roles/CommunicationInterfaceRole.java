@@ -1,3 +1,6 @@
+/**
+ * All roles that a agent could play in his live time.
+ */
 package de.tud.swt.cleaningrobots.roles;
 
 import de.tud.swt.cleaningrobots.AgentCore;

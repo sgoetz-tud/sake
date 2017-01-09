@@ -1,3 +1,6 @@
+/**
+ * Contains all existing behaviors with the defined functionality.
+ */
 package de.tud.swt.cleaningrobots.behaviours;
 
 import java.util.ArrayList;

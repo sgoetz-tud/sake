@@ -15,7 +15,7 @@ public class MultiGUIProgress implements Progress {
 	private Font bold;
 
 	/** Whether the agents are being created. */
-	private boolean creatingAgents;
+	//private boolean creatingAgents;
 
 	/** Whether the simulation has already started. */
 	private boolean simulationStarted;
@@ -196,7 +196,7 @@ public class MultiGUIProgress implements Progress {
 	public synchronized void reset() {
 		// All elements have been disposed when
 		// the parent composite was disposed.
-		creatingAgents = false;
+		//creatingAgents = false;
 		configFilesCreated = false;
 		wallFilesCreated = false;
 		simulationStarted = false;

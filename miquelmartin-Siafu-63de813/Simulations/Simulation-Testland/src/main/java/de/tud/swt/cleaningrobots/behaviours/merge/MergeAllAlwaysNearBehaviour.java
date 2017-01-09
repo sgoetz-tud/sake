@@ -1,3 +1,6 @@
+/**
+ * Contains the behaviors with merge functionality between two or more agents.
+ */
 package de.tud.swt.cleaningrobots.behaviours.merge;
 
 import java.util.LinkedList;

@@ -1,3 +1,6 @@
+/**
+ * Structure classes from SAKE.
+ */
 package de.tud.swt.cleaningrobots;
 
 /**

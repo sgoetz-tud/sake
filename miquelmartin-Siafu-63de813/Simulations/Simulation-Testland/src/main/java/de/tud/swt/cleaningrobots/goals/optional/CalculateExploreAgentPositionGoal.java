@@ -1,3 +1,6 @@
+/**
+ * All optional goals which have important functionality without an ending.
+ */
 package de.tud.swt.cleaningrobots.goals.optional;
 
 import de.tud.swt.cleaningrobots.AgentRole;

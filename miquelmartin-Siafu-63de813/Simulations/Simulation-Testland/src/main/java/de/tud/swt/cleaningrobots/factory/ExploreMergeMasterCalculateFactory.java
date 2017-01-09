@@ -1,3 +1,6 @@
+/**
+ * Packge to create the different agent configurations for the chosen strategy.
+ */
 package de.tud.swt.cleaningrobots.factory;
 
 import java.util.ArrayList;

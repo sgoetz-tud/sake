@@ -14,6 +14,9 @@ public class MultiSimulation implements Runnable {
 	
 	private boolean endSimulation;
 	
+	/**
+	 * Kill the actual Simulation.
+	 */
 	public void endSimulation () {
 		this.endSimulation = true;
 	}

@@ -1,3 +1,6 @@
+/**
+ * Exception package for underlying existing exceptions.
+ */
 package de.tud.swt.cleaningrobots.exceptions;
 
 /**

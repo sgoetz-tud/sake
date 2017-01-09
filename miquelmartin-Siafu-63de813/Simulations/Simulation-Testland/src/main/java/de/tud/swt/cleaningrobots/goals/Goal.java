@@ -1,3 +1,6 @@
+/**
+ * Overall goal package with abstract goal classes.
+ */
 package de.tud.swt.cleaningrobots.goals;
 
 import java.util.Collection;

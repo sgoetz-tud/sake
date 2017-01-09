@@ -17,6 +17,10 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Classes for the connection between Siafu and SAKE.
+ * Must be configured and name in the simulation package.
+ */
 package de.tud.swt.testland;
 
 import java.util.ArrayList;

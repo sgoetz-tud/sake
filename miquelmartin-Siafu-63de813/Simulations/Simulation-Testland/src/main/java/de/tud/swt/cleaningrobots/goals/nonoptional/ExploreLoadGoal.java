@@ -1,3 +1,6 @@
+/**
+ * Package with all non-optional goals which must be finished for simulation end.
+ */
 package de.tud.swt.cleaningrobots.goals.nonoptional;
 
 import de.tud.swt.cleaningrobots.AgentRole;

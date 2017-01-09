@@ -1,3 +1,6 @@
+/**
+ * Include all hardware components that an agent could have. 
+ */
 package de.tud.swt.cleaningrobots.hardware;
 
 /**

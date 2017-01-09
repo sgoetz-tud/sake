@@ -1,3 +1,6 @@
+/**
+ * Local model classes and helper functions for the search of new destinations.
+ */
 package de.tud.swt.cleaningrobots.model;
 
 import java.util.HashMap;

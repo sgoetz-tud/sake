@@ -7,6 +7,12 @@ import java.util.List;
 import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
 import de.tud.evaluation.WorkingConfiguration;
 
+/**
+ * World without GUI contract for fast Simulation run.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class MultiWorld implements IWorld {
 	
 	private SimulationData simData;

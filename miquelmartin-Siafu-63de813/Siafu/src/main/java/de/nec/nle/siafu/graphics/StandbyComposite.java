@@ -18,6 +18,12 @@ import org.eclipse.swt.widgets.Text;
 
 import de.tud.evaluation.EvaluationConstants;
 
+/**
+ * Standby GUI now for configuration of a simulation.
+ * 
+ * @author ChristopherMobil
+ *
+ */
 public class StandbyComposite extends Composite {
 
 	private static Image siafuIcon = null;

@@ -1,3 +1,6 @@
+/**
+ * Measurement classes and evaluation classes to process the out JSON information.
+ */
 package de.tud.swt.cleaningrobots.measure;
 
 import java.util.LinkedList;
