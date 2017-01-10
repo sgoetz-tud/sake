@@ -12,7 +12,7 @@
 	</parent>
 
 	<modules>
-		<module>Simulation-Testland</module>
+		<module>SAKE-Framework</module>
 	</modules>
 
 	<build>
