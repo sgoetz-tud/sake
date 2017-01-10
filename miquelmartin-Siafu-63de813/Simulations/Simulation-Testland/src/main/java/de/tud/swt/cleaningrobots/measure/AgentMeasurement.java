@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
-import de.tud.evaluation.EvaluationConstants;
+import de.tud.swt.evaluation.EvaluationConstants;
 
 /**
  * Measurement information about an agent for one complete test case.

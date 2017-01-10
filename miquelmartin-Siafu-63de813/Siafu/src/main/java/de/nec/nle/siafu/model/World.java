@@ -50,7 +50,7 @@ import de.nec.nle.siafu.exceptions.PlacesTypeIsEmptyException;
 import de.nec.nle.siafu.exceptions.PositionOnAWallException;
 import de.nec.nle.siafu.exceptions.PositionUnreachableException;
 import de.nec.nle.siafu.graphics.markers.Marker;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * This class represents the world being simulated. It is the main class in what

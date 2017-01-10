@@ -3,8 +3,18 @@ package de.nec.nle.siafu.control;
 import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.MultiWorld;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
+/**
+ * The multi simulation class implements the <code>Runnable</code> that performs
+ * the simulation itself.
+ * <p>
+ * In detail, the simulation thread handles the evolution of agent, context
+ * and world according to their respective models and do the iteration until finish.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class MultiSimulation implements Runnable {
 
 	/**

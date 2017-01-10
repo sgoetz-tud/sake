@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * This package roughly contains all the modeled data objects. Yes, it heavily overlaps with the types package. 
+ */
 package de.nec.nle.siafu.model;
 
 import java.util.Collection;

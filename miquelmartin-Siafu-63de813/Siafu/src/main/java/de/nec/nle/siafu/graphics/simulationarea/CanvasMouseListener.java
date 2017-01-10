@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * This package contains the classes that draw the simulation area, that is, the Canvas where the agents live and thrive. 
+ */
 package de.nec.nle.siafu.graphics.simulationarea;
 
 import org.eclipse.swt.events.MouseEvent;

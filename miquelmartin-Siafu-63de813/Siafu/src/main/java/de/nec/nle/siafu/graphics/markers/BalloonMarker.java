@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * This package contains all the markers used to track agents or places (actually, Trackable instances) in the user interface. 
+ */
 package de.nec.nle.siafu.graphics.markers;
 
 import static de.nec.nle.siafu.graphics.ColorTools.parseColorString;

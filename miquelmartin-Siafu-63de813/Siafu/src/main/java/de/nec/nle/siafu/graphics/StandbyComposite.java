@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import de.tud.evaluation.EvaluationConstants;
+import de.tud.swt.evaluation.EvaluationConstants;
 
 /**
  * Standby GUI now for configuration of a simulation.

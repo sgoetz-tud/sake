@@ -1,8 +1,8 @@
 package de.tud.swt.cleaningrobots.merge;
 
-import de.tud.evaluation.ExchangeMeasurement;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentCore;
+import de.tud.swt.evaluation.ExchangeMeasurement;
 
 /**
  * Abstract Merge class which must be implemented for the exchange of data.

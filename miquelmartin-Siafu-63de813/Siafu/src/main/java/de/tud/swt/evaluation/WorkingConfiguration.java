@@ -1,4 +1,4 @@
-package de.tud.evaluation;
+package de.tud.swt.evaluation;
 
 import java.util.LinkedList;
 import java.util.List;

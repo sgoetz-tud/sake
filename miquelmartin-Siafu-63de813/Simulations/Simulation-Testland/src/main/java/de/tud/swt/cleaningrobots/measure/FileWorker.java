@@ -10,8 +10,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.tud.evaluation.ExchangeMeasurement;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.ExchangeMeasurement;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * Gets the file to work.

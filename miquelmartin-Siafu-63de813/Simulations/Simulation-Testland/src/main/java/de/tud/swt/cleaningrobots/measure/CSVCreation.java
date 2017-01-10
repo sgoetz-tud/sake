@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.tud.evaluation.EvaluationMeasurement;
-import de.tud.evaluation.ExchangeMeasurement;
+import de.tud.swt.evaluation.EvaluationMeasurement;
+import de.tud.swt.evaluation.ExchangeMeasurement;
 
 /**
  * Create CSV documents from every test case with the important information.

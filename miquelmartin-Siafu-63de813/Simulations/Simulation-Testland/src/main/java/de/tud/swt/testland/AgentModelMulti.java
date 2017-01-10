@@ -6,7 +6,6 @@ import java.util.Collection;
 import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
 import de.nec.nle.siafu.model.MultiAgent;
 import de.nec.nle.siafu.model.MultiWorld;
-import de.tud.evaluation.WorkingConfiguration;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterCalculateFactory;
@@ -15,6 +14,7 @@ import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterFactory;
 import de.tud.swt.cleaningrobots.factory.ExploreWithoutMasterFactory;
 import de.tud.swt.cleaningrobots.factory.MasterExploreFactory;
 import de.tud.swt.cleaningrobots.measure.ExportFiles;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * The AgentModelMulti class create all agents for the incoming configuration.

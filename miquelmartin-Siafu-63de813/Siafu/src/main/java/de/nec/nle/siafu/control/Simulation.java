@@ -36,7 +36,7 @@ import de.nec.nle.siafu.model.World;
 import de.nec.nle.siafu.output.CSVPrinter;
 import de.nec.nle.siafu.output.NullPrinter;
 import de.nec.nle.siafu.output.SimulatorOutputPrinter;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * The simulation class implements the <code>Runnable</code> that performs

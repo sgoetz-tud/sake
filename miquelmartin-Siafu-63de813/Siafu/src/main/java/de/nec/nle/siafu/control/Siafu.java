@@ -25,8 +25,7 @@ import java.util.Queue;
 
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.utils.MultiSimulationXmlRead;
-import de.tud.evaluation.EvaluationConstants;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * Siafu's main class. It simply parses the command line parameters and starts
@@ -46,8 +45,12 @@ public final class Siafu {
 	 */
 	private static final String SYNTAX =
 			"Command line arguments: [--config=CONFIG_FILE] "
-					+ "[--simulation=SIMULATION_PATH] [-h]\n"
+					+ "[--simulation=SIMULATION_PATH] \n"
+					+ "[--xmlfile=MULTISIMULATION_XML_PATH] "
+					+ "[--threads=THREAD_COUNT] [-h]\n"
 					+ "where CONFIG_FILE is the configuration XML, "
+					+ "MULTISIMULATION_XML_PATH is path for multi simulation \n,"
+					+ "THREAD_COUNT the number of threads for multi simulations used "
 					+ "and SIMULATION_PATH is either\n"
 					+ "the simulation's root folder or it's "
 					+ "packed form in a jar file.";
@@ -67,6 +70,8 @@ public final class Siafu {
 	public static void main(final String[] args) {
 		String configPath = null;
 		String simulationPath = null;
+		String xmlfilePath = null;
+		int maxThreadCount = 0;
 		
 		for (int i = 0; i < args.length; i++) {
 			try {
@@ -76,6 +81,12 @@ public final class Siafu {
 				} else if (args[i].startsWith("-s=")
 						|| args[i].startsWith("--simulation")) {
 					simulationPath = args[i].split("=")[1];
+				} else if (args[i].startsWith("-x=")
+						|| args[i].startsWith("--xmlfile")) {
+					xmlfilePath = args[i].split("=")[1];
+				} else if (args[i].startsWith("-t=")
+						|| args[i].startsWith("--threads")) {
+					maxThreadCount = Integer.parseInt(args[i].split("=")[1]);
 				} else if (args[i].equals("-v")
 						|| args[i].equals("--version")) {
 					System.out.println("Siafu v" + RELEASE
@@ -89,33 +100,34 @@ public final class Siafu {
 				System.err.println(SYNTAX);
 				System.exit(1);
 			}
-
 		}
 		
-		//Simulation Run Multithreaded
-		if (!EvaluationConstants.GLOBAL_USE_GUI) {
-			if (EvaluationConstants.MULTISIMULATION_XML)
-			{
-				runMultiSimulationXml();
-			}
-			else
-			{
-				runMultiSimulation();
-			}
+		System.out.println("CP: " + configPath + " SP: " + simulationPath + " XmlP: " + xmlfilePath);
+		
+		if (xmlfilePath != null)
+		{
+			//run multiple simulations from XML file
+			runMultiSimulationXml(xmlfilePath);
 		}
-		else 
+		else if (simulationPath != null && maxThreadCount > 0)
+		{
+			//run multiple simulations as defined
+			runMultiSimulation(simulationPath, maxThreadCount);
+		}
+		else
 		{
 			WorkingConfiguration wc = new WorkingConfiguration(1, 0, 0, 1, 0, 0, 0);
 			wc.setConfig();
 			new Controller(configPath, simulationPath, wc);
-		}
+		}		
 		//new Controller(configPath, simulationPath);
 	}
 	
-	private static void runMultiSimulationXml () {
+	private static void runMultiSimulationXml (String xmlfilePath) {
 		//create WorkingConfigurations from XML and than run all
+		//xmlfilePath = "../Simulations/Simulation-Testland/Configuration/SimulationInformation.xml";
 		MultiSimulationXmlRead xmlRead = new MultiSimulationXmlRead();
-		Queue<WorkingConfiguration> configurations = xmlRead.readWorkingConfigurations("../Simulations/Simulation-Testland/Configuration/SimulationInformation.xml");
+		Queue<WorkingConfiguration> configurations = xmlRead.readWorkingConfigurations(xmlfilePath);
 		int maxThreadCounter = xmlRead.getThreadCount();
 		String simulationPath = xmlRead.getSimulationPath();
 				
@@ -156,8 +168,17 @@ public final class Siafu {
 		}
 	}
 	
-	private static void runMultiSimulation () {
-		int maxThreadCounter = EvaluationConstants.maxThreadCount;
+	private static void runMultiSimulation (String inputPath, int maxThreadCount) {
+		//TODO: comment out and remove evaluation constants and show exception if not set
+		/*if (maxThreadCount <= 0)
+		{
+			maxThreadCount = EvaluationConstants.maxThreadCount;
+		}
+		if (inputPath == null)
+		{
+			inputPath = EvaluationConstants.simulationPathpfad;
+		}*/
+		
 		Queue<WorkingConfiguration> configurations = new LinkedList<WorkingConfiguration>();
 		boolean running = true;
 		int NUMBER_EXPLORE_AGENTS = 1;
@@ -210,9 +231,9 @@ public final class Siafu {
 		}
 		
 		System.out.println("Configurationen erstellt: " + configurations.size());
-		
+				
 		//Create Simulation Data
-		SimulationData simData = SimulationData.getInstance(EvaluationConstants.simulationPathpfad);
+		SimulationData simData = SimulationData.getInstance(inputPath);
 		simData.getConfigFile();
 		simData.createWallFiles();
 		
@@ -229,7 +250,7 @@ public final class Siafu {
 				}
 			}
 			controllers.removeAll(controllersDel);
-			if (controllers.size() < maxThreadCounter && configurations.size() > 0)
+			if (controllers.size() < maxThreadCount && configurations.size() > 0)
 			{
 				workingConfigs++;
 				System.out.println("Configuration angestellt: " + workingConfigs);

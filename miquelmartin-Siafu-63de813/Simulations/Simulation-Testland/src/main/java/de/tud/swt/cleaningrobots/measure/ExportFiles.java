@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import de.tud.evaluation.ExchangeMeasurement;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.ExchangeMeasurement;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * Creating of the exported JSON files from the measurement information of a test case.

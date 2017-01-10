@@ -29,7 +29,6 @@ import java.util.Collection;
 import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
 import de.nec.nle.siafu.model.Agent;
 import de.nec.nle.siafu.model.World;
-import de.tud.evaluation.WorkingConfiguration;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterCalculateFactory;
@@ -38,6 +37,7 @@ import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterFactory;
 import de.tud.swt.cleaningrobots.factory.ExploreWithoutMasterFactory;
 import de.tud.swt.cleaningrobots.factory.MasterExploreFactory;
 import de.tud.swt.cleaningrobots.measure.ExportFiles;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * The AgentModel class create all agents for the incoming configuration.

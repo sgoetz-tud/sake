@@ -16,7 +16,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * All the Publishable objects are in here. If you output your simulation as a CSV file, you will 
+ * want to use these classes to deserialize the information back into Java objects. Note that the 
+ * package is not complete, since certain classes, like Place, which is Publishable, rather belong 
+ * to the model package. 
+ */
 package de.nec.nle.siafu.types;
 
 /**

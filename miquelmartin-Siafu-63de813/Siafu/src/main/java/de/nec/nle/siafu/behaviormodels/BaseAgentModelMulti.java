@@ -24,19 +24,19 @@ import java.util.Collection;
 
 import de.nec.nle.siafu.model.MultiAgent;
 import de.nec.nle.siafu.model.MultiWorld;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
- * Extensions of this class define the behaviour of the agents. The methos
+ * Extensions of this class define the behavior of the agents. The methods
  * createAgents is called when the world is created, and doIteration, at each
  * iteration of the simulator.
  * 
  * implementing these abstract methods, you can define how the agents in the
  * simulation will behave.<br>
  * 
- * You must provide one extension of this class for the simulator to work.
+ * You must provide one extension of this class for the multi simulator to work.
  * 
- * @author miquel
+ * @author Christopher Werner
  * 
  */
 public abstract class BaseAgentModelMulti {

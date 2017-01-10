@@ -12,10 +12,10 @@ import java.util.Random;
 import java.util.Set;
 
 import cleaningrobots.CleaningrobotsFactory;
-import de.tud.evaluation.ExchangeMeasurement;
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
 import de.tud.swt.cleaningrobots.util.AgentDestinationCalculation;
+import de.tud.swt.evaluation.ExchangeMeasurement;
 
 /**
  * The World a robot has about the map in the test case.

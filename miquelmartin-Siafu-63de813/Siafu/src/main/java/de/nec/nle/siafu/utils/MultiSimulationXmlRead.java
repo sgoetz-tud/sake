@@ -1,3 +1,6 @@
+/**
+ * Misc classes that would not fit anywhere else, and which, for the most part, could be reused for software other than Siafu. 
+ */
 package de.nec.nle.siafu.utils;
 
 import java.io.File;
@@ -11,13 +14,24 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
+/**
+ * Read a XML File with a list of working configurations.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class MultiSimulationXmlRead {
 	
 	private String simulationPath;
 	private int threadCount;
 
+	/**
+	 * Read a list of working configurations from the XML file for not using the GUI.
+	 * @param xmlPath
+	 * @return
+	 */
 	public Queue<WorkingConfiguration> readWorkingConfigurations (String xmlPath)
 	{
 		Document doc = null;

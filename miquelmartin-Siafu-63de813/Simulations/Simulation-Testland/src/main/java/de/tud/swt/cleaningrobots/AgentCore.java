@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import cleaningrobots.CleaningrobotsFactory;
-import de.tud.evaluation.ExchangeMeasurement;
 import de.tud.swt.cleaningrobots.goals.Goal;
 import de.tud.swt.cleaningrobots.hardware.Accu;
 import de.tud.swt.cleaningrobots.hardware.ComponentTypes;
@@ -20,6 +19,7 @@ import de.tud.swt.cleaningrobots.model.World;
 import de.tud.swt.cleaningrobots.roles.FollowerRole;
 import de.tud.swt.cleaningrobots.roles.MasterRole;
 import de.tud.swt.cleaningrobots.util.ImportExportConfiguration;
+import de.tud.swt.evaluation.ExchangeMeasurement;
 
 /**
  * The core class of the agent which has all hardware components roles and the world he knows about.

@@ -16,7 +16,10 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * With the exception of the GUI class, this package contains all the controlling classes. Siafu is the main class, 
+ * Controller is the real starter of all threads, and Simulation contains the actual simulation loop. 
+ */
 package de.nec.nle.siafu.control;
 
 import java.io.File;
@@ -38,8 +41,8 @@ import de.nec.nle.siafu.graphics.markers.Marker;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.Trackable;
 import de.nec.nle.siafu.model.World;
-import de.tud.evaluation.EvaluationConstants;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.EvaluationConstants;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * This is the main class of the simulator. Upon running its main method, a
@@ -150,7 +153,7 @@ public class Controller {
 	 */
 	public Controller(final String configPath, String simulationPath, WorkingConfiguration configuration) {
 		this.configuration = configuration;
-		this.guiUsed = EvaluationConstants.GLOBAL_USE_GUI;
+		this.guiUsed = true;
 		
 		String verifiedConfigPath = configPath;
 

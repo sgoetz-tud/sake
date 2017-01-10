@@ -4,8 +4,9 @@ import java.util.List;
 
 //import org.eclipse.swt.graphics.ImageData;
 
+
 import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * World without GUI contract for fast Simulation run.

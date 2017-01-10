@@ -1,5 +1,13 @@
 package de.nec.nle.siafu.model;
 
+/**
+ * Instance of this class represents the agent which has the world and working on there.
+ * 
+ * Is need for simulations without GUI showing element.
+ * 
+ * @author Christopher Werner
+ *
+ */
 public class MultiAgent {
 
 	protected MultiWorld siafuWorld;	

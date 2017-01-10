@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * Anything that relates to the graphical user interface of Siafu is contained in this package. 
+ */
 package de.nec.nle.siafu.graphics;
 
 import org.eclipse.swt.SWT;

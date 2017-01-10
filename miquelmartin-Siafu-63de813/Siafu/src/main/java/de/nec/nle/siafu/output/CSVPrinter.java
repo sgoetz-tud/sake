@@ -16,7 +16,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * This package contains the simulation output printers. They allow you to export the simulation data into CSV files or whichever mechanism you implement. 
+ */
 package de.nec.nle.siafu.output;
 
 import java.io.BufferedOutputStream;

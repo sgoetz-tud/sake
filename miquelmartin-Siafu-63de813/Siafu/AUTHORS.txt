@@ -18,6 +18,11 @@ Place classes
 daemons and Siafu terminated prematurely 
 (https://sourceforge.net/users/gimmecat)
 
+2016: Christopher Werner - Integrated starting options to
+start more than one simulation at a time. Use working configuration
+to change the SAKE-Simulator Framework at runtime.
+Read a XML-File for the configuration of the start configs.
+
 Art used in Siafu:
 ========================================
 The play and stop buttons belong to the Glaze collection,

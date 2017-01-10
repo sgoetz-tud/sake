@@ -19,9 +19,12 @@
 
 package de.nec.nle.siafu.graphics;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
+
+import javax.swing.ImageIcon;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
@@ -50,8 +53,8 @@ import de.nec.nle.siafu.model.Position;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.Trackable;
 import de.nec.nle.siafu.model.World;
-import de.tud.evaluation.EvaluationConstants;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.EvaluationConstants;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * The GUI class implements the simulator Graphical User Interface. It is a
@@ -815,7 +818,7 @@ public class GUI implements Runnable {
 	 */
 	private void createShell() {
 		shell = new Shell();
-		shell.setMinimumSize(SHELL_WIDTH, SHELL_HEIGHT);
+		shell.setMinimumSize(SHELL_WIDTH, SHELL_HEIGHT);				
 		siafuIcon = new Image(display, getClass().getResourceAsStream("/misc/icon.png"));
 		shell.setImage(siafuIcon);
 		GridLayout glShell = new GridLayout(2, false);

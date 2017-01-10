@@ -9,6 +9,13 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.ProgressBar;
 
+/**
+ * A progress implementation that displays the loading progress on the StandBy
+ * composite of the GUI for the multi simulation without showing the map.
+ * 
+ * @author Christopher Werner
+ * 
+ */
 public class MultiGUIProgress implements Progress {
 	
 	/** The system font, in bold. */

@@ -16,7 +16,10 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+/**
+ * This package contains the three models that you will have to override in order to implement your simulation, 
+ * namely the behavior of agents, places and the evolution of context data. 
+ */
 package de.nec.nle.siafu.behaviormodels;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ import java.util.Collection;
 
 import de.nec.nle.siafu.model.Agent;
 import de.nec.nle.siafu.model.World;
-import de.tud.evaluation.WorkingConfiguration;
+import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
  * Extensions of this class define the behaviour of the agents. The methos

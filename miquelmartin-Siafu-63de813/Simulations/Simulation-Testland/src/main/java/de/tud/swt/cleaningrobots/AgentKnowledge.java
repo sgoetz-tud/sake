@@ -4,12 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import cleaningrobots.CleaningrobotsFactory;
-import de.tud.evaluation.ExchangeMeasurement;
 import de.tud.swt.cleaningrobots.model.FollowerRoleModel;
 import de.tud.swt.cleaningrobots.model.MasterRoleModel;
 import de.tud.swt.cleaningrobots.model.Position;
 import de.tud.swt.cleaningrobots.model.RoleModel;
 import de.tud.swt.cleaningrobots.model.State;
+import de.tud.swt.evaluation.ExchangeMeasurement;
 
 /**
  * Agent knowledge which has information about other agents. 
