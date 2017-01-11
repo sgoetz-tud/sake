@@ -9,10 +9,10 @@
 
 	<modules>
 		<module>MavenParent</module>
+		<module>../CleaningRobot</module>
 		<module>Siafu</module>
 		<module>Datatypes</module>
 		<module>Simulations</module>
-		<module>../CleaningRobot</module>
 	</modules>
 	
 	<build>
@@ -40,31 +40,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<!-- <build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-        			<version>2.3</version>
-        			<configuration>
-          				<descriptors>
-            					<descriptor>assembly.xml</descriptor>
-         				</descriptors>
-					<attach>false</attach>
-					<appendAssemblyId>false</appendAssemblyId>
-					<finalName>Siafu-${project.version}</finalName>
-        			</configuration>
-				<executions>
-					<execution>
-						<id>ReleaseFolder</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build> -->
 
 </project>

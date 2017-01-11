@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<name>Maven Parent</name>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Siafu</groupId>
 	<artifactId>MavenParent</artifactId>
@@ -16,9 +17,6 @@
 			<id>swt-repo</id>
 			<url>https://swt-repo.googlecode.com/svn/repo/</url>
 		</repository>
-		<!-- <repository> <id>nexus testing</id> <name>Nexus Testing</name> <url>http://maven.eclipse.org/nexus/content/repositories/testing/</url> 
-			<layout>default</layout> <snapshots> <enabled>false</enabled> </snapshots> 
-			</repository> -->
 	</repositories>
 
 	<build>
@@ -28,7 +26,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 			</plugin>
-			<plugin>
+			<!--<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
@@ -36,7 +34,7 @@
 					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>
+			</plugin>-->
 		</plugins>
 		
 	</build>
@@ -163,5 +161,4 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<name>Maven Parent</name>
 </project>
