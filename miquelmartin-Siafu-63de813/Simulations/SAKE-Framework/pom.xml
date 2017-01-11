@@ -47,4 +47,5 @@
     		<artifactId>gson</artifactId>
     	</dependency>
 	</dependencies>
+	<name>SAKE Framework</name>
 </project>

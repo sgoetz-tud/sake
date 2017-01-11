@@ -79,4 +79,5 @@
 
 	<packaging>eclipse-plugin</packaging>
 	<groupId>tu-dresden</groupId>
+	<name>Cleaning Robot Model</name>
 </project>

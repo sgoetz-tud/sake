@@ -40,4 +40,5 @@
 		</plugins>
 	</build>
 
+	<name>Aggregator for Siafu</name>
 </project>

@@ -163,4 +163,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<name>Maven Parent</name>
 </project>
