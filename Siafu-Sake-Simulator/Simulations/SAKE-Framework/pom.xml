@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>tu-dresden</groupId>
 			<artifactId>CleaningRobot</artifactId>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>

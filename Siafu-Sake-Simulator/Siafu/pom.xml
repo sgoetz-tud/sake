@@ -106,11 +106,15 @@
 		<dependency>
     		<groupId>com.google.code.gson</groupId>
     		<artifactId>gson</artifactId>
-    		</dependency>
+    	</dependency>
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
-			</dependency>
+		</dependency>
+		<dependency>
+			<groupId>tu-dresden</groupId>
+			<artifactId>CleaningRobot</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
