@@ -135,10 +135,11 @@ public class StandbyComposite extends Composite {
 		splashLabel.setLayoutData(gdLabelComposite);
 		splashLabel.setText("Choose a map to run your simulation \nconfiguration on it.\n");
 
-		Button quadraticRadio = new Button(outputTypeComposite, SWT.RADIO);
-		Button fakultyRadio = new Button(outputTypeComposite, SWT.RADIO);
-		Button fakultyCompleteRadio = new Button(outputTypeComposite, SWT.RADIO);
-		Button labyrinthRadio = new Button(outputTypeComposite, SWT.RADIO);
+		//final important ?
+		final Button quadraticRadio = new Button(outputTypeComposite, SWT.RADIO);
+		final Button fakultyRadio = new Button(outputTypeComposite, SWT.RADIO);
+		final Button fakultyCompleteRadio = new Button(outputTypeComposite, SWT.RADIO);
+		final Button labyrinthRadio = new Button(outputTypeComposite, SWT.RADIO);
 				
 		quadraticRadio.setText("Quadratic Map");
 		quadraticRadio.addSelectionListener(new SelectionAdapter() {
@@ -211,28 +212,29 @@ public class StandbyComposite extends Composite {
 		splashLabel.setLayoutData(gdLabelComposite);
 		splashLabel.setText("Choose one of the default strategies to \nrun the simulation.\n");
 
-		Button withoutMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
+		//final important ?
+		final Button withoutMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite2 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel2 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel2.setLayoutData(gdLabelComposite2);
 		splashLabel2.setText("All agents communicate with each other if \nthey meet on the map.\n");
 		
-		Button controllingMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
+		final Button controllingMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite3 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel3 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel3.setLayoutData(gdLabelComposite3);
 		splashLabel3.setText("A master agent communicate every time with \neach agent and say what they should do. \nThe master is the only agent with knowledge \ninformation about the map.\n");
 		
-		Button mergeMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
+		final Button mergeMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite4 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel4 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel4.setLayoutData(gdLabelComposite4);
 		splashLabel4.setText("A master ist the global communication point \nand the other agents only do there work on \nthere local model. Creates a hierarchical \ncommuncation tree under the agents.\n");
 		
-		Button mergeDevideMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
+		final Button mergeDevideMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite5 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel5 = new Label(strategyTypeComposite, SWT.TOP);
@@ -325,8 +327,10 @@ public class StandbyComposite extends Composite {
 		wipeComposite.setLayout(glWipeComposite);
 		wipeComposite.setLayoutData(gdWipeComposite);
 				
-		Scale wipeScale = new Scale(wipeComposite, SWT.HORIZONTAL), exploreScale = new Scale(exploreComposite, SWT.HORIZONTAL), hooveScale = new Scale(hooveComposite, SWT.HORIZONTAL);
-		Label wipeLabel = new Label(wipeComposite, SWT.NONE), exploreLabel = new Label(exploreComposite, SWT.NONE), hooveLabel = new Label(hooveComposite, SWT.NONE);
+		final Scale wipeScale = new Scale(wipeComposite, SWT.HORIZONTAL), exploreScale = new Scale(exploreComposite, SWT.HORIZONTAL), hooveScale = new Scale(hooveComposite, SWT.HORIZONTAL);
+		final Label wipeLabel = new Label(wipeComposite, SWT.NONE);
+		final Label exploreLabel = new Label(exploreComposite, SWT.NONE);
+		final Label hooveLabel = new Label(hooveComposite, SWT.NONE);
 				
 		//real explore gui
 		GridData gdExploreScale = new GridData(130, SWT.DEFAULT);
@@ -435,7 +439,7 @@ public class StandbyComposite extends Composite {
 		runComposite.setLayoutData(gdRunComposite);
 		
 		Scale runScale = new Scale(runComposite, SWT.HORIZONTAL);
-		Label runLabel = new Label(runComposite, SWT.NONE);
+		final Label runLabel = new Label(runComposite, SWT.NONE);
 		
 		GridData gdRunScale = new GridData(130, SWT.DEFAULT);
 		GridData gdRunLabel =	new GridData(SWT.FILL, SWT.CENTER, true, false);
