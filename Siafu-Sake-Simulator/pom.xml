@@ -9,7 +9,7 @@
 
 	<modules>
 		<module>MavenParent</module>
-		<module>CleaningRobot</module>
+		<module>EMFAgentModel</module>
 		<module>Siafu</module>
 		<module>Datatypes</module>
 		<module>Simulations</module>

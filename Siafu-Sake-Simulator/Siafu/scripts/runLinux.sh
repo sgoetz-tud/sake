@@ -1,2 +1,2 @@
 #!/bin/sh
-java -Xmx512m -jar Siafu.jar
+java -Xmx512m -jar ../target/Siafu.jar
