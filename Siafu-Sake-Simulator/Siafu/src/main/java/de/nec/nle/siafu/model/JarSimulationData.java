@@ -74,7 +74,8 @@ public class JarSimulationData extends SimulationData {
 			String name = entry.getName();			
 			if (name.startsWith(path) && name.endsWith(".png")) {
 				String sub = name.substring(path.length() + 1);
-				if (!sub.contains(File.separator))
+				System.out.println("Sep: " + File.separator + " JAR Name: " + name + " Sub: " + sub);				
+				if (!sub.contains(File.separator) || sub.contains("/"))
 				{
 					System.out.println("JAR Name: " + name + " Sub: " + sub);
 					int beginIndex = name.lastIndexOf("/") + 1;
