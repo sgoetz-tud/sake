@@ -27,41 +27,16 @@ Now go to step 2.
    in the /.../.../.. folder.
    If that gives you trouble, make sure mvn is in your PATH and that 
    JAVA_HOME is defined (more info at http://maven.apache.org/)
-4. Once you've compiled Siafu (with mvn package), simply go to the target
+4. Once you've compiled Siafu and SAKE (with mvn package), simply go to the target
    folder, where you'll find a Siafu-<version_number>. In there, there are
-   scripts to run Siafu for each supported platform.
+   scripts to run Siafu and SAKE for each supported platform.
+5. Start the Simulation Framework using the batch script for your platform.
+
+## 2. Simulation run
+
+## 3. Evaluation output data
 
 
-What now?
-==============================
-So, you just downloaded this zip file from http://siafusimulator.org or
-cloned it from https://github.com/miquelmartin/Siafu
-Great. Now what? :)
-
-0. Pre-requisites
-==============================
-In order to compile Siafu, you will need a Java Virtual Machine, such as 
-Oracle's:
-http://www.oracle.com/technetwork/java/javase/downloads/index.html
-
-As well as a running installation of maven, which you'll find here:
-http://maven.apache.org/
-
-1. Compiling Siafu
-==============================
-To compile Siafu, get onto the top folder (Where this file is located),
-and simply run 
-
-	mvn package
-
-If that gives you trouble, make sure mvn is in your PATH and that 
-JAVA_HOME is defined (more info at http://maven.apache.org/)
-
-2. Running Siafu
-==============================
-Once you've compiled Siafu (with mvn package), simply go to the target
-folder, where you'll find a Siafu-<version_number>. In there, there are
-scripts to run Siafu for each supported platform.
 
 3. First steps
 ==============================
