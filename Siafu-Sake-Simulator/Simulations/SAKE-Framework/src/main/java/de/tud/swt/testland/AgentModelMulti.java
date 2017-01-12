@@ -1,5 +1,6 @@
 package de.tud.swt.testland;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -93,6 +94,22 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 		return finish;
 	}
 	
+	private boolean createDirectory(String path) {
+		boolean result = false;
+		File dir = new File(path);
+
+		if (!dir.exists()) {
+			try {
+				result = dir.mkdirs();
+			} catch (Exception e) {
+				//logger.error(e);
+			}
+		} else {
+			result = true;
+		}
+		return result;
+	}
+	
 	/**
 	 * Make all the agents wander around one step.
 	 * If Simulations is finish save the measurement values in a JSON file.
@@ -122,16 +139,21 @@ public class AgentModelMulti extends BaseAgentModelMulti {
 				String measu = rc.getMeasurement().toJson();
 				
 				ExportFiles ef = new ExportFiles();
-				String path = "M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt";
-				ef.addLineToFile(measu, path);				
+				if (createDirectory("result"))
+				{
+					String path = "result" + File.separator + "M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
+							"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt";
+					ef.addLineToFile(measu, path);		
+				}			
 				
 			}
 			ExportFiles ef = new ExportFiles();
-			String path = "M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-					"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt";
-			ef.addConfigurationToFile(configuration, path);
-			
+			if (createDirectory("result"))
+			{				
+				String path = "result" + File.separator + "M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
+						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt";
+				ef.addConfigurationToFile(configuration, path);
+			}			
 			
 			//Example console output
 			System.out.println("Programm Finish!");

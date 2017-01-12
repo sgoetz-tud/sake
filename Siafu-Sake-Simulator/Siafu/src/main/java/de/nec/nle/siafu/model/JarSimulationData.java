@@ -73,7 +73,8 @@ public class JarSimulationData extends SimulationData {
 			JarEntry entry = entries.nextElement();
 			String name = entry.getName();			
 			if (name.startsWith(path) && name.endsWith(".png")) {
-				System.out.println("JAR Name: " + name);
+				String sub = name.substring(path.length()); 
+				System.out.println("JAR Name: " + name + " Sub: " + sub);
 				int beginIndex = name.lastIndexOf("/") + 1;
 				int endIndex = name.lastIndexOf(".");
 				String niceName = name.substring(beginIndex, endIndex);
