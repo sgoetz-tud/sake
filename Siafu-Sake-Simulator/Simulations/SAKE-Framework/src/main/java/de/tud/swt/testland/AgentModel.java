@@ -165,16 +165,18 @@ public class AgentModel extends BaseAgentModel {
 				ExportFiles ef = new ExportFiles();
 				if (createDirectory("result"))
 				{
-					String path = "result" + File.separator + "M" + configuration.map + "_V" + configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-							"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + rc.getName()+ ".txt";
+					String path = "result" + File.separator + "R" + configuration.run + "_M" + configuration.map + "_S" + configuration.config + "_NE" 
+							+ configuration.number_explore_agents + "_NV" + configuration.number_hoove_agents +	"_NW" + configuration.number_wipe_agents 
+							+ "_F" + configuration.new_field_count + "_" + rc.getName()+ ".txt";
 					ef.addLineToFile(measu, path);		
 				}
 			}
 			ExportFiles ef = new ExportFiles();
 			if (createDirectory("result"))
 			{				
-				String path = "result" + File.separator + "M" + configuration.map + "_V" +configuration.config + "_CE" + configuration.number_explore_agents + "_CH" + configuration.number_hoove_agents +
-						"_CW" + configuration.number_wipe_agents + "_B" + configuration.new_field_count + "_D" + configuration.run + "_" + "exchange.txt";
+				String path = "result" + File.separator + "R" + configuration.run + "_M" + configuration.map + "_S" +configuration.config + "_NE" 
+						+ configuration.number_explore_agents + "_NV" + configuration.number_hoove_agents + "_NW" + configuration.number_wipe_agents 
+						+ "_F" + configuration.new_field_count + "_" + "exchange.txt";
 				ef.addConfigurationToFile(configuration, path);
 			}
 			

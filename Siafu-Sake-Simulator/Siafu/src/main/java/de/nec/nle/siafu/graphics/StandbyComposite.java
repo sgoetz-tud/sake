@@ -113,7 +113,7 @@ public class StandbyComposite extends Composite {
 				+ "Siafu Simulator by Miquel Martin \n"
 				+ "Sake Framework by Christopher Werner \n\n"
 				+ "Configure your specific simulation. \n\n"
-				+ "To start choose Simulation->Open unpacked Simulation \n"
+				+ "To start choose Simulation->Open packed Simulation \n"
 				+ "And choose simulations/SAKE-Framework-1.0.6-SNAPSHOT.jar");
 		//splashLabel.setText("By the way:\n- Select agents with your mouse or right-click for a context menu\n- Move agents by selecting them and double-clicking on the destination");
 				
