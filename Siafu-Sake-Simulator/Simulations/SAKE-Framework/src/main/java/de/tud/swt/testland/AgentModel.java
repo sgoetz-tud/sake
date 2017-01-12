@@ -144,7 +144,7 @@ public class AgentModel extends BaseAgentModel {
 	@Override
 	public void doIteration(Collection<Agent> agents) {
 		configuration.iteration = configuration.iteration + 1;
-		
+				
 		if (runAction(agents))
 		{
 			long endTime = System.nanoTime();

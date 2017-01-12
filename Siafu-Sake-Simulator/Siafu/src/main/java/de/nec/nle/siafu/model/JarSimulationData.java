@@ -73,19 +73,22 @@ public class JarSimulationData extends SimulationData {
 			JarEntry entry = entries.nextElement();
 			String name = entry.getName();			
 			if (name.startsWith(path) && name.endsWith(".png")) {
-				String sub = name.substring(path.length()); 
-				System.out.println("JAR Name: " + name + " Sub: " + sub);
-				int beginIndex = name.lastIndexOf("/") + 1;
-				int endIndex = name.lastIndexOf(".");
-				String niceName = name.substring(beginIndex, endIndex);
-				InputStream stream;
-				try {
-					stream = jar.getInputStream(entry);
-				} catch (IOException e) {
-					throw new RuntimeException("Can't extract " + name
-							+ " from " + jar.getName());
+				String sub = name.substring(path.length() + 1);
+				if (!sub.contains(File.separator))
+				{
+					System.out.println("JAR Name: " + name + " Sub: " + sub);
+					int beginIndex = name.lastIndexOf("/") + 1;
+					int endIndex = name.lastIndexOf(".");
+					String niceName = name.substring(beginIndex, endIndex);
+					InputStream stream;
+					try {
+						stream = jar.getInputStream(entry);
+					} catch (IOException e) {
+						throw new RuntimeException("Can't extract " + name
+								+ " from " + jar.getName());
+					}
+					foundFiles.put(niceName, stream);
 				}
-				foundFiles.put(niceName, stream);
 			}
 		}
 		return foundFiles;
