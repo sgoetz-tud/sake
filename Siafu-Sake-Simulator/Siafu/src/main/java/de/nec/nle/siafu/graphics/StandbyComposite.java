@@ -108,10 +108,13 @@ public class StandbyComposite extends Composite {
 		gdLabelComposite.horizontalSpan = 2;
 		Label splashLabel = new Label(hintComposite, SWT.TOP);
 		splashLabel.setLayoutData(gdLabelComposite);
-		splashLabel.setText("Simulation Software for different Strategies on a Map \n\n" +
-					"Siafu Simulator by Miquel Martin \n" +
-					"Simulation Environement and Implementation by Christopher Werner \n\n" +
-					"Configure your specific simulation to start and open the \nsimulation files to run your configured Simulation.");
+		splashLabel.setText("Siafu Simulator & SAKE Framework \n\n"
+				+ "Simulation Software for different Strategies on a Map \n\n"
+				+ "Siafu Simulator by Miquel Martin \n"
+				+ "Sake Framework by Christopher Werner \n\n"
+				+ "Configure your specific simulation. \n\n"
+				+ "To start choose Simulation->Open unpacked Simulation \n"
+				+ "And choose simulations/SAKE-Framework-1.0.6-SNAPSHOT.jar");
 		//splashLabel.setText("By the way:\n- Select agents with your mouse or right-click for a context menu\n- Move agents by selecting them and double-clicking on the destination");
 				
 	}
@@ -130,10 +133,10 @@ public class StandbyComposite extends Composite {
 		Composite outputTypeComposite =	new Composite(outputGroup, SWT.NONE);
 		outputTypeComposite.setLayout(glOutputTypeComposite);
 		
-		GridData gdLabelComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
+		/*GridData gdLabelComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel = new Label(outputTypeComposite, SWT.TOP);
 		splashLabel.setLayoutData(gdLabelComposite);
-		splashLabel.setText("Choose a map to run your simulation \nconfiguration on it.\n");
+		splashLabel.setText("Choose a map to run your simulation \nconfiguration on it.\n");*/
 
 		//final important ?
 		final Button quadraticRadio = new Button(outputTypeComposite, SWT.RADIO);
@@ -154,7 +157,7 @@ public class StandbyComposite extends Composite {
 		quadraticRadio.setSelection(true);
 		//nullOutputRadio.setSelection(conf.getString("output.type").equalsIgnoreCase("null"));
 				
-		fakultyCompleteRadio.setText("Computerscience TU Dresden Full Fakulty");
+		fakultyCompleteRadio.setText("Computerscience TU Dresden Full Faculty");
 		//csvOutputRadio.setSelection(conf.getString("output.type").equalsIgnoreCase("csv"));		
 		fakultyCompleteRadio.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
@@ -166,7 +169,7 @@ public class StandbyComposite extends Composite {
 			}
 		});
 		
-		fakultyRadio.setText("Computerscience TU Dresden Half Fakulty");
+		fakultyRadio.setText("Computerscience TU Dresden Half Faculty");
 		//csvOutputRadio.setSelection(conf.getString("output.type").equalsIgnoreCase("csv"));		
 		fakultyRadio.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
@@ -198,7 +201,7 @@ public class StandbyComposite extends Composite {
 		gdStrategyGroup.verticalSpan = 2;
 		GridLayout glStrategyGroup = new GridLayout(1, false);
 		Group strategyGroup = new Group(hintComposite, SWT.NORMAL);
-		strategyGroup.setText("Using Strategy:");
+		strategyGroup.setText("Strategy Selection:");
 		strategyGroup.setLayout(glStrategyGroup);
 		strategyGroup.setLayoutData(gdStrategyGroup);
 
@@ -207,10 +210,10 @@ public class StandbyComposite extends Composite {
 		Composite strategyTypeComposite =	new Composite(strategyGroup, SWT.NONE);
 		strategyTypeComposite.setLayout(glStrategyTypeComposite);
 		
-		GridData gdLabelComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
+		/*GridData gdLabelComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel.setLayoutData(gdLabelComposite);
-		splashLabel.setText("Choose one of the default strategies to \nrun the simulation.\n");
+		splashLabel.setText("Choose one of the default strategies to \nrun the simulation.\n");*/
 
 		//final important ?
 		final Button withoutMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
@@ -218,28 +221,38 @@ public class StandbyComposite extends Composite {
 		GridData gdLabelComposite2 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel2 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel2.setLayoutData(gdLabelComposite2);
-		splashLabel2.setText("All agents communicate with each other if \nthey meet on the map.\n");
+		splashLabel2.setText("Agents communicate with each other when \n"
+				+ "they meet on the map.\n");
 		
 		final Button controllingMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite3 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel3 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel3.setLayoutData(gdLabelComposite3);
-		splashLabel3.setText("A master agent communicate every time with \neach agent and say what they should do. \nThe master is the only agent with knowledge \ninformation about the map.\n");
+		splashLabel3.setText("A master agent continuously communicates \n"
+				+ "with all agents and tells them what to do. \n"
+				+ "The master is the only agent with knowledge \n"
+				+ "about the map.\n");
 		
 		final Button mergeMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite4 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel4 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel4.setLayoutData(gdLabelComposite4);
-		splashLabel4.setText("A master ist the global communication point \nand the other agents only do there work on \nthere local model. Creates a hierarchical \ncommuncation tree under the agents.\n");
+		splashLabel4.setText("A master is the global communication point \n"
+				+ "and the other agents only do their work on \n"
+				+ "their local model. The master creates a hierarchical \n"
+				+ "communcation tree under the agents.\n");
 		
 		final Button mergeDevideMasterRadio = new Button(strategyTypeComposite, SWT.RADIO);
 		
 		GridData gdLabelComposite5 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel5 = new Label(strategyTypeComposite, SWT.TOP);
 		splashLabel5.setLayoutData(gdLabelComposite5);
-		splashLabel5.setText("Same as the \"Master Merge\" strategy, \nbut the master although devide the agents \nafter they meet each other that they all \ndistributed over the area.\n");
+		splashLabel5.setText("Same as the \"Master Merge\" strategy, but \n"
+				+ "the master also distributes the agents after \n"
+				+ "they meet such that they are spread equally \n"
+				+ "over the map.\n");
 						
 		withoutMasterRadio.setText("Without Master");
 		withoutMasterRadio.addSelectionListener(new SelectionAdapter() {
@@ -275,7 +288,7 @@ public class StandbyComposite extends Composite {
 			}
 		});
 				
-		mergeDevideMasterRadio.setText("Master Merge and Devide");				
+		mergeDevideMasterRadio.setText("Master Merge and Spread");				
 		mergeDevideMasterRadio.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
 				gui.getWorkingConfiguration().config = 3;
@@ -301,7 +314,8 @@ public class StandbyComposite extends Composite {
 		GridData gdLabelComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel = new Label(uiGroup, SWT.TOP);
 		splashLabel.setLayoutData(gdLabelComposite);
-		splashLabel.setText("Choose the number of agents from each category. \nYou need minimal one hoove agent to create \nalthough one wipe agent.\n");
+		splashLabel.setText("Choose the number of agents from each category. \n"
+				+ "You need at least one vacuum agent to create \n one wiper agent.\n");
 
 		//Number of explore Robots
 		GridData gdExploreComposite =	new GridData(SWT.FILL, SWT.BEGINNING, true, false);
@@ -359,7 +373,7 @@ public class StandbyComposite extends Composite {
 		hooveScale.setSelection(1);
 		//speedScale.setSelection(conf.getInt("ui.speed"));
 		hooveLabel.setLayoutData(gdHooveLabel);
-		hooveLabel.setText("Number Hoove Agents: 1  ");
+		hooveLabel.setText("Number Vacuum Agents: 1  ");
 		hooveScale.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
 				int number = ((Scale) e.widget).getSelection();
@@ -388,7 +402,7 @@ public class StandbyComposite extends Composite {
 		wipeScale.setSelection(1);
 		//speedScale.setSelection(conf.getInt("ui.speed"));
 		wipeLabel.setLayoutData(gdWipeLabel);
-		wipeLabel.setText("Number Wipe Agents: 1  ");
+		wipeLabel.setText("Number Wiper Agents: 1  ");
 		wipeScale.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
 				int number = ((Scale) e.widget).getSelection();
@@ -414,8 +428,10 @@ public class StandbyComposite extends Composite {
 		splashLabel.setText("Run the simulation on the userinterface \nor in the background.\n");
 		
 		//Use GUI Button
+		GridData gdUseUIComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Button useUI = new Button(uiGroup, SWT.CHECK);
 		useUI.setText("Use the Graphical user interface");
+		useUI.setLayoutData(gdUseUIComposite);
 		useUI.setSelection(true);
 		useUI.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
@@ -428,10 +444,12 @@ public class StandbyComposite extends Composite {
 		GridData gdLabelComposite2 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel2 = new Label(uiGroup, SWT.TOP);
 		splashLabel2.setLayoutData(gdLabelComposite2);
-		splashLabel2.setText("To distinguisch between output files of same \nconfigurations shows different run values \nfor each configuration.\n");
+		splashLabel2.setText("Normally the result files overwriten by new runs! \n"
+				+ "The run number is added to the saved files \n"
+				+ "as a prefix to avoid their overwriting\n");
 		
 		//Number of wipe Robots
-		GridData gdRunComposite =	new GridData(SWT.FILL, SWT.BEGINNING, true, false);
+		GridData gdRunComposite = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, false);
 		GridLayout glRunComposite = new GridLayout(2, false);
 		glRunComposite.marginWidth = 0;
 		Composite runComposite = new Composite(uiGroup, SWT.NONE);
@@ -528,7 +546,9 @@ public class StandbyComposite extends Composite {
 		GridData gdLabelComposite2 = new GridData(SWT.BEGINNING, SWT.BEGINNING, true, true);
 		Label splashLabel2 = new Label(outputTypeComposite, SWT.TOP);
 		splashLabel2.setLayoutData(gdLabelComposite2);
-		splashLabel2.setText("Use an output format to save the local \nagent models stepwise in a logging folder.\nThis functions reduce the simulation speed!\n");
+		splashLabel2.setText("Use an output format to save the local \n"
+				+ "agent models stepwise in a logging folder.\n"
+				+ "These functions reduce the simulation speed!\n");
 
 		Button pngCheck = new Button(outputTypeComposite, SWT.CHECK);
 		Button xmlCheck = new Button(outputTypeComposite, SWT.CHECK);
