@@ -109,5 +109,6 @@ var searchData=
   ['csvcreation',['CSVCreation',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1measure_1_1_c_s_v_creation.html',1,'de::tud::swt::cleaningrobots::measure']]],
   ['csvdumpgoal',['CsvDumpGoal',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_csv_dump_goal.html',1,'de::tud::swt::cleaningrobots::goals::optional']]],
   ['csvprinter',['CSVPrinter',['../classde_1_1nec_1_1nle_1_1siafu_1_1output_1_1_c_s_v_printer.html',1,'de.nec.nle.siafu.output.CSVPrinter'],['../classde_1_1nec_1_1nle_1_1siafu_1_1output_1_1_c_s_v_printer.html#a3ac160ad4eaf63672a7cdec7aa41bacc',1,'de.nec.nle.siafu.output.CSVPrinter.CSVPrinter()']]],
+  ['class_20diagram',['Class diagram',['../md__documentation_files__classdiagramm.html',1,'']]],
   ['configuration',['Configuration',['../md__documentation_files__configuration.html',1,'']]]
 ];

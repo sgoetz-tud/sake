@@ -2,6 +2,7 @@ var NAVTREE =
 [
   [ "SAKE", "index.html", [
     [ "SAKE Framework", "index.html", null ],
+    [ "Class diagram", "md__documentation_files__classdiagramm.html", null ],
     [ "Configuration", "md__documentation_files__configuration.html", null ],
     [ "Evaluation Step-by-Step", "md__documentation_files__evaluation.html", null ],
     [ "Getting Started Guide", "md__documentation_files__getting_started.html", null ],
