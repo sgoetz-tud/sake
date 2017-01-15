@@ -8,7 +8,15 @@ The first part of this section contains the running example with different start
 
 ## Running Example
 
-![The three test maps](/image/allcards.png "Maps")
+<img src="../../sake/DocumentationFiles/image/allcards.png" alt="Drawing" style="width: 200px;"/>
+
+![The three test maps](../Documentation Files/image/allcards.png "Maps")
+![The three test maps](/Documentation Files/image/allcards.png "Maps")
+![The three test maps](Documentation Files/image/allcards.png "Maps")
+![Agent dependencies](../image/hierarchie.jpg "Agent dependencies")
+![Agent dependencies](../hierarchie.jpg "Agent dependencies")
+![Agent dependencies](image/hierarchie.jpg "Agent dependencies")
+![Agent dependencies](hierarchie.jpg "Agent dependencies")
 ![Agent dependencies](/image/hierarchie.jpg "Agent dependencies")
 
 Every company has different building with other structures and characteristics and must clean them every week. Therefor different agents can be used to clean the building after the offices hour. But they have every day the deadline, because they must be finished before the work starts in the morning. The easiest way is to use one agent which must do it alone but it could easily be that he do not finish in time. Then it is important that different agents share the work and communicate about the areas they already clean. Therefor we create three different strategies:
