@@ -1,0 +1,7 @@
+var namespacede_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge =
+[
+    [ "MergeAllAlwaysNearBehaviour", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_always_near_behaviour.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_always_near_behaviour" ],
+    [ "MergeAllMasterBehaviour", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_master_behaviour.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_master_behaviour" ],
+    [ "MergeAllNearBehaviour", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_near_behaviour.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_all_near_behaviour" ],
+    [ "MergeOneMasterBehaviour", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_one_master_behaviour.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1behaviours_1_1merge_1_1_merge_one_master_behaviour" ]
+];

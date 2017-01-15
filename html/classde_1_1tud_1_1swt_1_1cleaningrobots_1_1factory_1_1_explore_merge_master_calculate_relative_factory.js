@@ -1,0 +1,5 @@
+var classde_1_1tud_1_1swt_1_1cleaningrobots_1_1factory_1_1_explore_merge_master_calculate_relative_factory =
+[
+    [ "ExploreMergeMasterCalculateRelativeFactory", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1factory_1_1_explore_merge_master_calculate_relative_factory.html#af803975a0ab20f3a67cd11297b69dc25", null ],
+    [ "createRobots", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1factory_1_1_explore_merge_master_calculate_relative_factory.html#a5285fbe38ce70e084f23911a830f06a1", null ]
+];

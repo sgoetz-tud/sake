@@ -1,0 +1,4 @@
+var classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_master_merge_goal =
+[
+    [ "WlanLoadMasterMergeGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_master_merge_goal.html#aef96f46b2fafd62a31c6bdadbe2bf6cc", null ]
+];

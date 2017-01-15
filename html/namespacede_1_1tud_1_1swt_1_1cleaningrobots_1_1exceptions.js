@@ -1,0 +1,7 @@
+var namespacede_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions =
+[
+    [ "AgentHasNoSuchComponent", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_agent_has_no_such_component.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_agent_has_no_such_component" ],
+    [ "AgentNumberOfComponentsFalse", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_agent_number_of_components_false.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_agent_number_of_components_false" ],
+    [ "HardwareComponentExistenzException", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_hardware_component_existenz_exception.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_hardware_component_existenz_exception" ],
+    [ "RuntimeErrorMessage", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_runtime_error_message.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_runtime_error_message" ]
+];

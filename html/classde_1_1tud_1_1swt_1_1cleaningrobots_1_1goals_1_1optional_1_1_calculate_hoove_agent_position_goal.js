@@ -1,0 +1,4 @@
+var classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_hoove_agent_position_goal =
+[
+    [ "CalculateHooveAgentPositionGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_hoove_agent_position_goal.html#ab7a58d303dd6c7c402e6618437d4044b", null ]
+];

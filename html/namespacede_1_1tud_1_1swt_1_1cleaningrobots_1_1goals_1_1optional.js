@@ -1,0 +1,19 @@
+var namespacede_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional =
+[
+    [ "CalculateExploreAgentPositionGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_explore_agent_position_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_explore_agent_position_goal" ],
+    [ "CalculateHooveAgentPositionGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_hoove_agent_position_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_hoove_agent_position_goal" ],
+    [ "CalculateWipeAgentPositionGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_wipe_agent_position_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_calculate_wipe_agent_position_goal" ],
+    [ "CsvDumpGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_csv_dump_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_csv_dump_goal" ],
+    [ "ExploreDumpGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_explore_dump_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_explore_dump_goal" ],
+    [ "LoadAgentGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_load_agent_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_load_agent_goal" ],
+    [ "LoadIfAgentWantGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_load_if_agent_want_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_load_if_agent_want_goal" ],
+    [ "MergeMasterFollowerGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_master_follower_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_master_follower_goal" ],
+    [ "MergeMasterGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_master_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_master_goal" ],
+    [ "MergeNearAgentsGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_near_agents_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_merge_near_agents_goal" ],
+    [ "PngDumpGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_png_dump_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_png_dump_goal" ],
+    [ "WithoutMasterExploreOptionalGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_without_master_explore_optional_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_without_master_explore_optional_goal" ],
+    [ "WlanLoadIfAgentWantMergeGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_if_agent_want_merge_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_if_agent_want_merge_goal" ],
+    [ "WlanLoadMasterMergeGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_master_merge_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_load_master_merge_goal" ],
+    [ "WlanOnGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_on_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_wlan_on_goal" ],
+    [ "XmlDumpGoal", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_xml_dump_goal.html", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1goals_1_1optional_1_1_xml_dump_goal" ]
+];

@@ -1,0 +1,4 @@
+var classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_hardware_component_existenz_exception =
+[
+    [ "HardwareComponentExistenzException", "classde_1_1tud_1_1swt_1_1cleaningrobots_1_1exceptions_1_1_hardware_component_existenz_exception.html#af2831d95383647f5fadf9d7e477165dc", null ]
+];
