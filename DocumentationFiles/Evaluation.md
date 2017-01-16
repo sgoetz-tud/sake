@@ -14,7 +14,7 @@ At the main page of the GUI you can configure all information that SAKE could ha
 
 4. To see what the agents do we also activate the <b>"PNG Save"</b> to get an outcome of the local models of each agent and the "Graphical user interface" to see it in the GUI. 
 
-If we deactivate the GUI the hole simulation runs faster but it is easier to locate bootle nacks at run times by seeing the moving of each agent.
+If we deactivate the GUI the hole simulation runs faster but it is easier to locate bottlenecks at run times by seeing the moving of each agent.
 
 For more runs at the same time it is possible to create an XML File like (Siafu-Sake-Simulator/Simulations/SAKE-Framework/Configuration/SimulationInformation.xml) and give it on start to the program. This will extract all configs from the file and run them after one another.
 
