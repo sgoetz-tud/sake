@@ -2,7 +2,7 @@
 
 SAKE is a simulation framework to analyze knowledge exchange strategies in distributed self-adaptive system. Therefor the concept of an agent as seen in figure 1 is easily extendable by new functionality which could be new behaviors, goals, roles, hardware-components and knowledge merge algorithms.
 
-Find the Documentation <a href"html/index.html">HERE</a>.
+Find the Documentation <a href="html/index.html">HERE</a>.
 
 <div class="image" align="center">
 <img src="DocumentationFiles/image/Concept.jpg" alt="Concept of an agent" title="Concept" style="width: 300px;"/>
