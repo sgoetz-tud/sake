@@ -6,6 +6,7 @@ var NAVTREE =
     [ "Configuration", "md__documentation_files__configuration.html", null ],
     [ "Evaluation Step-by-Step", "md__documentation_files__evaluation.html", null ],
     [ "Getting Started Guide", "md__documentation_files__getting_started.html", null ],
+    [ "Local environment model", "md__documentation_files__local_model.html", null ],
     [ "Related Work", "md__documentation_files__related_work.html", null ],
     [ "Siafu, the Context Simulator", "md__siafu-_sake-_simulator__r_e_a_d_m_e.html", null ],
     [ "Packages", null, [

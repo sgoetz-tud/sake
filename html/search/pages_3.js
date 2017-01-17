@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['related_20work',['Related Work',['../md__documentation_files__related_work.html',1,'']]]
+  ['local_20environment_20model',['Local environment model',['../md__documentation_files__local_model.html',1,'']]]
 ];

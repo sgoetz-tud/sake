@@ -20,5 +20,6 @@ var searchData=
   ['loggingcsvrole',['LoggingCsvRole',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1roles_1_1_logging_csv_role.html',1,'de::tud::swt::cleaningrobots::roles']]],
   ['loggingpicturerole',['LoggingPictureRole',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1roles_1_1_logging_picture_role.html',1,'de::tud::swt::cleaningrobots::roles']]],
   ['loggingxmlrole',['LoggingXmlRole',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1roles_1_1_logging_xml_role.html',1,'de::tud::swt::cleaningrobots::roles']]],
-  ['lookaroundsensor',['LookAroundSensor',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1hardware_1_1_look_around_sensor.html',1,'de::tud::swt::cleaningrobots::hardware']]]
+  ['lookaroundsensor',['LookAroundSensor',['../classde_1_1tud_1_1swt_1_1cleaningrobots_1_1hardware_1_1_look_around_sensor.html',1,'de::tud::swt::cleaningrobots::hardware']]],
+  ['local_20environment_20model',['Local environment model',['../md__documentation_files__local_model.html',1,'']]]
 ];
