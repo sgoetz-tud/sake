@@ -61,7 +61,7 @@ import de.nec.nle.siafu.utils.SequentialNamer;
  * @author Miquel Martin
  * 
  */
-public class Agent implements Trackable, Comparable<Agent> {
+public class Agent extends AAgent implements Trackable, Comparable<Agent> {
 	/** A destination, just to make sure it's never null.*/
 	private static Place DEFAULT_DESTINATION = null;
 	
@@ -105,7 +105,7 @@ public class Agent implements Trackable, Comparable<Agent> {
 	private Boolean onAuto = true;
 
 	/** The agent's name. */
-	private String name;
+	//private String name;
 
 	// FIXME: this should be an enum
 	/** The current direction that the agent is facing. */
@@ -188,8 +188,8 @@ public class Agent implements Trackable, Comparable<Agent> {
 	 *            the world that the agent belongs to. It has to be the same for
 	 *            all the agents in the simulation.
 	 */
-	public Agent(final Position start, final String image, final World world) {
-		this(SequentialNamer.getNextName(), start, image, world, 0);
+	public Agent(final Position start, final String image, final World world, IExternalConnection extern) {
+		this(SequentialNamer.getNextName(), start, image, world, 0, extern);
 	}
 
 	/**
@@ -210,8 +210,8 @@ public class Agent implements Trackable, Comparable<Agent> {
 	 *            all the agents in the simulation.
 	 */
 	public Agent(final String name, final Position start, final String image,
-			final World world) {
-		this(name, start, image, world, 0);
+			final World world, IExternalConnection extern) {
+		this(name, start, image, world, 0, extern);
 	}
 
 	/**
@@ -241,9 +241,9 @@ public class Agent implements Trackable, Comparable<Agent> {
 	 *            agents.
 	 */
 	public Agent(final String name, final Position start, final String image,
-			final World world, final int zPriority) {
+			final World world, final int zPriority, IExternalConnection extern) {
+		super(name, extern);
 		basicChecks(world);
-		this.name = name;
 		this.info = new TreeMap<String, Publishable>();
 		this.dir = 0;
 		this.image = image;
@@ -305,18 +305,18 @@ public class Agent implements Trackable, Comparable<Agent> {
 	 * @param name
 	 *            the agent's name
 	 */
-	public void setName(final String name) {
+	/*public void setName(final String name) {
 		this.name = name;
-	}
+	}*/
 
 	/**
 	 * Get the agent's name.
 	 * 
 	 * @return the agent's name
 	 */
-	public String getName() {
+	/*public String getName() {
 		return name;
-	}
+	}*/
 
 	/**
 	 * Get the current image of the agent.
@@ -950,5 +950,20 @@ public class Agent implements Trackable, Comparable<Agent> {
 		if (zPriority != other.zPriority)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int getCol() {
+		return pos.getCol();
+	}
+
+	@Override
+	public int getRow() {
+		return pos.getRow();
+	}
+
+	@Override
+	public void setPosition(int col, int row) {
+		this.pos = new Position(col, row);
 	}
 }

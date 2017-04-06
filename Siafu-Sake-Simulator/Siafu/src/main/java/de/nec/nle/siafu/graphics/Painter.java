@@ -417,7 +417,7 @@ public class Painter {
 			if (a.getDestination() != null) {
 				gc.setForeground(display.getSystemColor(SWT.COLOR_RED));
 				// We use a temporary agent that "walks the walk"
-				Agent path = new Agent(a.getPos(), "HumanBlue", world);
+				Agent path = new Agent(a.getPos(), "HumanBlue", world, null);
 				path.setDir(a.getDir());
 				path.setSpeed(2);
 				path.setDestination(a.getDestination());

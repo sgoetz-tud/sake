@@ -19,8 +19,8 @@ import de.tud.swt.cleaningrobots.roles.LoggingXmlRole;
 import de.tud.swt.cleaningrobots.roles.MasterRole;
 import de.tud.swt.cleaningrobots.roles.WiperCalculateMergeMasterRole;
 import de.tud.swt.cleaningrobots.roles.WiperRandomFollowerRole;
-import de.tud.swt.testland.ISimulatorAgentFactory;
-import de.tud.swt.testland.ISimulatorAgent;
+import de.tud.swt.testland.SiafuAgent;
+import de.tud.swt.testland.SiafuAgentFactory;
 
 /**
  * Create the agents with the specific roles for the test case where the master has followers 
@@ -44,12 +44,12 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 	 * @return an ArrayList with the created agents
 	 */
 	@Override
-	public ArrayList<ISimulatorAgent> createRobots(ISimulatorAgentFactory factory) {
+	public ArrayList<SiafuAgent> createRobots(SiafuAgentFactory factory) {
 				
-		ArrayList<ISimulatorAgent> population = new ArrayList<ISimulatorAgent>();	
+		ArrayList<SiafuAgent> population = new ArrayList<SiafuAgent>();	
 		
 		//loadstation agent
-		ISimulatorAgent lsa = factory.createLoadStationAgent();
+		SiafuAgent lsa = factory.createLoadStationAgent();
 		population.add(lsa);
 			
 		if (configuration.getWc().number_explore_agents > 0) {
@@ -58,7 +58,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 			
 			//explore agents
 			for (int i = 0; i < configuration.getWc().number_explore_agents; i++) {
-				ISimulatorAgent era = factory.createExploreAgent();
+				SiafuAgent era = factory.createExploreAgent();
 				population.add(era);		
 				
 				FollowerRole fre = new ExplorerRandomFollowerRole(era.getAgentCore(), mre);
@@ -72,7 +72,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 				
 				//hoove agents
 				for (int i = 0; i < configuration.getWc().number_hoove_agents; i++) {
-					ISimulatorAgent hra = factory.createHooveAgent();
+					SiafuAgent hra = factory.createHooveAgent();
 					population.add(hra);
 					
 					FollowerRole frh = new HooverRandomFollowerRole(hra.getAgentCore(), mrh);
@@ -87,7 +87,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 					
 					//wipe agents
 					for (int i = 0; i < configuration.getWc().number_wipe_agents; i++) {
-						ISimulatorAgent wra = factory.createWipeAgent();
+						SiafuAgent wra = factory.createWipeAgent();
 						population.add(wra);
 						
 						FollowerRole frw = new WiperRandomFollowerRole(wra.getAgentCore(), mrw);
@@ -104,7 +104,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 		//add the logging roles to every agent
 		if (configuration.getWc().csvSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingCsvRole csvRole = new LoggingCsvRole(a.getAgentCore());
 				csvRole.addRole(csvRole);
@@ -112,7 +112,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 		}
 		if (configuration.getWc().pngSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingPictureRole pngRole = new LoggingPictureRole(a.getAgentCore());
 				pngRole.addRole(pngRole);
@@ -120,7 +120,7 @@ public class ExploreMergeMasterCalculateFactory extends IAgentFactory {
 		}
 		if (configuration.getWc().xmlSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingXmlRole xmlRole = new LoggingXmlRole(a.getAgentCore());
 				xmlRole.addRole(xmlRole);

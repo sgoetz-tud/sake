@@ -41,7 +41,7 @@ import de.nec.nle.siafu.control.Controller;
  * @author Miquel Martin
  * 
  */
-public class GUIProgress implements Progress {
+public class GUIProgress implements IProgress {
 	/** The system font, in bold. */
 	private Font bold;
 

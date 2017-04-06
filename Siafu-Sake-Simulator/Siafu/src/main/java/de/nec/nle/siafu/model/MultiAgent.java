@@ -8,46 +8,34 @@ package de.nec.nle.siafu.model;
  * @author Christopher Werner
  *
  */
-public class MultiAgent {
+public class MultiAgent extends AAgent {
 
-	protected MultiWorld siafuWorld;	
-	private String name;
-	
 	private int col;
 	private int row;
 	
-	public MultiAgent(int col, int row, MultiWorld world) {
-		this("", col ,row , world);
+	public MultiAgent(int col, int row, IExternalConnection extern) {
+		this("", col ,row , extern);
 	}
 	
-	public MultiAgent(String name, int col, int row, MultiWorld world) {
-		this.name = name;
+	public MultiAgent(String name, int col, int row, IExternalConnection extern) {
+		super(name, extern);
 		this.col = col;
 		this.row = row;
-		this.siafuWorld = world;
-	}
+	}	
 	
-	public String getName() {
-		return this.name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
+	@Override
 	public int getCol() {
 		return this.col;
 	}
 	
+	@Override
 	public int getRow() {
 		return this.row;
 	}
-	
-	protected void setRow(int row) {
-		this.row = row;
-	}
-	
-	protected void setCol(int col) {
+
+	@Override
+	public void setPosition(int col, int row) {
 		this.col = col;
+		this.row = row;	
 	}
 }

@@ -13,8 +13,8 @@ import de.tud.swt.cleaningrobots.roles.LoggingCsvRole;
 import de.tud.swt.cleaningrobots.roles.LoggingPictureRole;
 import de.tud.swt.cleaningrobots.roles.LoggingXmlRole;
 import de.tud.swt.cleaningrobots.roles.WiperRole;
-import de.tud.swt.testland.ISimulatorAgentFactory;
-import de.tud.swt.testland.ISimulatorAgent;
+import de.tud.swt.testland.SiafuAgent;
+import de.tud.swt.testland.SiafuAgentFactory;
 
 /**
  * Create the agents with the specific roles for the test case without a master robot 
@@ -38,12 +38,12 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 	 * @return an ArrayList with the created agents
 	 */
 	@Override
-	public ArrayList<ISimulatorAgent> createRobots(ISimulatorAgentFactory factory) {
-		
-		ArrayList<ISimulatorAgent> population = new ArrayList<ISimulatorAgent>();	
+	public ArrayList<SiafuAgent> createRobots(SiafuAgentFactory factory) {
+				
+		ArrayList<SiafuAgent> population = new ArrayList<SiafuAgent>();	
 		
 		//loadstation agent
-		ISimulatorAgent lsa = factory.createLoadStation();
+		SiafuAgent lsa = factory.createLoadStation();
 		population.add(lsa);
 		
 		//load if robot want role
@@ -61,7 +61,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 			
 			//explore agents
 			for (int i = 0; i < configuration.getWc().number_explore_agents; i++) {
-				ISimulatorAgent era = factory.createExploreAgent();
+				SiafuAgent era = factory.createExploreAgent();
 				population.add(era);
 				
 				AgentRole exr;
@@ -93,7 +93,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 				
 				//hoove agents
 				for (int i = 0; i < configuration.getWc().number_hoove_agents; i++) {
-					ISimulatorAgent hra = factory.createHooveAgent();
+					SiafuAgent hra = factory.createHooveAgent();
 					population.add(hra);
 					
 					AgentRole hor = new HooverRole(hra.getAgentCore());
@@ -110,7 +110,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 					
 					//wipe agents
 					for (int i = 0; i < configuration.getWc().number_wipe_agents; i++) {
-						ISimulatorAgent wra = factory.createWipeAgent();
+						SiafuAgent wra = factory.createWipeAgent();
 						population.add(wra);
 						
 						AgentRole wir = new WiperRole(wra.getAgentCore());
@@ -123,7 +123,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 		//add the logging roles to every agent
 		if (configuration.getWc().csvSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingCsvRole csvRole = new LoggingCsvRole(a.getAgentCore());
 				csvRole.addRole(csvRole);
@@ -131,7 +131,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 		}
 		if (configuration.getWc().pngSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingPictureRole pngRole = new LoggingPictureRole(a.getAgentCore());
 				pngRole.addRole(pngRole);
@@ -139,7 +139,7 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 		}
 		if (configuration.getWc().xmlSave)
 		{
-			for (ISimulatorAgent a: population)
+			for (SiafuAgent a: population)
 			{
 				LoggingXmlRole xmlRole = new LoggingXmlRole(a.getAgentCore());
 				xmlRole.addRole(xmlRole);

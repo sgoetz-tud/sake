@@ -1,6 +1,6 @@
 package de.nec.nle.siafu.control;
 
-import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
+import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.MultiWorld;
 import de.tud.swt.evaluation.WorkingConfiguration;
@@ -64,13 +64,13 @@ public class MultiSimulation implements Runnable {
 	 * Starts the Evaluation phase. With Console.
 	 */
 	public void run() {
-		BaseAgentModelMulti agentModel = world.getAgentModel();
+		BaseAgentModel agentModel = world.getAgentModel();
 		
 		//first one initialization run
-		agentModel.initializeAgents(world.getPeople());
+		agentModel.initializeAgents(world.getAgents());//.getPeople());
 		
 		while (!agentModel.isRunFinish() && !this.endSimulation) {
-			agentModel.doIteration(world.getPeople());
+			agentModel.doIteration(world.getAgents());//.getPeople());
 		}
 		simulationRunning = false;
 	}

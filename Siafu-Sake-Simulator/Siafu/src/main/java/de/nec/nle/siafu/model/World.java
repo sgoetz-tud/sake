@@ -64,7 +64,7 @@ import de.tud.swt.evaluation.WorkingConfiguration;
  * @author Miquel Martin
  * 
  */
-public class World implements IWorld {
+public class World extends AWorld {
 	/** The white color. Used to identify walls. */
 	private static final int COLOR_WHITE = 0xFFFFFF;
 
@@ -862,19 +862,18 @@ public class World implements IWorld {
 
 		try {
 			agentModel = (BaseAgentModel) simData.getAgentModelClass()
-					.getConstructor(new Class[] { this.getClass() , configuration.getClass() })
-					.newInstance(new Object[] { this , configuration });
+					.getConstructor(new Class[] { AWorld.class, configuration.getClass() })
+					.newInstance(new Object[] { (AWorld)this , configuration }); //this.getClass() 
 		} catch (Exception e) {
 			throw new RuntimeException("Can't instantiate the agent model", e);
 		}
 
 		Agent.initialize(this);
 		Controller.getProgress().reportCreatingAgents();
-		ArrayList<Agent> peopleList = agentModel.createAgents();
-		Iterator<Agent> peopleIt = peopleList.iterator();
-
-		while (peopleIt.hasNext()) {
-			Agent p = peopleIt.next();
+		agents = agentModel.createAgents();
+		for (AAgent aa : agents)
+		{
+			Agent p = (Agent) aa;
 			people.put(p.getName(), p);
 		}
 	}
@@ -1057,6 +1056,23 @@ public class World implements IWorld {
 	 */
 	public BaseWorldModel getWorldModel() {
 		return worldModel;
+	}
+
+	@Override
+	public boolean isAWall(int row, int col) {
+		return walls[row][col];
+	}
+
+	@Override
+	public AAgent createPeople(String name, String image, AWorld world,
+			IExternalConnection extern) {
+		System.out.println("World Create Agent");
+		try {
+			return new Agent(name, getRandomPlaceOfType("Center").getPos(), image,(World)world, extern);
+		} catch (PlaceNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

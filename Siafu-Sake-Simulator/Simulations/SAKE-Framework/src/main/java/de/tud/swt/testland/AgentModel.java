@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.AAgent;
+import de.nec.nle.siafu.model.AWorld;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterCalculateFactory;
@@ -59,7 +59,7 @@ public class AgentModel extends BaseAgentModel {
 	 * @param world
 	 *            the simulation's world
 	 */
-	public AgentModel(World world, WorkingConfiguration configuration) {
+	public AgentModel(AWorld world, WorkingConfiguration configuration) {
 		super(world, configuration);
 		this.config = new Configuration(configuration);
 	}
@@ -70,10 +70,10 @@ public class AgentModel extends BaseAgentModel {
 	 * @return the created agents
 	 */
 	@Override
-	public ArrayList<Agent> createAgents() {
+	public ArrayList<AAgent> createAgents() {
 		
-		ArrayList<ISimulatorAgent> iAgents = new ArrayList<ISimulatorAgent>();
-		ArrayList<Agent> agents = new ArrayList<Agent>();
+		ArrayList<SiafuAgent> iAgents = new ArrayList<SiafuAgent>();
+		ArrayList<AAgent> agents = new ArrayList<AAgent>();
 		SiafuAgentFactory rf = new SiafuAgentFactory(config, world);
 
 		try {
@@ -94,20 +94,20 @@ public class AgentModel extends BaseAgentModel {
 		} catch (Exception ex) {
 		}
 		
-		for (ISimulatorAgent a : iAgents)
+		for (SiafuAgent a : iAgents)
 		{
-			agents.add((Agent)a);
+			agents.add(a.getRelatedAgent());
 		}
 		
 		startTime = System.nanoTime();
 		return agents;
 	}
 	
-	private boolean runAction (Collection<Agent> agents) {
+	private boolean runAction (Collection<AAgent> agents) {
 		boolean finish = true;
 		//do that for each robot
-		for (Agent agent : agents) {
-			ISimulatorAgent a = (ISimulatorAgent) agent;
+		for (AAgent agent : agents) {
+			SiafuAgent a = (SiafuAgent) agent.getExternal();
 			//only if robot is on
 			if (!a.getAgentCore().isShutDown()) {
 				a.wander();
@@ -142,7 +142,7 @@ public class AgentModel extends BaseAgentModel {
 	 *            the list of agents
 	 */
 	@Override
-	public void doIteration(Collection<Agent> agents) {
+	public void doIteration(Collection<AAgent> agents) {
 		configuration.iteration = configuration.iteration + 1;
 				
 		if (runAction(agents))
@@ -150,13 +150,13 @@ public class AgentModel extends BaseAgentModel {
 			long endTime = System.nanoTime();
 			
 			//do evaluation output
-			for (Agent a : agents) {
-				((ISimulatorAgent)a).getAgentCore().addLastMeasurement();				
+			for (AAgent a : agents) {
+				((SiafuAgent)a.getExternal()).getAgentCore().addLastMeasurement();				
 			}
 			
 			//make data output for all measurements
-			for (Agent a : agents) {
-				AgentCore rc = ((ISimulatorAgent)a).getAgentCore();
+			for (AAgent a : agents) {
+				AgentCore rc = ((SiafuAgent)a.getExternal()).getAgentCore();
 				
 				//save JSON document in .txt
 				rc.getMeasurement().benchmarkTime = (endTime - startTime);
@@ -191,12 +191,12 @@ public class AgentModel extends BaseAgentModel {
 	 * Initialize all agents one time.
 	 */
 	@Override
-	public void initializeAgents(Collection<Agent> agents) {
+	public void initializeAgents(Collection<AAgent> agents) {
 		
 		//example output for master follower relation
-		for (Agent agent: agents)
+		for (AAgent agent: agents)
 		{
-			ISimulatorAgent a = (ISimulatorAgent)agent;
+			SiafuAgent a = (SiafuAgent) agent.getExternal();
 			a.getAgentCore().createAndInitializeRoleGoals();
 			System.out.println("Name: " + a.getAgentCore().getName() + " Roles: " + a.getAgentCore().getRoles() + " States: " + a.getAgentCore().getSupportedStates());
 		}

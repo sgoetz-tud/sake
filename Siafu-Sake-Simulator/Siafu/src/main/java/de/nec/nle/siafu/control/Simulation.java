@@ -216,7 +216,7 @@ public class Simulation implements Runnable {
 		this.outputPrinter = createOutputPrinter(siafuConfig.getString("output.type"));
 
 		//first one initialization run
-		this.agentModel.initializeAgents(world.getPeople());
+		this.agentModel.initializeAgents(world.getAgents());//.getPeople());
 		
 		Controller.getProgress().reportSimulationStarted();
 		simulationRunning = true;
@@ -224,7 +224,7 @@ public class Simulation implements Runnable {
 			if (!isPaused()) {
 				tickTime();
 				worldModel.doIteration(world.getPlaces());
-				agentModel.doIteration(world.getPeople());
+				agentModel.doIteration(world.getAgents());//.getPeople());
 				contextModel.doIteration(world.getOverlays());
 			}
 			//moveAgents();

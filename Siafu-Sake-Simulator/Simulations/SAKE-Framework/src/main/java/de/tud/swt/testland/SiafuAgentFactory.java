@@ -1,7 +1,6 @@
 package de.tud.swt.testland;
 
-import de.nec.nle.siafu.exceptions.PlaceNotFoundException;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.AWorld;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.hardware.Hoover;
 import de.tud.swt.cleaningrobots.hardware.LoadStation;
@@ -18,13 +17,13 @@ import de.tud.swt.cleaningrobots.hardware.Wlan;
  * @author Christopher Werner
  *
  */
-public class SiafuAgentFactory implements ISimulatorAgentFactory {
+public class SiafuAgentFactory {
 	
 	private int counter;
 	private Configuration configuration;
-	private World world;
+	private AWorld world;
 	
-	public SiafuAgentFactory (Configuration configuration, World world) {
+	public SiafuAgentFactory (Configuration configuration, AWorld world) {
 		this.world = world;
 		this.configuration = configuration;
 		this.counter = 0;
@@ -37,22 +36,14 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	@Override
-	public ISimulatorAgent createLoadStation() {
-		try {
-			counter++;
-			SiafuAgent agent = new SiafuAgent("Robbi_" + counter, world
-					.getRandomPlaceOfType("Center").getPos(), "Master",
-					world, configuration);
+	public SiafuAgent createLoadStation() {		
+		counter++;
+		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "Master",	world, configuration);
 
-			//add hardware components
-			agent.getAgentCore().addHardwareComponent(new LoadStation());
+		//add hardware components
+		agent.getAgentCore().addHardwareComponent(new LoadStation());
 			
-			return agent;
-		} catch (PlaceNotFoundException e) {
-			throw new RuntimeException(
-					"You didn't define the right type of places", e);
-		}
+		return agent;
 	}
 	
 	/**
@@ -62,24 +53,16 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	@Override
-	public ISimulatorAgent createLoadStationAgent() {
-		try {
-			counter++;
-			SiafuAgent agent = new SiafuAgent("Robbi_" + counter, world
-					.getRandomPlaceOfType("Center").getPos(), "Master",
-					world, configuration);
+	public SiafuAgent createLoadStationAgent() {
+		counter++;
+		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "Master",	world, configuration);
 			
-			//add hardware components
-			agent.getAgentCore().addHardwareComponent(new Computer());
-			agent.getAgentCore().addHardwareComponent(new LoadStation());
-			agent.getAgentCore().addHardwareComponent(new Wlan());
+		//add hardware components
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new LoadStation());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
 			
-			return agent;
-		} catch (PlaceNotFoundException e) {
-			throw new RuntimeException(
-					"You didn't define the right type of places", e);
-		}
+		return agent;
 	}
 	
 	/**
@@ -89,25 +72,17 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	@Override
-	public ISimulatorAgent createExploreAgent() {
-		try {
-			counter++;
-			SiafuAgent agent = new SiafuAgent("Robbi_" + counter, world
-					.getRandomPlaceOfType("Center").getPos(), "HumanMagenta",
-					world, configuration);
+	public SiafuAgent createExploreAgent() {
+		counter++;
+		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanMagenta", world, configuration);
 
-			//add hardware components
-			agent.getAgentCore().addHardwareComponent(new Computer());
-			agent.getAgentCore().addHardwareComponent(new Wlan());
-			agent.getAgentCore().addHardwareComponent(new Engine());
-			agent.getAgentCore().addHardwareComponent(new LookAroundSensor());	
+		//add hardware components
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new LookAroundSensor());	
 			
-			return agent;
-		} catch (PlaceNotFoundException e) {
-			throw new RuntimeException(
-					"You didn't define the right type of places", e);
-		}
+		return agent;
 	}	
 	
 	/**
@@ -117,25 +92,17 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	@Override
-	public ISimulatorAgent createWipeAgent() {
-		try {
-			counter++;
-			SiafuAgent agent = new SiafuAgent("Robbi_" + counter, world
-					.getRandomPlaceOfType("Center").getPos(), "HumanYellow",
-					world, configuration);
+	public SiafuAgent createWipeAgent() {
+		counter++;
+		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanYellow", world, configuration);
 			
-			//add hardware components
-			agent.getAgentCore().addHardwareComponent(new Computer());
-			agent.getAgentCore().addHardwareComponent(new Wlan());
-			agent.getAgentCore().addHardwareComponent(new Engine());
-			agent.getAgentCore().addHardwareComponent(new Wiper());
+		//add hardware components
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new Wiper());
 			
-			return agent;
-		} catch (PlaceNotFoundException e) {
-			throw new RuntimeException(
-					"You didn't define the right type of places", e);
-		}
+		return agent;
 	}
 	
 	/**
@@ -145,25 +112,17 @@ public class SiafuAgentFactory implements ISimulatorAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	@Override
-	public ISimulatorAgent createHooveAgent() {
-		try {
-			counter++;
-			SiafuAgent agent = new SiafuAgent("Robbi_" + counter, world
-					.getRandomPlaceOfType("Center").getPos(), "HumanGreen",
-					world, configuration);
+	public SiafuAgent createHooveAgent() {
+		counter++;
+		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanGreen",	world, configuration);
 
-			//add hardware components
-			agent.getAgentCore().addHardwareComponent(new Computer());
-			agent.getAgentCore().addHardwareComponent(new Wlan());
-			agent.getAgentCore().addHardwareComponent(new Engine());
-			agent.getAgentCore().addHardwareComponent(new Hoover());
+		//add hardware components
+		agent.getAgentCore().addHardwareComponent(new Computer());
+		agent.getAgentCore().addHardwareComponent(new Wlan());
+		agent.getAgentCore().addHardwareComponent(new Engine());
+		agent.getAgentCore().addHardwareComponent(new Hoover());
 			
-			return agent;
-		} catch (PlaceNotFoundException e) {
-			throw new RuntimeException(
-					"You didn't define the right type of places", e);
-		}
+		return agent;
 	}
 
 }

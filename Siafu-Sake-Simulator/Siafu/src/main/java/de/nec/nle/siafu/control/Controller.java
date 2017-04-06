@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Display;
 import de.nec.nle.siafu.control.progress.ConsoleProgress;
 import de.nec.nle.siafu.control.progress.GUIProgress;
 import de.nec.nle.siafu.control.progress.MultiGUIProgress;
-import de.nec.nle.siafu.control.progress.Progress;
+import de.nec.nle.siafu.control.progress.IProgress;
 import de.nec.nle.siafu.exceptions.GUINotReadyException;
 import de.nec.nle.siafu.externalCommand.CommandListener;
 import de.nec.nle.siafu.graphics.GUI;
@@ -127,14 +127,14 @@ public class Controller {
 	/**
 	 * The Progress object that displays simulation load status.
 	 */
-	private static Progress progress;
+	private static IProgress progress;
 
 	/**
 	 * Get the Progress class that displays simulation laod status.
 	 * 
 	 * @return the progress instance to use
 	 */
-	public static Progress getProgress() {
+	public static IProgress getProgress() {
 		return progress;
 	}
 	
@@ -241,7 +241,7 @@ public class Controller {
 				+ DEFAULT_CONFIG_FILE);
 		XMLConfiguration newConfig = new XMLConfiguration();
 		newConfig.setRootElementName("configuration");
-		newConfig.setProperty("commandlistener.enable", true);
+		newConfig.setProperty("commandlistener.enable", false);
 		newConfig.setProperty("commandlistener.tcpport", DEFAULT_PORT);
 		newConfig.setProperty("ui.usegui", true);
 		newConfig.setProperty("ui.speed", DEFAULT_UI_SPEED);

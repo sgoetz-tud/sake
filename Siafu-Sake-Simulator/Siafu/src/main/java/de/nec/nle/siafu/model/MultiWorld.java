@@ -1,11 +1,6 @@
 package de.nec.nle.siafu.model;
 
-import java.util.List;
-
-//import org.eclipse.swt.graphics.ImageData;
-
-
-import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
+import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
@@ -14,17 +9,15 @@ import de.tud.swt.evaluation.WorkingConfiguration;
  * @author Christopher Werner
  *
  */
-public class MultiWorld implements IWorld {
+public class MultiWorld extends AWorld {
 	
 	private SimulationData simData;
 	
 	private boolean[][] walls;
-	
-	private List<MultiAgent> people;
-	
+		
 	private WorkingConfiguration configuration;
 	
-	private BaseAgentModelMulti model;
+	private BaseAgentModel model;
 	
 	/**
 	 * Instantiate the world in which the simulation will run.
@@ -38,6 +31,7 @@ public class MultiWorld implements IWorld {
 	public MultiWorld(SimulationData simData, WorkingConfiguration configuration) {
 		this.configuration = configuration;
 		this.simData = simData;
+		
 		//simData.getConfigFile();
 		
 		buildWalls();
@@ -50,21 +44,16 @@ public class MultiWorld implements IWorld {
 	 */
 	private void createPeople() {
 		try {
-			model = (BaseAgentModelMulti) simData.getMultiAgentModelClass()
-					.getConstructor(new Class[] { this.getClass() , configuration.getClass() })
-					.newInstance(new Object[] { this , configuration });
+			model = (BaseAgentModel) simData.getAgentModelClass()
+					.getConstructor(new Class[] { AWorld.class, configuration.getClass() })
+					.newInstance(new Object[] { (AWorld)this , configuration }); //this.getClass()
 		} catch (Exception e) {
 			throw new RuntimeException("Can't instantiate the agent model", e);
 		}
-
-		people = model.createAgents();
+		agents = model.createAgents();
 	}
 	
-	public List<MultiAgent> getPeople() {
-		return people;
-	}
-	
-	public BaseAgentModelMulti getAgentModel() {
+	public BaseAgentModel getAgentModel() {
 		return model;
 	}
 	
@@ -98,6 +87,16 @@ public class MultiWorld implements IWorld {
 	 */
 	public boolean isAWall(int row, int col) {
 		return walls[row][col];
+	}
+
+	public AAgent createPeople(String name, String image, AWorld world, IExternalConnection extern) {
+		switch (configuration.map) {
+			case 0:  return new MultiAgent(name, 139, 133, extern);
+	        case 1:  return new MultiAgent(name, 139, 133, extern);	            
+	        case 2:  return new MultiAgent(name, 199, 206, extern);
+	        case 3:  return new MultiAgent(name, 199, 206, extern);
+	        default: return null;
+		}
 	}
 
 }

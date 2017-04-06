@@ -30,7 +30,7 @@ import de.nec.nle.siafu.control.Controller;
  * @author Miquel Martin
  * 
  */
-public class ConsoleProgress implements Progress {
+public class ConsoleProgress implements IProgress {
 
 	/**
 	 * Report the event on the standard output.

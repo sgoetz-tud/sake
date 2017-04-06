@@ -19,12 +19,9 @@
 
 package de.nec.nle.siafu.graphics;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
-
-import javax.swing.ImageIcon;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;

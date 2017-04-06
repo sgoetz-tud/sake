@@ -3,13 +3,14 @@ package de.tud.swt.testland;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.Position;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.AAgent;
+import de.nec.nle.siafu.model.IExternalConnection;
+import de.nec.nle.siafu.model.AWorld;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.ISimulatorAdapter;
 import de.tud.swt.cleaningrobots.AgentCore;
 import de.tud.swt.cleaningrobots.hardware.Accu;
+import de.tud.swt.cleaningrobots.model.Position;
 
 /**
  * With user interface report in Siafu.
@@ -19,20 +20,23 @@ import de.tud.swt.cleaningrobots.hardware.Accu;
  * @author Christopher Werner
  *
  */
-public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAgent {
+public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 
 	private boolean finish;	
-	protected AgentCore cleaningRobot;
-	private World siafuWorld;
+	private AgentCore cleaningRobot;
+	private AWorld siafuWorld;
+	private AAgent siafuAgent;
 	
-	public SiafuAgent(String name, Position start, String image, World world, Configuration configuration) {		
-		super(name, start, image, world);
-		
-		this.cleaningRobot = new AgentCore(name, this, new Accu(48.0), configuration);
+	public SiafuAgent(String name, String image, AWorld world, Configuration configuration) {
 		this.siafuWorld = world;
+		this.siafuAgent = world.createPeople(name, image, world, this);
+		this.cleaningRobot = new AgentCore(name, this, new Accu(48.0), configuration);
 	}	
+	
+	public AAgent getRelatedAgent () {
+		return siafuAgent;
+	}
 		
-	@Override
 	public void wander() {
 		this.finish = this.cleaningRobot.action();
 	}
@@ -55,13 +59,11 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 		return this.cleaningRobot;
 	}
 
-	@Override
 	public void setName(String name) {
-		super.setName(name);
+		this.siafuAgent.setName(name);
 		this.cleaningRobot.setName(name);
 	}
 	
-	@Override
 	public void setSpeed(int speed) {
 		//ignore..
 	}
@@ -70,14 +72,11 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 	public List<AgentCore> getNearRobots(int visionRadius) {
 		List <AgentCore> result = new LinkedList<AgentCore>(); 
 		
-		for (Agent nearAgent : this.siafuWorld.getPeople())
+		for (AAgent nearAgent : this.siafuWorld.getAgents())
 		{
-			//If there are near Robots
-			if (nearAgent instanceof SiafuAgent){
-				if (Math.abs(this.getPos().getCol() - nearAgent.getPos().getCol()) <= visionRadius 
-						&& Math.abs(this.getPos().getRow() - nearAgent.getPos().getRow()) <= visionRadius){
-					result.add(((SiafuAgent) nearAgent).getAgentCore());
-				}
+			if (Math.abs(this.siafuAgent.getCol() - nearAgent.getCol()) <= visionRadius 
+					&& Math.abs(this.siafuAgent.getRow() - nearAgent.getRow()) <= visionRadius){
+				result.add(((SiafuAgent) nearAgent.getExternal()).getAgentCore());
 			}
 		}
 		return result;
@@ -87,30 +86,26 @@ public class SiafuAgent extends Agent implements ISimulatorAdapter, ISimulatorAg
 	public List<AgentCore> getAllRobots() {
 		List <AgentCore> result = new LinkedList<AgentCore>(); 
 				
-		for (Agent nearAgent : this.siafuWorld.getPeople())
+		for (AAgent nearAgent : this.siafuWorld.getAgents())
 		{
-			if (nearAgent instanceof SiafuAgent){
-				result.add(((SiafuAgent) nearAgent).getAgentCore());
-			}
+			result.add(((SiafuAgent) nearAgent.getExternal()).getAgentCore());
 		}
 		return result;
 	}
 	
 	@Override
-	public de.tud.swt.cleaningrobots.model.Position getPosition() {
-		de.tud.swt.cleaningrobots.model.Position result = new de.tud.swt.cleaningrobots.model.Position(
-				this.getPos().getCol(), this.getPos().getRow());
+	public Position getPosition() {
+		Position result = new Position(this.siafuAgent.getCol(), this.siafuAgent.getRow());
 		return result;
 	}
 	
 	@Override
-	public void setPosition(de.tud.swt.cleaningrobots.model.Position position) {
-		Position siafuPosition = new Position(position.getY(), position.getX());
-		setPos(siafuPosition);
+	public void setPosition(Position position) {
+		this.siafuAgent.setPosition(position.getY(), position.getX());
 	}
 
 	@Override
 	public boolean isWall(int row, int col) {
-		return siafuWorld.isAWall(new de.nec.nle.siafu.model.Position(row, col));
+		return siafuWorld.isAWall(row, col);
 	}
 }

@@ -33,7 +33,6 @@ import org.apache.commons.configuration.XMLConfiguration;
 import org.eclipse.swt.graphics.ImageData;
 
 import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
-import de.nec.nle.siafu.behaviormodels.BaseAgentModelMulti;
 import de.nec.nle.siafu.behaviormodels.BaseContextModel;
 import de.nec.nle.siafu.behaviormodels.BaseWorldModel;
 
@@ -150,22 +149,6 @@ public abstract class SimulationData {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	/**
-	 * Get the AgentModel using the class loader set to the simulation data
-	 * path.
-	 * 
-	 * @return the AgentModel for this simulation
-	 */
-	public Class<? extends BaseAgentModelMulti> getMultiAgentModelClass() {
-		try {
-			return Class.forName(simulationConfig
-					.getString("models.multiagentmodel"), true, classLoader).asSubclass(BaseAgentModelMulti.class);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 
 	/**
 	 * Get the ContextModel using the class loader set to the simulation data

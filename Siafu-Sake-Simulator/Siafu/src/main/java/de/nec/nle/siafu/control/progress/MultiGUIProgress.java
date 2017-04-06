@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.ProgressBar;
  * @author Christopher Werner
  * 
  */
-public class MultiGUIProgress implements Progress {
+public class MultiGUIProgress implements IProgress {
 	
 	/** The system font, in bold. */
 	private Font bold;

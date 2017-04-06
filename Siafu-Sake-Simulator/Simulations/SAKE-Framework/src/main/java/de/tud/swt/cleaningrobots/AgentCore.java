@@ -60,7 +60,7 @@ public class AgentCore extends Agent {
 	}
 
 	public AgentCore(String name, ISimulatorAdapter communicationAdapter, Accu accu, Configuration configuration) {
-
+		
 		this.configuration = configuration;
 		this.name = name;
 		this.world = new World(this);
