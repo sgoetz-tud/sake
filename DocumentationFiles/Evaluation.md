@@ -20,7 +20,7 @@ For more runs at the same time it is possible to create an XML File like (Siafu-
 
 ## 2. Start a Simulation
 
-To start the simulation, choose <b>"Simulation->Open unpacked Simulation"</b> and choose the File <b>"simulations/SAKE-Framework-1.0.6-SNAPSHOT.jar"</b>. The simulations with the predefined configuration will start now.
+To start the simulation, choose <b>"Simulation->Open packed Simulation"</b> and choose the File <b>"simulations/SAKE-Framework-*.jar"</b>. The simulations with the predefined configuration will start now.
 
 ## 3. Evaluation output data
 
