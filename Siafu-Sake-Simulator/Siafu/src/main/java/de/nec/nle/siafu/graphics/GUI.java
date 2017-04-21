@@ -43,13 +43,13 @@ import de.nec.nle.siafu.graphics.controlpanel.ControlPanel;
 import de.nec.nle.siafu.graphics.markers.SpotMarker;
 import de.nec.nle.siafu.graphics.simulationarea.CanvasMouseListener;
 import de.nec.nle.siafu.graphics.simulationarea.CanvasPaintListener;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Overlay;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.tud.swt.evaluation.EvaluationConstants;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
@@ -193,7 +193,7 @@ public class GUI implements Runnable {
 	private Controller control;
 
 	/** A reference to the simulation's world. */
-	private World world;
+	private SiafuWorld world;
 
 	/**
 	 * The class responsible for all the actual swt commands to draw the
@@ -341,7 +341,7 @@ public class GUI implements Runnable {
 							Controller.getProgress().reportPlaceCreated("Walls");
 							((MultiGUIProgress) Controller.getProgress()).update(loadingComposite);
 							simData.createWallFiles();
-							Controller.getProgress().reportWorldCreation("Testland");
+							Controller.getProgress().reportWorldCreation(simData.getWorldName());
 							((MultiGUIProgress) Controller.getProgress()).update(loadingComposite);
 							ms = new MultiSimulation(configuration, simData);
 							Controller.getProgress().reportSimulationStarted();
@@ -554,7 +554,7 @@ public class GUI implements Runnable {
 	 * 
 	 * @return a collection with the agents
 	 */
-	public Collection<Agent> getAgents() {
+	public Collection<SiafuAgent> getAgents() {
 		return world.getPeople();
 	}
 
@@ -572,8 +572,8 @@ public class GUI implements Runnable {
 	 * 
 	 * @return a collection with all the places
 	 */
-	public Collection<Place> getPlaces() {
-		return world.getPlaces();
+	public Collection<SiafuPlace> getPlaces() {
+		return world.getSiafuPlaces();
 	}
 
 	/**
@@ -583,13 +583,13 @@ public class GUI implements Runnable {
 	 *            the required type
 	 * @return a collection with the palces of that type
 	 */
-	public Collection<Place> getPlacesOfType(final String type) {
+	public Collection<SiafuPlace> getPlacesOfType(final String type) {
 
 		try {
 			return world.getPlacesOfType(type);
 		} catch (PlaceTypeUndefinedException e) {
 			e.printStackTrace();
-			return new ArrayList<Place>();
+			return new ArrayList<SiafuPlace>();
 		}
 	}
 
@@ -684,7 +684,7 @@ public class GUI implements Runnable {
 	 *            the agent
 	 * @return the sprite associated to that agent
 	 */
-	public Sprite getAgentSprite(final Agent a) {
+	public Sprite getAgentSprite(final SiafuAgent a) {
 		return painter.getAgentSprite(a);
 	}
 
@@ -785,7 +785,7 @@ public class GUI implements Runnable {
 	 * @param clickPos
 	 *            the position the user has clicked on the canvas
 	 */
-	public void showContextMenu(final Position clickPos) {
+	public void showContextMenu(final SiafuPosition clickPos) {
 		contextMenuListener.show(clickPos);
 	}
 

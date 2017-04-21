@@ -28,6 +28,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.eclipse.swt.graphics.ImageData;
@@ -77,7 +78,11 @@ public abstract class SimulationData {
 	public static final String BACKGROUND_FILE_FAKK = "map/backgroundFakK.png";
 	public static final String BACKGROUND_FILE_FAK = "map/backgroundFak.png";
 
-	// FIXME: I'd like all the images to be png
+	private int COLOR_WHITE = 0xFFFFFF;
+	private ImageData imgFakK;
+	private ImageData imgR;
+	private ImageData imgLab;
+	private ImageData imgFak;
 
 	/**
 	 * Path to the simulation configuration.
@@ -223,6 +228,10 @@ public abstract class SimulationData {
 	public ArrayList<String> getSpriteNames() {
 		return getFileNamesByPath(simulationConfig.getString("spritepath"));
 	}
+	
+	public String getWorldName () {
+		return getConfigFile().getString("worldname");
+	}
 
 	/**
 	 * Retrieve from the simulation data an InputStream for the image that
@@ -246,83 +255,38 @@ public abstract class SimulationData {
 	public InputStream getWallsFakKFile() {
 		return getFile(WALLS_FILE_FAKK);
 	}
-	
-	private int COLOR_WHITE = 0xFFFFFF;
-	/*private boolean[][] wallReck;
-	private boolean[][] wallLab;
-	private boolean[][] wallFak;
-	private boolean[][] wallFakK;*/
-	private ImageData imgFakK;
-	private ImageData imgR;
-	private ImageData imgLab;
-	private ImageData imgFak;
-	
-	public boolean[][] getWallsFakK () {
-		int height = imgFakK.height;
-		int width = imgFakK.width;
+		
+	public boolean[][] getWalls (ImageData img) {
+		int height = img.height;
+		int width = img.width;
 
 		boolean[][] walls = new boolean[height][width];
 
 		for (int i = 0; i < height; i++) {
 			int[] colors = new int[width];
-			imgFakK.getPixels(0, i, width, colors, 0);
+			img.getPixels(0, i, width, colors, 0);
 
 			for (int j = 0; j < width; j++) {
 				walls[i][j] = (colors[j] == COLOR_WHITE);
 			}
 		}
 		return walls;
+	}
+	
+	public boolean[][] getWallsFakK () {
+		return getWalls(imgFakK);
 	}
 	
 	public boolean[][] getWallsLab () {
-		int height = imgLab.height;
-		int width = imgLab.width;
-
-		boolean[][] walls = new boolean[height][width];
-
-		for (int i = 0; i < height; i++) {
-			int[] colors = new int[width];
-			imgLab.getPixels(0, i, width, colors, 0);
-
-			for (int j = 0; j < width; j++) {
-				walls[i][j] = (colors[j] == COLOR_WHITE);
-			}
-		}
-		return walls;
+		return getWalls(imgLab);
 	}
 	
 	public boolean[][] getWallsFak () {
-		int height = imgFak.height;
-		int width = imgFak.width;
-
-		boolean[][] walls = new boolean[height][width];
-
-		for (int i = 0; i < height; i++) {
-			int[] colors = new int[width];
-			imgFak.getPixels(0, i, width, colors, 0);
-
-			for (int j = 0; j < width; j++) {
-				walls[i][j] = (colors[j] == COLOR_WHITE);
-			}
-		}
-		return walls;
+		return getWalls(imgFak);
 	}
 	
 	public boolean[][] getWallsR () {
-		int height = imgR.height;
-		int width = imgR.width;
-
-		boolean[][] walls = new boolean[height][width];
-
-		for (int i = 0; i < height; i++) {
-			int[] colors = new int[width];
-			imgR.getPixels(0, i, width, colors, 0);
-
-			for (int j = 0; j < width; j++) {
-				walls[i][j] = (colors[j] == COLOR_WHITE);
-			}
-		}
-		return walls;
+		return getWalls(imgR);
 	}
 	
 	public void createWallFiles () {
@@ -422,6 +386,34 @@ public abstract class SimulationData {
 	protected abstract HashMap<String, InputStream> getFilesByPath(
 			final String path);
 	
+	/**
+	 * Get an instance of Overlay which fits the particular overlay defined in
+	 * the simulation data. The values come from the InputStream obtained from
+	 * simulation data, and the name, type and type details are obtained from
+	 * the simulation configuration.
+	 * 
+	 * @param name the overlay name
+	 * @param is the InputStream that represents the values
+	 * @param simulationConfig the configuration details for the overlay
+	 * @return an instance of Overlay whose getValue() method returns what you
+	 *         would expect from the overlay subtype
+	 */
+	public Overlay getOverlay(final String name, final InputStream is,
+			final Configuration simulationConfig) {
+		String type = simulationConfig.getString("overlays." + name + "[@type]");
+		if (type == null) {
+			throw new RuntimeException("Configuration missing for overlay "	+ name);
+		}
+		if (type.equals("binary")) {
+			return new BinaryOverlay(name, is, simulationConfig);
+		} else if (type.equals("discrete")) {
+			return new DiscreteOverlay(name, is, simulationConfig);
+		} else if (type.equals("real")) {
+			return new RealOverlay(name, is);
+		} else {
+			throw new RuntimeException("Unknown overlay type for " + name);
+		}
+	}
 
 	/**
 	 * <p>Gets the names of the files from the simulation data associated to 

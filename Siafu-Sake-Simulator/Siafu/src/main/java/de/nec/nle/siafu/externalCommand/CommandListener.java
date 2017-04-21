@@ -57,9 +57,9 @@ import de.nec.nle.siafu.graphics.markers.InvalidColorException;
 import de.nec.nle.siafu.graphics.markers.Marker;
 import de.nec.nle.siafu.graphics.markers.SpotMarker;
 import de.nec.nle.siafu.graphics.markers.StickMarker;
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuAgent;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.Trackable;
 
 /**
@@ -316,10 +316,10 @@ public class CommandListener implements Runnable {
 			if (name.equalsIgnoreCase(ALL)) {
 				cp.hideAll();
 			} else {
-				Agent person;
+				SiafuAgent person;
 
 				try {
-					person = (Agent) control.getWorld().getPersonByName(name);
+					person = (SiafuAgent) control.getWorld().getPersonByName(name);
 				} catch (AgentNotFoundException e) {
 					sendError("Who's " + name + "?");
 					return;
@@ -344,10 +344,10 @@ public class CommandListener implements Runnable {
 			if (name.equalsIgnoreCase(ALL)) {
 				cp.unhideAll();
 			} else {
-				Agent person;
+				SiafuAgent person;
 
 				try {
-					person = (Agent) control.getWorld().getPersonByName(name);
+					person = (SiafuAgent) control.getWorld().getPersonByName(name);
 				} catch (AgentNotFoundException e) {
 					sendError("Who's " + name + "?");
 					return;
@@ -371,10 +371,10 @@ public class CommandListener implements Runnable {
 			String name = part[1];
 			String image = part[2];
 
-			Agent person;
+			SiafuAgent person;
 
 			try {
-				person = (Agent) control.getWorld().getPersonByName(name);
+				person = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				sendError("Who's " + name + "?");
 				return;
@@ -409,10 +409,10 @@ public class CommandListener implements Runnable {
 
 			String name = part[1];
 
-			Agent person;
+			SiafuAgent person;
 
 			try {
-				person = (Agent) control.getWorld().getPersonByName(name);
+				person = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				sendError("Who's " + name + "?");
 
@@ -453,10 +453,10 @@ public class CommandListener implements Runnable {
 			if (name.equalsIgnoreCase(ALL)) {
 				cp.autoAll(autoSetting);
 			} else {
-				Agent person;
+				SiafuAgent person;
 
 				try {
-					person = (Agent) control.getWorld().getPersonByName(name);
+					person = (SiafuAgent) control.getWorld().getPersonByName(name);
 				} catch (AgentNotFoundException e) {
 					sendError("Who's " + name + "?");
 
@@ -483,16 +483,16 @@ public class CommandListener implements Runnable {
 			String name = part[1];
 			Integer dist = new Integer(part[2]);
 
-			Agent person;
+			SiafuAgent person;
 
 			try {
-				person = (Agent) control.getWorld().getPersonByName(name);
+				person = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				sendError("Who's " + name + "?");
 				return;
 			}
 
-			Position pos = person.getPos();
+			SiafuPosition pos = person.getPos();
 
 			try {
 				send(cp.findAgentsNear(pos, dist));
@@ -517,16 +517,16 @@ public class CommandListener implements Runnable {
 			String name = part[1];
 			Integer dist = new Integer(part[2]);
 
-			Agent person;
+			SiafuAgent person;
 
 			try {
-				person = (Agent) control.getWorld().getPersonByName(name);
+				person = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				sendError("Who's " + name + "?");
 				return;
 			}
 
-			Position pos = person.getPos();
+			SiafuPosition pos = person.getPos();
 
 			try {
 				send(cp.findPlacesNear(pos, dist));
@@ -562,20 +562,20 @@ public class CommandListener implements Runnable {
 				return;
 			}
 
-			Agent person;
+			SiafuAgent person;
 
 			try {
-				person = (Agent) control.getWorld().getPersonByName(name);
+				person = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				sendError("Who's " + name + "?");
 
 				return;
 			}
 
-			Place tempPlace;
+			SiafuPlace tempPlace;
 
 			try {
-				tempPlace = new Place("Unknown", new Position(latitude,
+				tempPlace = new SiafuPlace("Unknown", new SiafuPosition(latitude,
 						longitude), control.getWorld(), person.getPos());
 			} catch (PositionUnreachableException e) {
 				sendError("Your destination is unreachable "
@@ -603,10 +603,10 @@ public class CommandListener implements Runnable {
 			Trackable t;
 
 			try {
-				t = (Agent) control.getWorld().getPersonByName(name);
+				t = (SiafuAgent) control.getWorld().getPersonByName(name);
 			} catch (AgentNotFoundException e) {
 				try {
-					t = (Place) control.getWorld().getPlaceByName(name);
+					t = (SiafuPlace) control.getWorld().getPlaceByName(name);
 				} catch (PlaceNotFoundException e1) {
 					sendError("Who or where is " + name + "?");
 					return;
@@ -765,10 +765,10 @@ public class CommandListener implements Runnable {
 				Trackable t;
 
 				try {
-					t = (Agent) control.getWorld().getPersonByName(name);
+					t = (SiafuAgent) control.getWorld().getPersonByName(name);
 				} catch (AgentNotFoundException e) {
 					try {
-						t = (Place) control.getWorld().getPlaceByName(name);
+						t = (SiafuPlace) control.getWorld().getPlaceByName(name);
 					} catch (PlaceNotFoundException e1) {
 						sendError("Who or where is " + name + "?");
 						return;

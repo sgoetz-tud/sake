@@ -3,9 +3,9 @@ package de.tud.swt.testland;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.nec.nle.siafu.model.AAgent;
+import de.nec.nle.siafu.model.Agent;
 import de.nec.nle.siafu.model.IExternalConnection;
-import de.nec.nle.siafu.model.AWorld;
+import de.nec.nle.siafu.model.World;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.ISimulatorAdapter;
 import de.tud.swt.cleaningrobots.AgentCore;
@@ -24,16 +24,16 @@ public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 
 	private boolean finish;	
 	private AgentCore cleaningRobot;
-	private AWorld siafuWorld;
-	private AAgent siafuAgent;
+	private World siafuWorld;
+	private Agent siafuAgent;
 	
-	public SiafuAgent(String name, String image, AWorld world, Configuration configuration) {
+	public SiafuAgent(String name, String image, World world, Configuration configuration) {
 		this.siafuWorld = world;
 		this.siafuAgent = world.createPeople(name, image, world, this);
 		this.cleaningRobot = new AgentCore(name, this, new Accu(48.0), configuration);
 	}	
 	
-	public AAgent getRelatedAgent () {
+	public Agent getRelatedAgent () {
 		return siafuAgent;
 	}
 		
@@ -72,7 +72,7 @@ public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 	public List<AgentCore> getNearRobots(int visionRadius) {
 		List <AgentCore> result = new LinkedList<AgentCore>(); 
 		
-		for (AAgent nearAgent : this.siafuWorld.getAgents())
+		for (Agent nearAgent : this.siafuWorld.getAgents())
 		{
 			if (Math.abs(this.siafuAgent.getCol() - nearAgent.getCol()) <= visionRadius 
 					&& Math.abs(this.siafuAgent.getRow() - nearAgent.getRow()) <= visionRadius){
@@ -86,7 +86,7 @@ public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 	public List<AgentCore> getAllRobots() {
 		List <AgentCore> result = new LinkedList<AgentCore>(); 
 				
-		for (AAgent nearAgent : this.siafuWorld.getAgents())
+		for (Agent nearAgent : this.siafuWorld.getAgents())
 		{
 			result.add(((SiafuAgent) nearAgent.getExternal()).getAgentCore());
 		}

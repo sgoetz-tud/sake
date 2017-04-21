@@ -21,7 +21,6 @@ package de.nec.nle.siafu.model;
 
 import java.io.InputStream;
 
-import org.apache.commons.configuration.Configuration;
 import org.eclipse.swt.graphics.ImageData;
 
 import de.nec.nle.siafu.graphics.Overlayable;
@@ -78,37 +77,6 @@ public abstract class Overlay implements Overlayable {
 	}
 
 	/**
-	 * Get an instance of Overlay which fits the particular overlay defined in
-	 * the simulation data. The values come from the InputStream obtained from
-	 * simulation data, and the name, type and type details are obtained from
-	 * the simulation configuration.
-	 * 
-	 * @param name the overlay name
-	 * @param is the InputStream that represents the values
-	 * @param simulationConfig the configuration details for the overlay
-	 * @return an instance of Overlay whose getValue() method returns what you
-	 *         would expect from the overlay subtype
-	 */
-	public static Overlay getOverlay(final String name, final InputStream is,
-			final Configuration simulationConfig) {
-		String type =
-				simulationConfig.getString("overlays." + name + "[@type]");
-		if (type == null) {
-			throw new RuntimeException("Configuration missing for overlay "
-					+ name);
-		}
-		if (type.equals("binary")) {
-			return new BinaryOverlay(name, is, simulationConfig);
-		} else if (type.equals("discrete")) {
-			return new DiscreteOverlay(name, is, simulationConfig);
-		} else if (type.equals("real")) {
-			return new RealOverlay(name, is);
-		} else {
-			throw new RuntimeException("Unknown overlay type for " + name);
-		}
-	}
-
-	/**
 	 * Fill the value matrix from the data in an InputStream which is linked
 	 * to an image.
 	 * 
@@ -154,7 +122,7 @@ public abstract class Overlay implements Overlayable {
 	 * @param pos the position for which we want to read the value
 	 * @return the Publishable with the value
 	 */
-	public abstract Publishable getValue(Position pos);
+	public abstract Publishable getValue(SiafuPosition pos);
 
 	/**
 	 * Get a string representation of the overlay by printing out the

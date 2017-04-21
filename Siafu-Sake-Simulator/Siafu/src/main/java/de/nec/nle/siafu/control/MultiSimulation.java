@@ -1,8 +1,8 @@
 package de.nec.nle.siafu.control;
 
 import de.nec.nle.siafu.behaviormodels.BaseAgentModel;
+import de.nec.nle.siafu.model.World;
 import de.nec.nle.siafu.model.SimulationData;
-import de.nec.nle.siafu.model.MultiWorld;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
@@ -40,7 +40,7 @@ public class MultiSimulation implements Runnable {
 		return simulationRunning;
 	}
 		
-	private MultiWorld world;
+	private World world;
 
 	/**
 	 * Build a <code>Simulation</code> object and start a thread that
@@ -54,7 +54,7 @@ public class MultiSimulation implements Runnable {
 		this.simulationRunning = true;
 		this.endSimulation = false;
 		
-		this.world = new MultiWorld(simData, configuration);
+		this.world = new World(simData, configuration);
 		System.out.println("World created: " + configuration.toString());
 						
 		new Thread(this, "Simulation thread").start();

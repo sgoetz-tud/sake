@@ -52,9 +52,7 @@ public class BinaryOverlay extends Overlay {
 			final Configuration simulationConfig) {
 		super(name, is);
 
-		threshold =
-				simulationConfig.getInt("overlays." + name
-						+ "[@thresholdvalue]");
+		threshold =	simulationConfig.getInt("overlays." + name + "[@thresholdvalue]");
 	}
 
 	/**
@@ -81,13 +79,23 @@ public class BinaryOverlay extends Overlay {
 	 * @return a BooleanType with true or false depending on the overlay
 	 *         value.
 	 */
-	public BooleanType getValue(final Position pos) {
+	public BooleanType getValue(final SiafuPosition pos) {
 		int val = this.value[pos.getRow()][pos.getCol()];
 
 		if (val <= threshold) {
 			return new BooleanType(true);
 		} else {
 			return new BooleanType(false);
+		}
+	}
+	
+	public boolean getValueType(final SiafuPosition pos) {
+		int val = this.value[pos.getRow()][pos.getCol()];
+
+		if (val <= threshold) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 

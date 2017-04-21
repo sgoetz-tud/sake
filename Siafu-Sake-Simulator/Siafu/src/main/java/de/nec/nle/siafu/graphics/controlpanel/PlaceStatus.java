@@ -39,7 +39,7 @@ import de.nec.nle.siafu.graphics.Markers;
 import de.nec.nle.siafu.graphics.markers.Marker;
 import de.nec.nle.siafu.graphics.markers.StickMarker;
 import de.nec.nle.siafu.model.Overlay;
-import de.nec.nle.siafu.model.Place;
+import de.nec.nle.siafu.model.SiafuPlace;
 import de.nec.nle.siafu.types.Publishable;
 
 /**
@@ -88,7 +88,7 @@ public class PlaceStatus extends BaseStatus {
 	 * @param gui the container gui
 	 * @param placesPanel the panel that contains all the status items
 	 */
-	public PlaceStatus(final Composite parent, final Place place,
+	public PlaceStatus(final Composite parent, final SiafuPlace place,
 			final Image icon, final String colorString, final GUI gui,
 			final PlacesPanel placesPanel) {
 		this(parent, place, icon, ColorTools
@@ -106,7 +106,7 @@ public class PlaceStatus extends BaseStatus {
 	 * @param gui the container gui
 	 * @param placesPanel the panel that contains all the status items
 	 */
-	public PlaceStatus(final Composite parent, final Place place,
+	public PlaceStatus(final Composite parent, final SiafuPlace place,
 			final Image icon, final RGB rgbColor, final GUI gui,
 			final PlacesPanel placesPanel) {
 		super(parent, gui, placesPanel, place, place.getName(), icon,
@@ -160,7 +160,7 @@ public class PlaceStatus extends BaseStatus {
 		showOverlayButton.addMouseListener(new MouseAdapter() {
 
 			public void mouseDown(final MouseEvent e) {
-				gui.requestOverlayDrawing((Place) content);
+				gui.requestOverlayDrawing((SiafuPlace) content);
 			}
 
 			public void mouseUp(final MouseEvent e) {
@@ -189,7 +189,7 @@ public class PlaceStatus extends BaseStatus {
 		placeLabels[0] = new LabelPair(parent, SWT.NONE, "Position");
 		placeLabels[1] = new LabelPair(parent, SWT.NONE, "Type");
 
-		Place place = (Place) content;
+		SiafuPlace place = (SiafuPlace) content;
 		placeLabels[0].setValue(place.getPos().getPrettyCoordinates());
 		placeLabels[1].setValue(place.getType());
 	}
@@ -219,14 +219,14 @@ public class PlaceStatus extends BaseStatus {
 	 * @param parent the parent composite
 	 */
 	private void createInfoLabelsAndValues(final Composite parent) {
-		Place place = (Place) content;
+		SiafuPlace place = (SiafuPlace) content;
 
 		if (infoLabels != null) {
 			for (LabelPair lp : infoLabels) {
 				lp.dispose();
 			}
 		}
-		Set<String> infoSet = ((Place) content).getInfoKeys();
+		Set<String> infoSet = ((SiafuPlace) content).getInfoKeys();
 
 		if (infoSet.size() != 0) {
 			Iterator<String> it = infoSet.iterator();
@@ -254,7 +254,7 @@ public class PlaceStatus extends BaseStatus {
 
 	/** Refresh the overlay labels. */
 	private void refreshOvLabels() {
-		Place place = (Place) content;
+		SiafuPlace place = (SiafuPlace) content;
 		Iterator<Overlay> ovIt = overlays.iterator();
 		int i = 0;
 

@@ -38,7 +38,7 @@ import de.nec.nle.siafu.graphics.GUI;
 import de.nec.nle.siafu.graphics.Markers;
 import de.nec.nle.siafu.graphics.markers.BalloonMarker;
 import de.nec.nle.siafu.graphics.markers.Marker;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Overlay;
 import de.nec.nle.siafu.types.Publishable;
 
@@ -88,7 +88,7 @@ public class AgentStatus extends BaseStatus {
 	 * @param agentsPanel the panel that contains all the status items
 	 */
 	public AgentStatus(final Composite parent, final int style,
-			final Agent agent, final Image icon, final GUI gui,
+			final SiafuAgent agent, final Image icon, final GUI gui,
 			final AgentsPanel agentsPanel) {
 		super(parent, gui, agentsPanel, agent, agent.getName(), icon,
 				ColorTools.parseColorString(BalloonMarker.DEFAULT_COLOR));
@@ -131,7 +131,7 @@ public class AgentStatus extends BaseStatus {
 	 * @param parent the parent composite
 	 */
 	private void addMovesFreelyButton(final Composite parent) {
-		Agent a = (Agent) content;
+		SiafuAgent a = (SiafuAgent) content;
 		movesFreelyButton = new Button(parent, SWT.CHECK);
 		movesFreelyButton.setText("Moves freely");
 		movesFreelyButton.setLayoutData(new GridData(
@@ -140,9 +140,9 @@ public class AgentStatus extends BaseStatus {
 		movesFreelyButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(final SelectionEvent e) {
 				if (movesFreelyButton.getSelection()) {
-					((Agent) content).returnControl();
+					((SiafuAgent) content).returnControl();
 				} else {
-					((Agent) content).getControl();
+					((SiafuAgent) content).getControl();
 				}
 			}
 		});
@@ -192,7 +192,7 @@ public class AgentStatus extends BaseStatus {
 	 * @param parent the parent composite
 	 */
 	private void createInfoLabels(final Composite parent) {
-		Set<String> infoSet = Agent.getInfoKeys();
+		Set<String> infoSet = SiafuAgent.getInfoKeys();
 		Iterator<String> it = infoSet.iterator();
 		infoLabels = new LabelPair[infoSet.size()];
 
@@ -206,14 +206,14 @@ public class AgentStatus extends BaseStatus {
 	 * not.
 	 */
 	private void refreshMovesFreelyButton() {
-		Agent agent = (Agent) content;
+		SiafuAgent agent = (SiafuAgent) content;
 		movesFreelyButton.setSelection(agent.isOnAuto());
 
 	}
 
 	/** Update the labels with agent info. */
 	private void refreshAgentLabels() {
-		Agent agent = (Agent) content;
+		SiafuAgent agent = (SiafuAgent) content;
 		agentLabels[0].setValue(agent.getPos().getPrettyCoordinates());
 		agentLabels[1].setValue(agent.isAtDestination() ? "none" : agent
 				.getDestination().toString());
@@ -221,7 +221,7 @@ public class AgentStatus extends BaseStatus {
 
 	/** Update the overlay value labels. */
 	private void refreshOvLabels() {
-		Agent agent = (Agent) content;
+		SiafuAgent agent = (SiafuAgent) content;
 		Iterator<Overlay> ovIt = overlays.iterator();
 		int i = 0;
 
@@ -233,7 +233,7 @@ public class AgentStatus extends BaseStatus {
 
 	/** Update the info labels. */
 	private void refreshInfoLabels() {
-		Agent agent = (Agent) content;
+		SiafuAgent agent = (SiafuAgent) content;
 		Collection<Publishable> values = agent.getInfoValues();
 		Iterator<Publishable> it = values.iterator();
 

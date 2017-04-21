@@ -94,7 +94,7 @@ public class Gradient implements Serializable {
 	private final int w;
 
 	/** The center of the gradient. */
-	private Position center;
+	private SiafuPosition center;
 
 	/**
 	 * Creates a full map gradient, which knows the distance from any point in
@@ -106,7 +106,7 @@ public class Gradient implements Serializable {
 	 * @param world
 	 *            the world where we need to navigate
 	 */
-	public Gradient(final Position center, final World world) {
+	public Gradient(final SiafuPosition center, final SiafuWorld world) {
 		this(center, world, null);
 	}
 
@@ -130,8 +130,8 @@ public class Gradient implements Serializable {
 	 * @param world
 	 *            the world where we need to navigate
 	 */
-	public Gradient(final Position center, final World world,
-			final Position relevantPos) {
+	public Gradient(final SiafuPosition center, final SiafuWorld world,
+			final SiafuPosition relevantPos) {
 		h = world.getHeight();
 		w = world.getWidth();
 		this.center = center;
@@ -186,7 +186,7 @@ public class Gradient implements Serializable {
 	 * @param relevantPos
 	 *            the position we care about
 	 */
-	private void calculateGradient(final World world, final Position relevantPos) {
+	private void calculateGradient(final SiafuWorld world, final SiafuPosition relevantPos) {
 		distance = new int[h][w];
 		boolean doneCalculating = false;
 		boolean foundRelevantPos = false;
@@ -197,11 +197,11 @@ public class Gradient implements Serializable {
 			}
 		}
 		// The positions we still have to calculate in this round
-		Set<Position> pending = new HashSet<Position>();
+		Set<SiafuPosition> pending = new HashSet<SiafuPosition>();
 
 		// The newly discovered positions that will be pending on the next
 		// round.
-		Set<Position> next = new HashSet<Position>();
+		Set<SiafuPosition> next = new HashSet<SiafuPosition>();
 
 		// Make the center be at 0 distance from itself
 		distance[center.getRow()][center.getCol()] = 0;
@@ -210,7 +210,7 @@ public class Gradient implements Serializable {
 		while (!doneCalculating) {
 			// Calculate the distance to neighbouring points from each of the
 			// pending ones
-			for (Position pos : pending) {
+			for (SiafuPosition pos : pending) {
 				int distanceStraight = distance[pos.getRow()][pos.getCol()]
 						+ STRAIGHT_DISTANCE;
 				int distanceDiagonal = distance[pos.getRow()][pos.getCol()]
@@ -220,7 +220,7 @@ public class Gradient implements Serializable {
 				// horizaontally reachable
 				for (int dir = 0; dir < POSSIBLE_DIRS; dir += 2) {
 					try {
-						Position newPos = pos.calculateMove(dir);
+						SiafuPosition newPos = pos.calculateMove(dir);
 						if (distanceStraight < distance[newPos.getRow()][newPos
 								.getCol()]) {
 							distance[newPos.getRow()][newPos.getCol()] = distanceStraight;
@@ -235,7 +235,7 @@ public class Gradient implements Serializable {
 				// diagonally reachable
 				for (int dir = 1; dir < POSSIBLE_DIRS; dir += 2) {
 					try {
-						Position newPos = pos.calculateMove(dir);
+						SiafuPosition newPos = pos.calculateMove(dir);
 						if (distanceDiagonal < distance[newPos.getRow()][newPos
 								.getCol()]) {
 							distance[newPos.getRow()][newPos.getCol()] = distanceDiagonal;
@@ -251,7 +251,7 @@ public class Gradient implements Serializable {
 				}
 			}
 			pending = next;
-			next = new HashSet<Position>();
+			next = new HashSet<SiafuPosition>();
 
 			if (pending.isEmpty()) {
 				doneCalculating = true;
@@ -275,7 +275,7 @@ public class Gradient implements Serializable {
 	 *            preferredDir is -1, there is no preferred dir
 	 * @return the direction to follow
 	 */
-	public int pointFrom(final Position pos, final int preferredDir) {
+	public int pointFrom(final SiafuPosition pos, final int preferredDir) {
 
 		ArrayList<Integer> optimalDirs = new ArrayList<Integer>(POSSIBLE_DIRS);
 		int min = distance[pos.getRow()][pos.getCol()];
@@ -286,7 +286,7 @@ public class Gradient implements Serializable {
 		}
 
 		for (int dir = 0; dir < POSSIBLE_DIRS; dir++) {
-			Position aux;
+			SiafuPosition aux;
 
 			try {
 				aux = pos.calculateMove(dir);
@@ -320,7 +320,7 @@ public class Gradient implements Serializable {
 	 *            towards the gradient center
 	 * @return the optimal direction or -1 if the destination has been reached
 	 */
-	public int pointFrom(final Position pos) {
+	public int pointFrom(final SiafuPosition pos) {
 		return pointFrom(pos, -1);
 	}
 
@@ -332,7 +332,7 @@ public class Gradient implements Serializable {
 	 *            the position to calculate the distance from
 	 * @return the distance in simulation gridpoints
 	 */
-	public int distanceFrom(final Position pos) {
+	public int distanceFrom(final SiafuPosition pos) {
 		return distance[pos.getRow()][pos.getCol()];
 	}
 }

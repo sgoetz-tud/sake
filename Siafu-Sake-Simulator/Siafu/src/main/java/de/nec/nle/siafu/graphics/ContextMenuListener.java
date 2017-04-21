@@ -34,11 +34,11 @@ import org.eclipse.swt.widgets.Shell;
 import de.nec.nle.siafu.control.Controller;
 import de.nec.nle.siafu.exceptions.NothingNearException;
 import de.nec.nle.siafu.exceptions.PositionUnreachableException;
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuAgent;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 
 /**
  * This menu pops up upon right clicking on the canvas, and allows the user to
@@ -73,7 +73,7 @@ public class ContextMenuListener implements MenuListener {
 	private GUI gui;
 
 	/** The simulation's world. */
-	private World world;
+	private SiafuWorld world;
 
 	/** The context menu that we listen for. */
 	private Menu contextMenu;
@@ -85,7 +85,7 @@ public class ContextMenuListener implements MenuListener {
 	private Canvas canvas;
 
 	/** The position that the user clicked on. */
-	private Position clickPos;
+	private SiafuPosition clickPos;
 
 	/**
 	 * Create the context menu listener.
@@ -114,7 +114,7 @@ public class ContextMenuListener implements MenuListener {
 	 * 
 	 * @param clickedPosition the position the user clicked on
 	 */
-	public void show(final Position clickedPosition) {
+	public void show(final SiafuPosition clickedPosition) {
 		this.clickPos = clickedPosition;
 		contextMenu.setLocation(clickPos.getCol() + shell.getLocation().x
 				+ canvas.getLocation().x, clickPos.getRow()
@@ -156,17 +156,17 @@ public class ContextMenuListener implements MenuListener {
 	 */
 	private boolean addDestinationSetter() {
 		Trackable t = gui.getActive();
-		Agent a = null;
-		if (!(t instanceof Agent)) {
+		SiafuAgent a = null;
+		if (!(t instanceof SiafuAgent)) {
 			return false;
 		}
 
-		a = (Agent) t;
+		a = (SiafuAgent) t;
 
-		Place tempPlace;
+		SiafuPlace tempPlace;
 		try {
 			tempPlace =
-					new Place("UserSelected", clickPos, world, a.getPos());
+					new SiafuPlace("UserSelected", clickPos, world, a.getPos());
 		} catch (PositionUnreachableException ex) {
 			MenuItem mi = new MenuItem(contextMenu, SWT.PUSH);
 			mi.setEnabled(false);
@@ -188,13 +188,13 @@ public class ContextMenuListener implements MenuListener {
 			}
 
 			public void widgetSelected(final SelectionEvent e) {
-				Agent a;
+				SiafuAgent a;
 				Object o = gui.getActive();
 
-				if (o instanceof Agent) {
-					a = (Agent) o;
+				if (o instanceof SiafuAgent) {
+					a = (SiafuAgent) o;
 
-					a.setDestination(((Place) ((MenuItem) e.getSource())
+					a.setDestination(((SiafuPlace) ((MenuItem) e.getSource())
 							.getData()));
 					a.getControl();
 				}
@@ -220,7 +220,7 @@ public class ContextMenuListener implements MenuListener {
 					world.findAllAgentsNear(clickPos, NEARBY_DISTANCE,
 						true);
 			for (Trackable t : agents) {
-				Agent a = (Agent) t;
+				SiafuAgent a = (SiafuAgent) t;
 				MenuItem mi = new MenuItem(contextMenu, SWT.CASCADE);
 				mi.setText(a.getName());
 				mi.setData(a);
@@ -233,8 +233,8 @@ public class ContextMenuListener implements MenuListener {
 
 					public void widgetSelected(final SelectionEvent e) {
 						// TODO Auto-generated method stub
-						Agent agent =
-								(Agent) ((MenuItem) e.getSource())
+						SiafuAgent agent =
+								(SiafuAgent) ((MenuItem) e.getSource())
 										.getData();
 						gui.getControlPanel().setSelected(agent);
 						gui.setActiveTrackable(agent);

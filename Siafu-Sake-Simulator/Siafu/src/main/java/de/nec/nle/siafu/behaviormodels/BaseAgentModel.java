@@ -25,8 +25,8 @@ package de.nec.nle.siafu.behaviormodels;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import de.nec.nle.siafu.model.AAgent;
-import de.nec.nle.siafu.model.AWorld;
+import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.World;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
@@ -44,7 +44,7 @@ import de.tud.swt.evaluation.WorkingConfiguration;
  */
 public abstract class BaseAgentModel {
 	/** The simulated world. */
-	protected AWorld world;
+	protected World world;
 	protected boolean runFinish;
 	protected WorkingConfiguration configuration;
 
@@ -53,7 +53,7 @@ public abstract class BaseAgentModel {
 	 * 
 	 * @param world the simulation's world
 	 */
-	public BaseAgentModel(final AWorld world, WorkingConfiguration configuration) {
+	public BaseAgentModel(final World world, WorkingConfiguration configuration) {
 		this.configuration = configuration;
 		this.world = world;
 		this.runFinish = false;
@@ -73,7 +73,7 @@ public abstract class BaseAgentModel {
 	 * 
 	 * @return an ArrayList with the Agents to be simulated
 	 */
-	public abstract ArrayList<AAgent> createAgents();
+	public abstract ArrayList<Agent> createAgents();
 	
 	/**
 	 * Is always called ones before a simulation start doing iterations.
@@ -81,7 +81,7 @@ public abstract class BaseAgentModel {
 	 * @param agents a Collection containing the agents in the simulation,
 	 *            ready for your manipulation.
 	 */
-	public abstract void initializeAgents(final Collection<AAgent> agents);
+	public abstract void initializeAgents(final Collection<Agent> agents);
 
 	/**
 	 * This callback method is called at each iteration of the simulation. By
@@ -94,5 +94,5 @@ public abstract class BaseAgentModel {
 	 * @param agents a Collection containing the agents in the simulation,
 	 *            ready for your manipulation.
 	 */
-	public abstract void doIteration(final Collection<AAgent> agents);
+	public abstract void doIteration(final Collection<Agent> agents);
 }

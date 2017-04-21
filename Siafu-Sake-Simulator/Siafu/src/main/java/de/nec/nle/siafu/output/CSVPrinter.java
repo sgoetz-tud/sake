@@ -28,9 +28,9 @@ import java.io.PrintStream;
 
 import org.apache.commons.configuration.Configuration;
 
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Overlay;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.nec.nle.siafu.types.BooleanType;
 import de.nec.nle.siafu.types.Publishable;
 import de.nec.nle.siafu.types.Text;
@@ -70,7 +70,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	/**
 	 * The <code>World</code> we have to print about.
 	 */
-	private World world;
+	private SiafuWorld world;
 
 	/**
 	 * The header to print at the beginning of each output file. This is
@@ -126,7 +126,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	 * @param config
 	 *            the simulation configuration file
 	 */
-	public CSVPrinter(final World world, final Configuration config) {
+	public CSVPrinter(final SiafuWorld world, final Configuration config) {
 		this.world = world;
 		this.outputPath = config.getString("output.csv.path");
 		this.keepHistory = config.getBoolean("output.csv.keephistory");
@@ -156,7 +156,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 		// header += "destination,";
 
 		// Person info fields
-		String[] infoFields = Agent.getInfoKeys().toArray(new String[0]);
+		String[] infoFields = SiafuAgent.getInfoKeys().toArray(new String[0]);
 
 		for (String field : infoFields) {
 			header += (field + ",");
@@ -187,7 +187,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 				initializeFile(outputPath + ".tmp");
 			}
 
-			for (Agent agent : world.getPeople()) {
+			for (SiafuAgent agent : world.getPeople()) {
 				add(agent);
 			}
 
@@ -234,7 +234,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	 * @param agent
 	 *            the agent to print
 	 */
-	private void add(final Agent agent) {
+	private void add(final SiafuAgent agent) {
 		String line = new String();
 		// Person class intrinsec info
 		line += addPersonIntrinsecInfo(agent);
@@ -275,7 +275,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	 *            the agent whose intrinsec information we want to add
 	 * @return the line we generate
 	 */
-	private String addPersonIntrinsecInfo(final Agent agent) {
+	private String addPersonIntrinsecInfo(final SiafuAgent agent) {
 		String line = new String();
 		line += (new Text("" + world.getTime().getTimeInMillis()).flatten() + ",");
 		line += (new Text(agent.getName()).flatten() + ",");
@@ -294,7 +294,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	 *            the agent whose information we want to add
 	 * @return the line we generate
 	 */
-	private String addInfoFields(final Agent agent) {
+	private String addInfoFields(final SiafuAgent agent) {
 		String line = new String();
 
 		for (Publishable info : agent.getInfoValues()) {
@@ -315,7 +315,7 @@ public class CSVPrinter implements SimulatorOutputPrinter {
 	 *            the agent whose information we want to add
 	 * @return the line we generate
 	 */
-	private String addOverlayInfo(final Agent agent) {
+	private String addOverlayInfo(final SiafuAgent agent) {
 		String line = new String();
 		for (Overlay overlay : world.getOverlays().values()) {
 			line += (new Text(overlay.getValue(agent.getPos()) + ","))

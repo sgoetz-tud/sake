@@ -38,12 +38,12 @@ import org.eclipse.swt.widgets.Display;
 import de.nec.nle.siafu.control.Controller;
 import de.nec.nle.siafu.graphics.Markers.Type;
 import de.nec.nle.siafu.graphics.markers.Marker;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Overlay;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 
 /**
  * This class handles the actual drawing on the simulation's canvas for most of
@@ -125,7 +125,7 @@ public class Painter {
 	private Controller control;
 
 	/** A reference to the simulation's world. */
-	private World world;
+	private SiafuWorld world;
 
 	/** The ImageData for the background image. */
 	private ImageData backgroundData = null;
@@ -367,7 +367,7 @@ public class Painter {
 	 *            the agent whose sprite we need
 	 * @return the agent's sprite
 	 */
-	public Sprite getAgentSprite(final Agent a) {
+	public Sprite getAgentSprite(final SiafuAgent a) {
 		return personImg.get(a.getImage());
 	}
 
@@ -379,14 +379,14 @@ public class Painter {
 	 */
 	public void paintPeople(final GC gc) {
 		// Put into a treeset to guarantee the order for the z layer
-		Iterator<Agent> it = new TreeSet<Agent>(world.getPeople()).iterator();
+		Iterator<SiafuAgent> it = new TreeSet<SiafuAgent>(world.getPeople()).iterator();
 
 		if (control.getGUI().isPathShown()) {
 			paintPath(gc);
 		}
 
 		while (it.hasNext()) {
-			Agent a = it.next();
+			SiafuAgent a = it.next();
 
 			if (a.isVisible()) {
 
@@ -412,17 +412,17 @@ public class Painter {
 	 */
 	public void paintPath(final GC gc) {
 		Trackable t = control.getGUI().getActive();
-		if (t instanceof Agent) {
-			Agent a = (Agent) t;
+		if (t instanceof SiafuAgent) {
+			SiafuAgent a = (SiafuAgent) t;
 			if (a.getDestination() != null) {
 				gc.setForeground(display.getSystemColor(SWT.COLOR_RED));
 				// We use a temporary agent that "walks the walk"
-				Agent path = new Agent(a.getPos(), "HumanBlue", world, null);
+				SiafuAgent path = new SiafuAgent(a.getPos(), "HumanBlue", world, null);
 				path.setDir(a.getDir());
 				path.setSpeed(2);
 				path.setDestination(a.getDestination());
 				while (!path.isAtDestination()) {
-					Position pos = path.getPos();
+					SiafuPosition pos = path.getPos();
 					gc.drawPoint(pos.getCol(), pos.getRow());
 					path.moveTowardsDestination();
 				}
@@ -499,10 +499,10 @@ public class Painter {
 		PaletteData palette;
 		int[][] values;
 
-		if (ov instanceof Place) {
+		if (ov instanceof SiafuPlace) {
 			palette = new PaletteData(PLACE_PALETTE_MASK, PLACE_PALETTE_MASK,
 					PLACE_PALETTE_MASK);
-			values = ((Place) ov).getGradient().getDistances();
+			values = ((SiafuPlace) ov).getGradient().getDistances();
 		} else if (ov instanceof Overlay) {
 			palette = new PaletteData(RED_MASK, GREEN_MASK, BLUE_MASK);
 			values = ((Overlay) ov).getValueMatrix();

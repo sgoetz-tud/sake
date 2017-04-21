@@ -28,11 +28,11 @@ import de.nec.nle.siafu.exceptions.NothingNearException;
 import de.nec.nle.siafu.exceptions.PositionOutOfTheMapException;
 import de.nec.nle.siafu.exceptions.PositionUnreachableException;
 import de.nec.nle.siafu.graphics.GUI;
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuAgent;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 
 /**
  * The listener that governs what happens when clicking around on the GUI's
@@ -52,7 +52,7 @@ public class CanvasMouseListener implements MouseListener {
 	private GUI gui;
 
 	/** The simulation's world. */
-	private World world;
+	private SiafuWorld world;
 
 	/**
 	 * Create the mouse listener for the canvas.
@@ -60,7 +60,7 @@ public class CanvasMouseListener implements MouseListener {
 	 * @param gui The container GUI
 	 * @param world The simulation's world
 	 */
-	public CanvasMouseListener(final GUI gui, final World world) {
+	public CanvasMouseListener(final GUI gui, final SiafuWorld world) {
 		this.gui = gui;
 		this.world = world;
 	}
@@ -84,19 +84,19 @@ public class CanvasMouseListener implements MouseListener {
 		// there a workaround for this that doesn't delay the single click
 		// too much?
 
-		Agent p;
+		SiafuAgent p;
 		Object o = gui.getActive();
 
-		if (o instanceof Agent) {
-			p = (Agent) o;
+		if (o instanceof SiafuAgent) {
+			p = (SiafuAgent) o;
 		} else {
 			return;
 		}
 
-		Place tempPlace;
+		SiafuPlace tempPlace;
 		try {
 			tempPlace =
-					new Place("UserSelected", new Position(e.y, e.x),
+					new SiafuPlace("UserSelected", new SiafuPosition(e.y, e.x),
 							world, p.getPos());
 		} catch (PositionUnreachableException ex) {
 			System.out.println("Position unreachable");
@@ -120,7 +120,7 @@ public class CanvasMouseListener implements MouseListener {
 	 */
 	public void mouseUp(final MouseEvent e) {
 		Trackable target;
-		Position clickPos = new Position(e.y, e.x);
+		SiafuPosition clickPos = new SiafuPosition(e.y, e.x);
 		switch (e.button) {
 		case LEFT_MOUSE_BUTTON:
 			try {

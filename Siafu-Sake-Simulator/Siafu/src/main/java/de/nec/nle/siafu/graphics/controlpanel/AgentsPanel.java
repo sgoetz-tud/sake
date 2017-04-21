@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import de.nec.nle.siafu.graphics.GUI;
 import de.nec.nle.siafu.graphics.Markers;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Trackable;
 
 /**
@@ -58,7 +58,7 @@ public class AgentsPanel extends BasePanel {
 		String[] items = new String[gui.getAgents().size()];
 
 		int i = 0;
-		for (Agent a : gui.getAgents()) {
+		for (SiafuAgent a : gui.getAgents()) {
 			items[i] = a.getName();
 			i++;
 		}
@@ -76,7 +76,7 @@ public class AgentsPanel extends BasePanel {
 	 */
 	protected BaseStatus createStatusItem(final Composite parent,
 			final Object o) {
-		Agent a = (Agent) o;
+		SiafuAgent a = (SiafuAgent) o;
 		return new AgentStatus(parent, SWT.NONE, a, gui.getAgentSprite(a)
 				.getImage(a.getDir()), gui, this);
 	}
@@ -102,9 +102,9 @@ public class AgentsPanel extends BasePanel {
 	 * @param selection the selected agent's name
 	 */
 	protected void onSelectionMade(final String selection) {
-		Agent agent = null;
+		SiafuAgent agent = null;
 		String name = selection;
-		for (Agent a : gui.getAgents()) {
+		for (SiafuAgent a : gui.getAgents()) {
 			if (name.equals(a.getName())) {
 				agent = a;
 				break;

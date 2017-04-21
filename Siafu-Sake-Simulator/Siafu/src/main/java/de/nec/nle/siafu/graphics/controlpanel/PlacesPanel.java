@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Display;
 
 import de.nec.nle.siafu.graphics.GUI;
 import de.nec.nle.siafu.graphics.Markers;
-import de.nec.nle.siafu.model.Place;
+import de.nec.nle.siafu.model.SiafuPlace;
 import de.nec.nle.siafu.model.Trackable;
 
 /**
@@ -88,7 +88,7 @@ public class PlacesPanel extends BasePanel {
 			String[] itemsOfType =
 					new String[gui.getPlacesOfType(t).size()];
 			int i = 0;
-			for (Place p : gui.getPlacesOfType(t)) {
+			for (SiafuPlace p : gui.getPlacesOfType(t)) {
 				itemsOfType[i] = p.getName();
 				i++;
 			}
@@ -155,7 +155,7 @@ public class PlacesPanel extends BasePanel {
 	@Override
 	protected BaseStatus createStatusItem(final Composite parent,
 			final Object o) {
-		Place p = (Place) o;
+		SiafuPlace p = (SiafuPlace) o;
 		Image icon = placeTypeImg.get(p.getType());
 		RGB rgb = placeTypeColors.get(p.getType()).getRGB();
 		return new PlaceStatus(parent, p, icon, rgb, gui, this);
@@ -180,10 +180,10 @@ public class PlacesPanel extends BasePanel {
 	 */
 	@Override
 	protected void onSelectionMade(final String selection) {
-		Place place = null;
+		SiafuPlace place = null;
 		// Place names have two space in the combo box
 		String name = selection.substring(2);
-		for (Place p : gui.getPlaces()) {
+		for (SiafuPlace p : gui.getPlaces()) {
 			if (name.equals(p.getName())) {
 				place = p;
 				break;

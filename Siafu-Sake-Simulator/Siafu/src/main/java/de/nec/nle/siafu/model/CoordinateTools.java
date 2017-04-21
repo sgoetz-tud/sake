@@ -254,7 +254,7 @@ public class CoordinateTools {
 	 * @param pos the position
 	 * @return the prettified string
 	 */
-	public String localToPrettyCoordinates(final Position pos) {
+	public String localToPrettyCoordinates(final SiafuPosition pos) {
 		return coordinatesToPrettyCoordinates(localToCoordinates(pos
 				.getRow(), pos.getCol()));
 	}
@@ -331,7 +331,7 @@ public class CoordinateTools {
 	 * @return a double[2] with the latitude in position 0, and the
 	 *         longitudein position 1.
 	 */
-	public double[] localToCoordinates(final Position pos) {
+	public double[] localToCoordinates(final SiafuPosition pos) {
 		return localToCoordinates(pos.getRow(), pos.getCol());
 	}
 
@@ -343,14 +343,14 @@ public class CoordinateTools {
 	 * @return a Position with the Siafu position matching the given
 	 *         coordinates
 	 */
-	public Position coordinatesToLocal(final double lat, final double lon) {
+	public SiafuPosition coordinatesToLocal(final double lat, final double lon) {
 		double y = -(lon * sinA) + lat * cosA + yOffset;
 		double x = lon * cosA + lat * sinA + xOffset;
 
 		int i = (int) Math.floor(height * (1 - (y / mapHeightDegrees)));
 		int j = (int) Math.floor(xFactor * x);
 
-		return new Position(i, j);
+		return new SiafuPosition(i, j);
 	}
 
 	/**

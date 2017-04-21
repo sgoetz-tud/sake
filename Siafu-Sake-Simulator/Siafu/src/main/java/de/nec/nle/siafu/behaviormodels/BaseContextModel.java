@@ -22,8 +22,8 @@ package de.nec.nle.siafu.behaviormodels;
 import java.util.ArrayList;
 import java.util.Map;
 
-import de.nec.nle.siafu.model.Overlay;
 import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.Overlay;
 
 /**
  * Classes extending BaseContextModel define the context behaviour. The method

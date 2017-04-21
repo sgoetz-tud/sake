@@ -30,11 +30,11 @@ import de.nec.nle.siafu.exceptions.TrackableNotFoundException;
 import de.nec.nle.siafu.exceptions.UnknownContextException;
 import de.nec.nle.siafu.graphics.Markers;
 import de.nec.nle.siafu.graphics.markers.Marker;
-import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.Place;
-import de.nec.nle.siafu.model.Position;
+import de.nec.nle.siafu.model.SiafuAgent;
+import de.nec.nle.siafu.model.SiafuPlace;
+import de.nec.nle.siafu.model.SiafuPosition;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.nec.nle.siafu.types.FlatData;
 
 /**
@@ -97,7 +97,7 @@ public class CommandProcessor {
 	 * @param a the agent to move
 	 * @param tempPlace the place to move it to
 	 */
-	public void move(final Agent a, final Place tempPlace) {
+	public void move(final SiafuAgent a, final SiafuPlace tempPlace) {
 		// System.out.println("Moving "+p.getName()+" to
 		// "+tempPlace.getPos().getPrettyLatitude()+"
 		// "+tempPlace.getPos().getPrettyLongitude()+".");
@@ -112,7 +112,7 @@ public class CommandProcessor {
 	 *            behavior model, false for it to stand still and await GUI or
 	 *            CommandListener commands
 	 */
-	public void auto(final Agent a, final boolean autoSetting) {
+	public void auto(final SiafuAgent a, final boolean autoSetting) {
 		// System.out.println("Putting "+p.getName()+" on auto
 		// mode="+autoSetting+".");
 		if (autoSetting) {
@@ -132,11 +132,11 @@ public class CommandProcessor {
 		// System.out.println("Putting "+p.getName()+" on auto
 		// mode="+autoSetting+".");
 		if (autoSetting) {
-			for (Agent a : control.getWorld().getPeople()) {
+			for (SiafuAgent a : control.getWorld().getPeople()) {
 				a.returnControl();
 			}
 		} else {
-			for (Agent a : control.getWorld().getPeople()) {
+			for (SiafuAgent a : control.getWorld().getPeople()) {
 				a.getControl();
 			}
 		}
@@ -148,7 +148,7 @@ public class CommandProcessor {
 	 * @param a the agent to modify
 	 * @param image the name of the sprite to assign to the agent
 	 */
-	public void image(final Agent a, final String image) {
+	public void image(final SiafuAgent a, final String image) {
 		// System.out.println("Making "+p.getName()+" look like: "+image+".");
 		a.setImage(image);
 	}
@@ -159,7 +159,7 @@ public class CommandProcessor {
 	 * 
 	 * @param a the agent whose image we want to revert
 	 */
-	public void resetImage(final Agent a) {
+	public void resetImage(final SiafuAgent a) {
 		a.setPreviousImage();
 	}
 
@@ -241,9 +241,9 @@ public class CommandProcessor {
 	 * @return the list of space separated agents near that position
 	 * @throws NothingNearException if nothing is found
 	 */
-	public String findAgentsNear(final Position pos, final int dist)
+	public String findAgentsNear(final SiafuPosition pos, final int dist)
 			throws NothingNearException {
-		World world = control.getWorld();
+		SiafuWorld world = control.getWorld();
 		String reply = new String();
 
 		for (Trackable a : world.findAllAgentsNear(pos, dist, false)) {
@@ -260,9 +260,9 @@ public class CommandProcessor {
 	 * @return the list of space separated places near that position
 	 * @throws NothingNearException if nothing is found
 	 */
-	public String findPlacesNear(final Position pos, final int dist)
+	public String findPlacesNear(final SiafuPosition pos, final int dist)
 			throws NothingNearException {
-		World world = control.getWorld();
+		SiafuWorld world = control.getWorld();
 		String reply = new String();
 		for (Trackable a : world.findAllPlacesNear(pos, dist, false)) {
 			reply += a.getName() + " ";
@@ -274,7 +274,7 @@ public class CommandProcessor {
 	 * Make all agents visible.
 	 */
 	public void unhideAll() {
-		for (Agent a : control.getWorld().getPeople()) {
+		for (SiafuAgent a : control.getWorld().getPeople()) {
 			a.setVisible(true);
 		}
 	}
@@ -284,7 +284,7 @@ public class CommandProcessor {
 	 * 
 	 * @param a the agent to unhide
 	 */
-	public void unhide(final Agent a) {
+	public void unhide(final SiafuAgent a) {
 		a.setVisible(true);
 	}
 
@@ -292,7 +292,7 @@ public class CommandProcessor {
 	 * Make all agents invisible.
 	 */
 	public void hideAll() {
-		for (Agent a : control.getWorld().getPeople()) {
+		for (SiafuAgent a : control.getWorld().getPeople()) {
 			a.setVisible(false);
 		}
 	}
@@ -302,7 +302,7 @@ public class CommandProcessor {
 	 * 
 	 * @param a the agent to make invisible
 	 */
-	public void hide(final Agent a) {
+	public void hide(final SiafuAgent a) {
 		a.setVisible(false);
 	}
 }

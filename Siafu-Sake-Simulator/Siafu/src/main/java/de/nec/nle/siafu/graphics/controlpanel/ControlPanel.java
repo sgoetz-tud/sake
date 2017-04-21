@@ -29,9 +29,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
 import de.nec.nle.siafu.control.Controller;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.Overlay;
-import de.nec.nle.siafu.model.Place;
+import de.nec.nle.siafu.model.SiafuPlace;
 
 /**
  * The control panel displayed on the right hand side of the simulation's
@@ -129,10 +129,10 @@ public class ControlPanel extends Composite {
 	 * @param o the selected element.
 	 */
 	public void setSelected(final Object o) {
-		if (o instanceof Agent) {
-			agentsPanel.add((Agent) o);
-		} else if (o instanceof Place) {
-			placesPanel.add((Place) o);
+		if (o instanceof SiafuAgent) {
+			agentsPanel.add((SiafuAgent) o);
+		} else if (o instanceof SiafuPlace) {
+			placesPanel.add((SiafuPlace) o);
 		} else if (o instanceof Overlay) {
 			overlaysPanel.add((Overlay) o);
 		}

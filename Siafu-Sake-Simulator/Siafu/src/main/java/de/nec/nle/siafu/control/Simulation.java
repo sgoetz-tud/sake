@@ -29,10 +29,10 @@ import de.nec.nle.siafu.behaviormodels.BaseContextModel;
 import de.nec.nle.siafu.behaviormodels.BaseWorldModel;
 import de.nec.nle.siafu.exceptions.GUINotReadyException;
 import de.nec.nle.siafu.graphics.markers.Marker;
-import de.nec.nle.siafu.model.Agent;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.nec.nle.siafu.output.CSVPrinter;
 import de.nec.nle.siafu.output.NullPrinter;
 import de.nec.nle.siafu.output.SimulatorOutputPrinter;
@@ -75,7 +75,7 @@ public class Simulation implements Runnable {
 	 * The simulation's world. This is only a reference to the
 	 * <code>World</code> in <code>control</code>.
 	 */
-	private World world;
+	private SiafuWorld world;
 
 	/**
 	 * The simulation's time, held in a <code>Calendar</code> object.
@@ -160,10 +160,10 @@ public class Simulation implements Runnable {
 		this.simulationConfig = simData.getConfigFile();
 		this.control = control;
 
-		World.setShouldPrefillCache(control.getSiafuConfig().getBoolean(
+		SiafuWorld.setShouldPrefillCache(control.getSiafuConfig().getBoolean(
 			"ui.gradientcache.prefill"));
 
-		World.setCacheSize(control.getSiafuConfig().getInt(
+		SiafuWorld.setCacheSize(control.getSiafuConfig().getInt(
 			"ui.gradientcache.size"));
 			
 		new Thread(this, "Simulation thread").start();
@@ -174,7 +174,7 @@ public class Simulation implements Runnable {
 	 * 
 	 * @return the simulation's world
 	 */
-	public World getWorld() {
+	public SiafuWorld getWorld() {
 		return world;
 	}
 
@@ -207,7 +207,7 @@ public class Simulation implements Runnable {
 	 */
 	public void run() {
 		
-		this.world = new World(this, simData, configuration);
+		this.world = new SiafuWorld(this, simData, configuration);
 		this.time = world.getTime();
 		this.iterationStep = simulationConfig.getInt("iterationstep");
 		this.agentModel = world.getAgentModel();
@@ -329,7 +329,7 @@ public class Simulation implements Runnable {
 	 * 
 	 */
 	private void moveAgents() {
-		for (Agent a : world.getPeople()) {
+		for (SiafuAgent a : world.getPeople()) {
 			if (!isPaused() || !a.isOnAuto()) {
 				a.moveTowardsDestination();
 			}

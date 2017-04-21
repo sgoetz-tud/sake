@@ -20,9 +20,8 @@
 package de.tud.swt.testland;
 
 import de.nec.nle.siafu.behaviormodels.BaseContextModel;
-import de.nec.nle.siafu.model.Overlay;
 import de.nec.nle.siafu.model.World;
-
+import de.nec.nle.siafu.model.Overlay;
 import java.util.ArrayList;
 import java.util.Map;
 

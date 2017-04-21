@@ -40,7 +40,7 @@ import de.nec.nle.siafu.graphics.Markers;
 import de.nec.nle.siafu.graphics.markers.Marker;
 import de.nec.nle.siafu.model.SimulationData;
 import de.nec.nle.siafu.model.Trackable;
-import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.tud.swt.evaluation.EvaluationConstants;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
@@ -356,7 +356,7 @@ public class Controller {
 	 * 
 	 * @return a World object representing the world.
 	 */
-	public World getWorld() {
+	public SiafuWorld getWorld() {
 		return simulation.getWorld();
 	}
 

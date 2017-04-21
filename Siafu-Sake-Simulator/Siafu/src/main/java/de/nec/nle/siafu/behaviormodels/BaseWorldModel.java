@@ -22,8 +22,8 @@ package de.nec.nle.siafu.behaviormodels;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import de.nec.nle.siafu.model.Place;
 import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.Place;
 
 /**
  * Classes extending BaseWorldModel define the behaviour of the Places int he

@@ -67,8 +67,7 @@ public class DiscreteOverlay extends Overlay {
 		// Find out how many thresholds we have
 		String[] property;
 		try {
-			property = simulationConfig.getStringArray("overlays." + name
-					+ ".threshold[@tag]");
+			property = simulationConfig.getStringArray("overlays." + name + ".threshold[@tag]");
 			if (property.length == 0)
 				throw new ConfigurationRuntimeException();
 		} catch (ConfigurationRuntimeException e) {
@@ -131,7 +130,7 @@ public class DiscreteOverlay extends Overlay {
 	 *            the position for which we require the value
 	 * @return a Text object with the value at that position
 	 */
-	public Text getValue(final Position pos) {
+	public Text getValue(final SiafuPosition pos) {
 		int val = this.value[pos.getRow()][pos.getCol()];
 
 		for (int i = 0; i < thresholds.length; i++) {
@@ -142,6 +141,19 @@ public class DiscreteOverlay extends Overlay {
 
 		// Nothing found, we return the highest
 		return new Text(tags[thresholds.length - 1]);
+	}
+	
+	public String getValueType(final SiafuPosition pos) {
+		int val = this.value[pos.getRow()][pos.getCol()];
+
+		for (int i = 0; i < thresholds.length; i++) {
+			if (val <= thresholds[i]) {
+				return tags[i];
+			}
+		}
+
+		// Nothing found, we return the highest
+		return tags[thresholds.length - 1];
 	}
 
 	/**

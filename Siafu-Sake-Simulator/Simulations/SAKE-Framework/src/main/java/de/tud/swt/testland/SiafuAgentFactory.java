@@ -1,6 +1,6 @@
 package de.tud.swt.testland;
 
-import de.nec.nle.siafu.model.AWorld;
+import de.nec.nle.siafu.model.World;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.hardware.Hoover;
 import de.tud.swt.cleaningrobots.hardware.LoadStation;
@@ -21,9 +21,9 @@ public class SiafuAgentFactory {
 	
 	private int counter;
 	private Configuration configuration;
-	private AWorld world;
+	private World world;
 	
-	public SiafuAgentFactory (Configuration configuration, AWorld world) {
+	public SiafuAgentFactory (Configuration configuration, World world) {
 		this.world = world;
 		this.configuration = configuration;
 		this.counter = 0;

@@ -36,7 +36,7 @@ public interface Trackable {
 	 * 
 	 * @return the position
 	 */
-	Position getPos();
+	SiafuPosition getPos();
 
 	/**
 	 * Get the name of the trackable.
