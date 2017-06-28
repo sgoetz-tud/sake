@@ -993,7 +993,7 @@ public class SiafuWorld extends World {
 		placeTypes.add(placeType);
 	}
 
-	@Override
+	/*@Override
 	public Agent createPeople(String name, String image, World world,
 			IExternalConnection extern) {
 		System.out.println("World Create Agent");
@@ -1003,6 +1003,6 @@ public class SiafuWorld extends World {
 			e.printStackTrace();
 		}
 		return null;
-	}
+	}*/
 
 }

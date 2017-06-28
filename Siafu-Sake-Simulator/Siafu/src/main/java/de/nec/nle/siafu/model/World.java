@@ -138,7 +138,29 @@ public class World {
 		mAgents = agentModel.createAgents();
 	}
 	
-	public Agent createPeople(String name, String image, World world, IExternalConnection extern) {
+	public int getColFromStart()
+	{
+		switch (configuration.map) {
+			case 0:  return 139;
+			case 1:  return 139;	            
+			case 2:  return 199;
+			case 3:  return 199;
+			default: return 0;
+		}
+	}
+	
+	public int getRowFromStart()
+	{
+		switch (configuration.map) {
+			case 0:  return 133;
+	        case 1:  return 133;	            
+	        case 2:  return 206;
+	        case 3:  return 206;
+	        default: return 0;
+		}
+	}
+	
+	/*public Agent createPeople(String name, String image, World world, IExternalConnection extern) {
 		switch (configuration.map) {
 			case 0:  return new Agent(name, 139, 133, extern);
 	        case 1:  return new Agent(name, 139, 133, extern);	            
@@ -146,7 +168,7 @@ public class World {
 	        case 3:  return new Agent(name, 199, 206, extern);
 	        default: return null;
 		}
-	}
+	}*/
 	
 	public Collection<Agent> getAgents()
 	{

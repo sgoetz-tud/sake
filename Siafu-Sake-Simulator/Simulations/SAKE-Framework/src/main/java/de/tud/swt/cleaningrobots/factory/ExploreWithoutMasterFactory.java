@@ -2,6 +2,7 @@ package de.tud.swt.cleaningrobots.factory;
 
 import java.util.ArrayList;
 
+import de.nec.nle.siafu.model.Agent;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.AgentRole;
 import de.tud.swt.cleaningrobots.roles.CommunicationInterfaceRole;
@@ -13,8 +14,8 @@ import de.tud.swt.cleaningrobots.roles.LoggingCsvRole;
 import de.tud.swt.cleaningrobots.roles.LoggingPictureRole;
 import de.tud.swt.cleaningrobots.roles.LoggingXmlRole;
 import de.tud.swt.cleaningrobots.roles.WiperRole;
-import de.tud.swt.testland.SiafuAgent;
-import de.tud.swt.testland.SiafuAgentFactory;
+import de.tud.swt.testland.AgentFactory;
+import de.tud.swt.testland.ICoreAdapter;
 
 /**
  * Create the agents with the specific roles for the test case without a master robot 
@@ -23,7 +24,7 @@ import de.tud.swt.testland.SiafuAgentFactory;
  * @author Christopher Werner
  *
  */
-public class ExploreWithoutMasterFactory extends IAgentFactory {
+public class ExploreWithoutMasterFactory extends ISimulationFactory {
 		
 	public ExploreWithoutMasterFactory (Configuration configuration)
 	{
@@ -38,16 +39,16 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 	 * @return an ArrayList with the created agents
 	 */
 	@Override
-	public ArrayList<SiafuAgent> createRobots(SiafuAgentFactory factory) {
+	public ArrayList<Agent> createRobots(AgentFactory factory) {
 				
-		ArrayList<SiafuAgent> population = new ArrayList<SiafuAgent>();	
+		ArrayList<Agent> population = new ArrayList<Agent>();	
 		
 		//loadstation agent
-		SiafuAgent lsa = factory.createLoadStation();
+		Agent lsa = factory.createLoadStation();
 		population.add(lsa);
 		
 		//load if robot want role
-		AgentRole rr = new LoadstationRole(lsa.getAgentCore());
+		AgentRole rr = new LoadstationRole(((ICoreAdapter)lsa).getAgentCore());
 		rr.addRole(rr);
 		
 		boolean proof;
@@ -61,24 +62,24 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 			
 			//explore agents
 			for (int i = 0; i < configuration.getWc().number_explore_agents; i++) {
-				SiafuAgent era = factory.createExploreAgent();
+				Agent era = factory.createExploreAgent();
 				population.add(era);
 				
 				AgentRole exr;
 				
 				if (i == 0 && configuration.getWc().number_hoove_agents > 0)
 				{
-					exr = new FirstExplorerRole(era.getAgentCore());
+					exr = new FirstExplorerRole(((ICoreAdapter)era).getAgentCore());
 					exr.addRole(exr);
 				}
 				else
 				{
-					exr = new ExplorerRole(era.getAgentCore());
+					exr = new ExplorerRole(((ICoreAdapter)era).getAgentCore());
 					exr.addRole(exr);
 				}
 				
 				if (proof) {
-					AgentRole exw = new CommunicationInterfaceRole(era.getAgentCore());
+					AgentRole exw = new CommunicationInterfaceRole(((ICoreAdapter)era).getAgentCore());
 					exw.addRole(exw);
 					proof = false;
 				}
@@ -93,14 +94,14 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 				
 				//hoove agents
 				for (int i = 0; i < configuration.getWc().number_hoove_agents; i++) {
-					SiafuAgent hra = factory.createHooveAgent();
+					Agent hra = factory.createHooveAgent();
 					population.add(hra);
 					
-					AgentRole hor = new HooverRole(hra.getAgentCore());
+					AgentRole hor = new HooverRole(((ICoreAdapter)hra).getAgentCore());
 					hor.addRole(hor);
 					
 					if (proof) {
-						AgentRole how = new CommunicationInterfaceRole(hra.getAgentCore());
+						AgentRole how = new CommunicationInterfaceRole(((ICoreAdapter)hra).getAgentCore());
 						how.addRole(how);
 						proof = false;
 					}
@@ -110,10 +111,10 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 					
 					//wipe agents
 					for (int i = 0; i < configuration.getWc().number_wipe_agents; i++) {
-						SiafuAgent wra = factory.createWipeAgent();
+						Agent wra = factory.createWipeAgent();
 						population.add(wra);
 						
-						AgentRole wir = new WiperRole(wra.getAgentCore());
+						AgentRole wir = new WiperRole(((ICoreAdapter)wra).getAgentCore());
 						wir.addRole(wir);
 					}
 				}
@@ -123,25 +124,25 @@ public class ExploreWithoutMasterFactory extends IAgentFactory {
 		//add the logging roles to every agent
 		if (configuration.getWc().csvSave)
 		{
-			for (SiafuAgent a: population)
+			for (Agent a: population)
 			{
-				LoggingCsvRole csvRole = new LoggingCsvRole(a.getAgentCore());
+				LoggingCsvRole csvRole = new LoggingCsvRole(((ICoreAdapter)a).getAgentCore());
 				csvRole.addRole(csvRole);
 			}
 		}
 		if (configuration.getWc().pngSave)
 		{
-			for (SiafuAgent a: population)
+			for (Agent a: population)
 			{
-				LoggingPictureRole pngRole = new LoggingPictureRole(a.getAgentCore());
+				LoggingPictureRole pngRole = new LoggingPictureRole(((ICoreAdapter)a).getAgentCore());
 				pngRole.addRole(pngRole);
 			}
 		}
 		if (configuration.getWc().xmlSave)
 		{
-			for (SiafuAgent a: population)
+			for (Agent a: population)
 			{
-				LoggingXmlRole xmlRole = new LoggingXmlRole(a.getAgentCore());
+				LoggingXmlRole xmlRole = new LoggingXmlRole(((ICoreAdapter)a).getAgentCore());
 				xmlRole.addRole(xmlRole);
 			}
 		}

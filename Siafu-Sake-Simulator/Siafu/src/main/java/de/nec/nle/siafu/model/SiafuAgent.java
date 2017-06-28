@@ -173,6 +173,29 @@ public class SiafuAgent extends Agent implements Trackable, Comparable<SiafuAgen
 		INFO_FIELDS.clear();
 	}
 	
+	/*public SiafuAgent(final SiafuPosition start, final String image, final SiafuWorld world, IExternalConnection extern) {
+		this(SequentialNamer.getNextName(), start, image, world, 0, extern);
+	}
+	
+	public SiafuAgent(final String name, final SiafuPosition start, final String image,
+			final SiafuWorld world, IExternalConnection extern) {
+		this(name, start, image, world, 0, extern);
+	}
+	
+	public SiafuAgent(final String name, final SiafuPosition start, final String image,
+			final SiafuWorld world, final int zPriority, IExternalConnection extern) {
+		super(name, extern);
+		basicChecks(world);
+		this.info = new TreeMap<String, Publishable>();
+		this.dir = 0;
+		this.image = image;
+		this.previousImage = image;
+		this.pos = start;
+		this.destination = getDefaultPlace(start, world);
+		this.atDestination = true;
+		this.zPriority = zPriority;
+	}*/
+	
 	/**
 	 * Create an Agent using a place where he will first appear on day 0, and
 	 * his appearance. The name is automatically generated using the
@@ -188,8 +211,8 @@ public class SiafuAgent extends Agent implements Trackable, Comparable<SiafuAgen
 	 *            the world that the agent belongs to. It has to be the same for
 	 *            all the agents in the simulation.
 	 */
-	public SiafuAgent(final SiafuPosition start, final String image, final SiafuWorld world, IExternalConnection extern) {
-		this(SequentialNamer.getNextName(), start, image, world, 0, extern);
+	public SiafuAgent(final SiafuPosition start, final String image, final SiafuWorld world) {
+		this(SequentialNamer.getNextName(), start, image, world, 0);
 	}
 
 	/**
@@ -210,8 +233,8 @@ public class SiafuAgent extends Agent implements Trackable, Comparable<SiafuAgen
 	 *            all the agents in the simulation.
 	 */
 	public SiafuAgent(final String name, final SiafuPosition start, final String image,
-			final SiafuWorld world, IExternalConnection extern) {
-		this(name, start, image, world, 0, extern);
+			final SiafuWorld world) {
+		this(name, start, image, world, 0);
 	}
 
 	/**
@@ -241,8 +264,8 @@ public class SiafuAgent extends Agent implements Trackable, Comparable<SiafuAgen
 	 *            agents.
 	 */
 	public SiafuAgent(final String name, final SiafuPosition start, final String image,
-			final SiafuWorld world, final int zPriority, IExternalConnection extern) {
-		super(name, extern);
+			final SiafuWorld world, final int zPriority) {
+		super(name);
 		basicChecks(world);
 		this.info = new TreeMap<String, Publishable>();
 		this.dir = 0;

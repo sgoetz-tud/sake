@@ -1,5 +1,6 @@
 package de.tud.swt.testland;
 
+import de.nec.nle.siafu.model.Agent;
 import de.nec.nle.siafu.model.World;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.hardware.Hoover;
@@ -17,16 +18,10 @@ import de.tud.swt.cleaningrobots.hardware.Wlan;
  * @author Christopher Werner
  *
  */
-public class SiafuAgentFactory {
-	
-	private int counter;
-	private Configuration configuration;
-	private World world;
-	
-	public SiafuAgentFactory (Configuration configuration, World world) {
-		this.world = world;
-		this.configuration = configuration;
-		this.counter = 0;
+public class MAgentFactory extends AgentFactory {
+		
+	public MAgentFactory (Configuration configuration, World world) {
+		super(configuration, world);
 	}
 	
 	/**
@@ -36,9 +31,10 @@ public class SiafuAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	public SiafuAgent createLoadStation() {		
+	@Override
+	public Agent createLoadStation() {		
 		counter++;
-		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "Master",	world, configuration);
+		MAgent agent = new MAgent("Robbi_" + counter, "Master",	world, configuration);
 
 		//add hardware components
 		agent.getAgentCore().addHardwareComponent(new LoadStation());
@@ -53,9 +49,10 @@ public class SiafuAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	public SiafuAgent createLoadStationAgent() {
+	@Override
+	public Agent createLoadStationAgent() {
 		counter++;
-		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "Master",	world, configuration);
+		MAgent agent = new MAgent("Robbi_" + counter, "Master",	world, configuration);
 			
 		//add hardware components
 		agent.getAgentCore().addHardwareComponent(new Computer());
@@ -72,9 +69,10 @@ public class SiafuAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	public SiafuAgent createExploreAgent() {
+	@Override
+	public Agent createExploreAgent() {
 		counter++;
-		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanMagenta", world, configuration);
+		MAgent agent = new MAgent("Robbi_" + counter, "HumanMagenta", world, configuration);
 
 		//add hardware components
 		agent.getAgentCore().addHardwareComponent(new Computer());
@@ -92,9 +90,10 @@ public class SiafuAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	public SiafuAgent createWipeAgent() {
+	@Override
+	public Agent createWipeAgent() {
 		counter++;
-		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanYellow", world, configuration);
+		MAgent agent = new MAgent("Robbi_" + counter, "HumanYellow", world, configuration);
 			
 		//add hardware components
 		agent.getAgentCore().addHardwareComponent(new Computer());
@@ -112,9 +111,10 @@ public class SiafuAgentFactory {
 	 *            the world to create it in
 	 * @return the new agent
 	 */
-	public SiafuAgent createHooveAgent() {
+	@Override
+	public Agent createHooveAgent() {
 		counter++;
-		SiafuAgent agent = new SiafuAgent("Robbi_" + counter, "HumanGreen",	world, configuration);
+		MAgent agent = new MAgent("Robbi_" + counter, "HumanGreen",	world, configuration);
 
 		//add hardware components
 		agent.getAgentCore().addHardwareComponent(new Computer());

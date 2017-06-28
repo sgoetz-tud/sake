@@ -3,9 +3,11 @@ package de.tud.swt.testland;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.nec.nle.siafu.exceptions.PlaceNotFoundException;
 import de.nec.nle.siafu.model.Agent;
-import de.nec.nle.siafu.model.IExternalConnection;
+import de.nec.nle.siafu.model.SiafuWorld;
 import de.nec.nle.siafu.model.World;
+import de.nec.nle.siafu.model.SiafuAgent;
 import de.tud.swt.cleaningrobots.Configuration;
 import de.tud.swt.cleaningrobots.ISimulatorAdapter;
 import de.tud.swt.cleaningrobots.AgentCore;
@@ -20,21 +22,16 @@ import de.tud.swt.cleaningrobots.model.Position;
  * @author Christopher Werner
  *
  */
-public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
+public class SAgent extends SiafuAgent implements ISimulatorAdapter, ICoreAdapter {
 
 	private boolean finish;	
 	private AgentCore cleaningRobot;
 	private World siafuWorld;
-	private Agent siafuAgent;
 	
-	public SiafuAgent(String name, String image, World world, Configuration configuration) {
+	public SAgent(String name, String image, World world, Configuration configuration) throws PlaceNotFoundException {
+		super(name, ((SiafuWorld)world).getRandomPlaceOfType("Center").getPos(), image,(SiafuWorld)world);
 		this.siafuWorld = world;
-		this.siafuAgent = world.createPeople(name, image, world, this);
 		this.cleaningRobot = new AgentCore(name, this, new Accu(48.0), configuration);
-	}	
-	
-	public Agent getRelatedAgent () {
-		return siafuAgent;
 	}
 		
 	public void wander() {
@@ -59,24 +56,15 @@ public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 		return this.cleaningRobot;
 	}
 
-	public void setName(String name) {
-		this.siafuAgent.setName(name);
-		this.cleaningRobot.setName(name);
-	}
-	
-	public void setSpeed(int speed) {
-		//ignore..
-	}
-
 	@Override
 	public List<AgentCore> getNearRobots(int visionRadius) {
 		List <AgentCore> result = new LinkedList<AgentCore>(); 
 		
 		for (Agent nearAgent : this.siafuWorld.getAgents())
 		{
-			if (Math.abs(this.siafuAgent.getCol() - nearAgent.getCol()) <= visionRadius 
-					&& Math.abs(this.siafuAgent.getRow() - nearAgent.getRow()) <= visionRadius){
-				result.add(((SiafuAgent) nearAgent.getExternal()).getAgentCore());
+			if (Math.abs(this.getCol() - nearAgent.getCol()) <= visionRadius 
+					&& Math.abs(this.getRow() - nearAgent.getRow()) <= visionRadius){
+				result.add(((SAgent)nearAgent).getAgentCore());
 			}
 		}
 		return result;
@@ -88,20 +76,20 @@ public class SiafuAgent implements ISimulatorAdapter, IExternalConnection {
 				
 		for (Agent nearAgent : this.siafuWorld.getAgents())
 		{
-			result.add(((SiafuAgent) nearAgent.getExternal()).getAgentCore());
+			result.add(((SAgent)nearAgent).getAgentCore());
 		}
 		return result;
 	}
 	
 	@Override
 	public Position getPosition() {
-		Position result = new Position(this.siafuAgent.getCol(), this.siafuAgent.getRow());
+		Position result = new Position(this.getCol(), this.getRow());
 		return result;
 	}
 	
 	@Override
 	public void setPosition(Position position) {
-		this.siafuAgent.setPosition(position.getY(), position.getX());
+		this.setPosition(position.getY(), position.getX());
 	}
 
 	@Override

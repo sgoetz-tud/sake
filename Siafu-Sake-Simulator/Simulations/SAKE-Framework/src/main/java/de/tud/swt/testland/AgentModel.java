@@ -38,6 +38,7 @@ import de.tud.swt.cleaningrobots.factory.ExploreMergeMasterFactory;
 import de.tud.swt.cleaningrobots.factory.ExploreWithoutMasterFactory;
 import de.tud.swt.cleaningrobots.factory.MasterExploreFactory;
 import de.tud.swt.cleaningrobots.measure.ExportFiles;
+import de.tud.swt.evaluation.EvaluationConstants;
 import de.tud.swt.evaluation.WorkingConfiguration;
 
 /**
@@ -72,31 +73,33 @@ public class AgentModel extends BaseAgentModel {
 	@Override
 	public ArrayList<Agent> createAgents() {
 		
-		ArrayList<SiafuAgent> iAgents = new ArrayList<SiafuAgent>();
 		ArrayList<Agent> agents = new ArrayList<Agent>();
-		SiafuAgentFactory rf = new SiafuAgentFactory(config, world);
+		AgentFactory af;
+		if (EvaluationConstants.local_gui_use)
+		{
+			af = new SAgentFactory(config, world);
+		}
+		else
+		{
+			af = new MAgentFactory(config, world);
+		}
 
 		try {
 			switch (configuration.config) {
-				case 0:  iAgents = new MasterExploreFactory(config).createRobots(rf);
+				case 0:  agents = new MasterExploreFactory(config).createRobots(af);
 						 break;
-	            case 1:  iAgents = new ExploreWithoutMasterFactory(config).createRobots(rf);
+	            case 1:  agents = new ExploreWithoutMasterFactory(config).createRobots(af);
 	                     break;	            
-	            case 2:  iAgents = new ExploreMergeMasterFactory(config).createRobots(rf);
+	            case 2:  agents = new ExploreMergeMasterFactory(config).createRobots(af);
 	                     break;
-	            case 3:  iAgents = new ExploreMergeMasterCalculateFactory(config).createRobots(rf);
+	            case 3:  agents = new ExploreMergeMasterCalculateFactory(config).createRobots(af);
 	                     break;
-	            case 4:  iAgents = new ExploreMergeMasterCalculateRelativeFactory(config).createRobots(rf);
+	            case 4:  agents = new ExploreMergeMasterCalculateRelativeFactory(config).createRobots(af);
 	                     break;
-	            default: iAgents = new MasterExploreFactory(config).createRobots(rf);
+	            default: agents = new MasterExploreFactory(config).createRobots(af);
 	                     break;
 	        }
 		} catch (Exception ex) {
-		}
-		
-		for (SiafuAgent a : iAgents)
-		{
-			agents.add(a.getRelatedAgent());
 		}
 		
 		startTime = System.nanoTime();
@@ -107,7 +110,7 @@ public class AgentModel extends BaseAgentModel {
 		boolean finish = true;
 		//do that for each robot
 		for (Agent agent : agents) {
-			SiafuAgent a = (SiafuAgent) agent.getExternal();
+			ICoreAdapter a = (ICoreAdapter) agent;
 			//only if robot is on
 			if (!a.getAgentCore().isShutDown()) {
 				a.wander();
@@ -151,12 +154,12 @@ public class AgentModel extends BaseAgentModel {
 			
 			//do evaluation output
 			for (Agent a : agents) {
-				((SiafuAgent)a.getExternal()).getAgentCore().addLastMeasurement();				
+				((ICoreAdapter)a).getAgentCore().addLastMeasurement();				
 			}
 			
 			//make data output for all measurements
 			for (Agent a : agents) {
-				AgentCore rc = ((SiafuAgent)a.getExternal()).getAgentCore();
+				AgentCore rc = ((ICoreAdapter)a).getAgentCore();
 				
 				//save JSON document in .txt
 				rc.getMeasurement().benchmarkTime = (endTime - startTime);
@@ -196,7 +199,7 @@ public class AgentModel extends BaseAgentModel {
 		//example output for master follower relation
 		for (Agent agent: agents)
 		{
-			SiafuAgent a = (SiafuAgent) agent.getExternal();
+			ICoreAdapter a = (ICoreAdapter) agent;
 			a.getAgentCore().createAndInitializeRoleGoals();
 			System.out.println("Name: " + a.getAgentCore().getName() + " Roles: " + a.getAgentCore().getRoles() + " States: " + a.getAgentCore().getSupportedStates());
 		}

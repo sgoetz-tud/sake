@@ -2,9 +2,9 @@ package de.tud.swt.cleaningrobots.factory;
 
 import java.util.ArrayList;
 
+import de.nec.nle.siafu.model.Agent;
 import de.tud.swt.cleaningrobots.Configuration;
-import de.tud.swt.testland.SiafuAgent;
-import de.tud.swt.testland.SiafuAgentFactory;
+import de.tud.swt.testland.AgentFactory;
 
 /**
  * Abstract Factory class to create the different strategies.
@@ -12,11 +12,11 @@ import de.tud.swt.testland.SiafuAgentFactory;
  * @author Christopher Werner
  *
  */
-public abstract class IAgentFactory {
+public abstract class ISimulationFactory {
 	
 	protected Configuration configuration;
 	
-	public IAgentFactory (Configuration configuration)
+	public ISimulationFactory (Configuration configuration)
 	{
 		this.configuration = configuration;
 	}
@@ -28,5 +28,5 @@ public abstract class IAgentFactory {
 	 *            the world where the agents will dwell
 	 * @return an ArrayList with the created agents
 	 */
-	public abstract ArrayList<SiafuAgent> createRobots(SiafuAgentFactory factory);
+	public abstract ArrayList<Agent> createRobots(AgentFactory factory);
 }
